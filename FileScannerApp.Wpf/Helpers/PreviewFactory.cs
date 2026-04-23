@@ -1,4 +1,3 @@
-using PdfiumViewer;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,6 +7,9 @@ using System.Windows.Media.Imaging;
 using Image = System.Windows.Controls.Image;
 using MediaColor = System.Windows.Media.Color;
 using TextBox = System.Windows.Controls.TextBox;
+
+
+
 
 namespace FileScannerApp.Wpf.Helpers;
 
@@ -48,27 +50,11 @@ public static class PreviewFactory
 
         if (new[] { ".mp3", ".wav", ".mp4", ".avi", ".mkv" }.Contains(extension))
         {
-            var media = new MediaElement
-            {
-                LoadedBehavior = MediaState.Manual,
-                UnloadedBehavior = MediaState.Stop,
-                Stretch = Stretch.Uniform,
-                Source = new Uri(filePath)
-            };
-
-            media.Loaded += (_, _) => media.Play();
-            return media;
+            
         }
-
         if (extension == ".pdf")
         {
-            var viewer = new PdfViewer
-            {
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                Document = PdfDocument.Load(filePath)
-            };
-
-            return new WindowsFormsHost { Child = viewer };
+            
         }
 
         return CreateMessage("Preview not supported for this file type.");

@@ -10,20 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="PdfiumViewer">
-      <HintPath>lib\PdfiumViewer.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.SQLite">
-      <HintPath>lib\System.Data.SQLite.dll</HintPath>
-    </Reference>
+    <Content Include="Data\database.db" Link="database.db" CopyToOutputDirectory="PreserveNewest" Condition="Exists('Data\database.db')" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Data\database.db" Link="database.db" CopyToOutputDirectory="PreserveNewest" Condition="Exists('Data\database.db')" />
-    <Content Include="lib\x64\pdfium.dll" Link="x64\pdfium.dll" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="lib\x64\SQLite.Interop.dll" Link="x64\SQLite.Interop.dll" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="lib\x86\pdfium.dll" Link="x86\pdfium.dll" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="lib\x86\SQLite.Interop.dll" Link="x86\SQLite.Interop.dll" CopyToOutputDirectory="PreserveNewest" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3912.50" />
+    <PackageReference Include="Stub.System.Data.SQLite.Core.NetFramework" Version="1.0.119" />
   </ItemGroup>
 
 </Project>
