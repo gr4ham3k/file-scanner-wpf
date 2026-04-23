@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="FileScannerApp.Wpf.csproj" Id="9fcb1c8d-b12c-4af2-a680-6f6c0a81b2b7">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
+</Solution>

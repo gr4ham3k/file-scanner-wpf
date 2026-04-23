@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="PdfiumViewer">
+      <HintPath>lib\PdfiumViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite">
+      <HintPath>lib\System.Data.SQLite.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Data\database.db" Link="database.db" CopyToOutputDirectory="PreserveNewest" Condition="Exists('Data\database.db')" />
+    <Content Include="lib\x64\pdfium.dll" Link="x64\pdfium.dll" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="lib\x64\SQLite.Interop.dll" Link="x64\SQLite.Interop.dll" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="lib\x86\pdfium.dll" Link="x86\pdfium.dll" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="lib\x86\SQLite.Interop.dll" Link="x86\SQLite.Interop.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

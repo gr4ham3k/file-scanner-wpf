@@ -1,0 +1,83 @@
+<Window x:Class="FileScannerApp.Wpf.RenameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Batch rename"
+        Height="640"
+        Width="920"
+        WindowStartupLocation="CenterOwner">
+    <Border Margin="18" Style="{StaticResource PanelBorderStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock FontSize="22" FontWeight="Bold" Text="Batch rename" />
+
+            <Grid Grid.Row="1" Margin="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center" Text="Folder" />
+                <TextBox x:Name="FolderTextBox" Grid.Column="1" Height="38" IsReadOnly="True" VerticalContentAlignment="Center" />
+                <Button Grid.Column="2" Margin="12,0,0,0" Style="{StaticResource SecondaryButtonStyle}" Click="Browse_Click">Browse</Button>
+            </Grid>
+
+            <Grid Grid.Row="2" Margin="0,12,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <GroupBox Header="Pattern">
+                    <Grid Margin="12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="PatternTextBox" Height="38" TextChanged="PatternTextBox_TextChanged" />
+                        <TextBlock Grid.Row="1" Margin="0,8,0,8" Foreground="{StaticResource MutedBrush}" Text="Use tokens like {name}, {date}, {counter}, {ext}" />
+                        <StackPanel Grid.Row="2" Orientation="Horizontal">
+                            <RadioButton x:Name="NoneRadioButton" IsChecked="True" Content="Keep case" Checked="CaseOption_Checked" />
+                            <RadioButton x:Name="UpperRadioButton" Margin="16,0,0,0" Content="UPPERCASE" Checked="CaseOption_Checked" />
+                            <RadioButton x:Name="LowerRadioButton" Margin="16,0,0,0" Content="lowercase" Checked="CaseOption_Checked" />
+                            <RadioButton x:Name="CapitalizeRadioButton" Margin="16,0,0,0" Content="Capitalize" Checked="CaseOption_Checked" />
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Column="2" Header="Tokens">
+                    <ListBox x:Name="TokensListBox" Margin="12" MouseDoubleClick="TokensListBox_MouseDoubleClick">
+                        <ListBoxItem>{name}</ListBoxItem>
+                        <ListBoxItem>{date}</ListBoxItem>
+                        <ListBoxItem>{counter}</ListBoxItem>
+                        <ListBoxItem>{ext}</ListBoxItem>
+                    </ListBox>
+                </GroupBox>
+            </Grid>
+
+            <DataGrid x:Name="PreviewGrid"
+                      Grid.Row="3"
+                      Margin="0,20,0,0"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Current name" Binding="{Binding NameBefore}" Width="*" />
+                    <DataGridTextColumn Header="New name" Binding="{Binding NameAfter}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Grid.Row="4" Margin="0,20,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{StaticResource SecondaryButtonStyle}" Click="Cancel_Click">Cancel</Button>
+                <Button Margin="8,0,0,0" Click="Rename_Click">Rename files</Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
