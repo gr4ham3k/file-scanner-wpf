@@ -204,7 +204,8 @@ public partial class MainWindow : Window
 
     private void History_Click(object sender, RoutedEventArgs e)
     {
-        new HistoryWindow { Owner = this }.Show();
+        var win = new HistoryWindow();
+        win.Show();
     }
 
     private void DeleteSelected_Click(object sender, RoutedEventArgs e)
@@ -214,6 +215,8 @@ public partial class MainWindow : Window
         {
             return;
         }
+
+        PreviewFactory.ClearPreview(PreviewContent);
 
         var result = MessageBox.Show(
             this,
@@ -255,6 +258,8 @@ public partial class MainWindow : Window
             return;
         }
 
+        PreviewFactory.ClearPreview(PreviewContent);
+
         var result = fileOperationsService.MoveFiles(selectedFiles.Select(file => file.Path).ToList(), destination);
         LoadFolder(selectedPath!);
 
@@ -279,6 +284,8 @@ public partial class MainWindow : Window
         {
             return;
         }
+
+        PreviewFactory.ClearPreview(PreviewContent);
 
         var result = fileOperationsService.RenameFile(file.Path, dialog.Value);
         if (!result.success)

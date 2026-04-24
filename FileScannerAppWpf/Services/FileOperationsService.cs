@@ -1,4 +1,5 @@
 ﻿using FileScannerApp.Models;
+using FileScannerApp.Wpf.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -52,6 +53,7 @@ namespace FileScannerApp.Services
         public (int moved, int skipped, List<(string oldPath, string newPath)> updatedPaths)
         MoveFiles(List<string> paths, string targetFolder)
         {
+
             int movedCount = 0;
             int skippedCount = 0;
 

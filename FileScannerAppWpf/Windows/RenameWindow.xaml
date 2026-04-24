@@ -43,7 +43,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <TextBox x:Name="PatternTextBox" Height="38" TextChanged="PatternTextBox_TextChanged" />
-                        <TextBlock Grid.Row="1" Margin="0,8,0,8" Foreground="{StaticResource MutedBrush}" Text="Use tokens like {name}, {date}, {counter}, {ext}" />
+                        <TextBlock Grid.Row="1" Margin="0,8,0,8" Foreground="{StaticResource MutedBrush}" Text="Use tokens like {name}, {date}, {counter}" />
                         <StackPanel Grid.Row="2" Orientation="Horizontal">
                             <RadioButton x:Name="NoneRadioButton" IsChecked="True" Content="Keep case" Checked="CaseOption_Checked" />
                             <RadioButton x:Name="UpperRadioButton" Margin="16,0,0,0" Content="UPPERCASE" Checked="CaseOption_Checked" />
@@ -58,19 +58,47 @@
                         <ListBoxItem>{name}</ListBoxItem>
                         <ListBoxItem>{date}</ListBoxItem>
                         <ListBoxItem>{counter}</ListBoxItem>
-                        <ListBoxItem>{ext}</ListBoxItem>
                     </ListBox>
                 </GroupBox>
             </Grid>
 
             <DataGrid x:Name="PreviewGrid"
-                      Grid.Row="3"
-                      Margin="0,20,0,0"
-                      AutoGenerateColumns="False"
-                      IsReadOnly="True">
+          Grid.Row="3"
+          Margin="0,20,0,0"
+          AutoGenerateColumns="False"
+          IsReadOnly="True"
+          RowHeight="30"
+          HeadersVisibility="Column"
+          GridLinesVisibility="Horizontal"
+          FontSize="13">
+
+                <DataGrid.Resources>
+
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="FontSize" Value="13"/>
+                        <Setter Property="Padding" Value="8,5"/>
+                    </Style>
+
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="MinHeight" Value="30"/>
+                        <Setter Property="Margin" Value="0,2"/>
+                    </Style>
+
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Padding" Value="8,4"/>
+                    </Style>
+
+                </DataGrid.Resources>
+
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Current name" Binding="{Binding NameBefore}" Width="*" />
-                    <DataGridTextColumn Header="New name" Binding="{Binding NameAfter}" Width="*" />
+                    <DataGridTextColumn Header="Current name"
+                            Binding="{Binding NameBefore}"
+                            Width="*" />
+
+                    <DataGridTextColumn Header="New name"
+                            Binding="{Binding NameAfter}"
+                            Width="*" />
                 </DataGrid.Columns>
             </DataGrid>
 

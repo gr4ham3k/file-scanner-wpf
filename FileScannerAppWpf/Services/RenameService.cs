@@ -16,7 +16,6 @@ namespace FileScannerApp
 
             string newName = pattern
                 .Replace("{name}", name)
-                .Replace("{ext}", ext.Replace(".", ""))
                 .Replace("{date}", date)
                 .Replace("{counter}", counter.ToString());
 

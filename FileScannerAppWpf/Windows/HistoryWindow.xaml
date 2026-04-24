@@ -4,7 +4,8 @@
         Title="History"
         Height="700"
         Width="900"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterOwner"
+        FontSize="16">
     <Border Margin="18" Style="{StaticResource PanelBorderStyle}">
         <Grid>
             <Grid.RowDefinitions>

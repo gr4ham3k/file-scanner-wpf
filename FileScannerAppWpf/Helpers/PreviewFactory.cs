@@ -7,8 +7,7 @@ using System.Windows.Media.Imaging;
 using Image = System.Windows.Controls.Image;
 using MediaColor = System.Windows.Media.Color;
 using TextBox = System.Windows.Controls.TextBox;
-
-
+using Microsoft.Web.WebView2.Wpf;
 
 
 namespace FileScannerApp.Wpf.Helpers;
@@ -50,14 +49,57 @@ public static class PreviewFactory
 
         if (new[] { ".mp3", ".wav", ".mp4", ".avi", ".mkv" }.Contains(extension))
         {
-            
+            var media = new MediaElement
+            {
+                Source = new Uri(filePath),
+                LoadedBehavior = MediaState.Manual,
+                UnloadedBehavior = MediaState.Stop
+            };
+
+            media.Play();
+
+            return media;
         }
         if (extension == ".pdf")
         {
-            
+            var web = new WebView2();
+            web.Source = new Uri(filePath);
+
+            return web;
+        }
+
+        if (extension == ".docx")
+        {
+            var web = new WebView2();
+
+            web.Loaded += async (s, e) =>
+            {
+                await web.EnsureCoreWebView2Async();
+
+                string html = await Task.Run(() =>
+                    ConvertDocxToHtml.Convert(filePath));
+
+                web.NavigateToString(html);
+            };
+
+            return web;
         }
 
         return CreateMessage("Preview not supported for this file type.");
+    }
+
+    public static void ClearPreview(ContentControl preview)
+    {
+        if (preview.Content is MediaElement media)
+        {
+            media.Stop();
+            media.Close();
+        }
+
+        preview.Content = null;
+
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
     }
 
     private static FrameworkElement CreateMessage(string message)
