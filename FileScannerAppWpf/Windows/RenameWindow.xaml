@@ -5,6 +5,7 @@
         Height="640"
         Width="920"
         WindowStartupLocation="CenterOwner">
+
     <Border Margin="18" Style="{StaticResource PanelBorderStyle}">
         <Grid>
             <Grid.RowDefinitions>
@@ -23,9 +24,21 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
+
                 <TextBlock VerticalAlignment="Center" Text="Folder" />
-                <TextBox x:Name="FolderTextBox" Grid.Column="1" Height="38" IsReadOnly="True" VerticalContentAlignment="Center" />
-                <Button Grid.Column="2" Margin="12,0,0,0" Style="{StaticResource SecondaryButtonStyle}" Click="Browse_Click">Browse</Button>
+
+                <TextBox x:Name="FolderTextBox"
+                         Grid.Column="1"
+                         Height="38"
+                         IsReadOnly="True"
+                         VerticalContentAlignment="Center" />
+
+                <Button Grid.Column="2"
+                        Margin="12,0,0,0"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Click="Browse_Click">
+                    Browse
+                </Button>
             </Grid>
 
             <Grid Grid.Row="2" Margin="0,12,0,0">
@@ -42,35 +55,83 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <TextBox x:Name="PatternTextBox" Height="38" TextChanged="PatternTextBox_TextChanged" />
-                        <TextBlock Grid.Row="1" Margin="0,8,0,8" Foreground="{StaticResource MutedBrush}" Text="Use tokens like {name}, {date}, {counter}" />
+
+                        <TextBox x:Name="PatternTextBox"
+                                 Height="38"
+                                 TextChanged="PatternTextBox_TextChanged"
+                                 ToolTip="Example: {name}_{counter}" />
+
+                        <TextBlock Grid.Row="1"
+                                   Margin="0,8,0,8"
+                                   Foreground="{StaticResource MutedBrush}"
+                                   Text="Use tokens like {name}, {created}, {modified}, {counter:000}" />
+
                         <StackPanel Grid.Row="2" Orientation="Horizontal">
-                            <RadioButton x:Name="NoneRadioButton" IsChecked="True" Content="Keep case" Checked="CaseOption_Checked" />
-                            <RadioButton x:Name="UpperRadioButton" Margin="16,0,0,0" Content="UPPERCASE" Checked="CaseOption_Checked" />
-                            <RadioButton x:Name="LowerRadioButton" Margin="16,0,0,0" Content="lowercase" Checked="CaseOption_Checked" />
-                            <RadioButton x:Name="CapitalizeRadioButton" Margin="16,0,0,0" Content="Capitalize" Checked="CaseOption_Checked" />
+                            <RadioButton x:Name="NoneRadioButton"
+                                         IsChecked="True"
+                                         Content="Keep case"
+                                         Checked="CaseOption_Checked" />
+
+                            <RadioButton x:Name="UpperRadioButton"
+                                         Margin="16,0,0,0"
+                                         Content="UPPERCASE"
+                                         Checked="CaseOption_Checked" />
+
+                            <RadioButton x:Name="LowerRadioButton"
+                                         Margin="16,0,0,0"
+                                         Content="lowercase"
+                                         Checked="CaseOption_Checked" />
+
+                            <RadioButton x:Name="CapitalizeRadioButton"
+                                         Margin="16,0,0,0"
+                                         Content="Capitalize"
+                                         Checked="CaseOption_Checked" />
                         </StackPanel>
                     </Grid>
                 </GroupBox>
 
                 <GroupBox Grid.Column="2" Header="Tokens">
-                    <ListBox x:Name="TokensListBox" Margin="12" MouseDoubleClick="TokensListBox_MouseDoubleClick">
-                        <ListBoxItem>{name}</ListBoxItem>
-                        <ListBoxItem>{date}</ListBoxItem>
-                        <ListBoxItem>{counter}</ListBoxItem>
+                    <ListBox x:Name="TokensListBox"
+                             Margin="12"
+                             MouseDoubleClick="TokensListBox_MouseDoubleClick">
+
+                        <ListBoxItem ToolTip="Original file name (without extension)">
+                            {name}
+                        </ListBoxItem>
+
+                        <ListBoxItem ToolTip="File creation date">
+                            {created}
+                        </ListBoxItem>
+
+                        <ListBoxItem ToolTip="File last modified date">
+                            {modified}
+                        </ListBoxItem>
+
+                        <ListBoxItem ToolTip="Incremental number">
+                            {counter}
+                        </ListBoxItem>
+
+                        <ListBoxItem ToolTip="Folder name">
+                            {folder}
+                        </ListBoxItem>
+
+                        <ListBoxItem ToolTip="File extension (without dot)">
+                            {ext}
+                        </ListBoxItem>
+
                     </ListBox>
                 </GroupBox>
             </Grid>
 
             <DataGrid x:Name="PreviewGrid"
-          Grid.Row="3"
-          Margin="0,20,0,0"
-          AutoGenerateColumns="False"
-          IsReadOnly="True"
-          RowHeight="30"
-          HeadersVisibility="Column"
-          GridLinesVisibility="Horizontal"
-          FontSize="13">
+                      Grid.Row="3"
+                      Margin="0,20,0,0"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      RowHeight="30"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="Horizontal"
+                      FontSize="13">
 
                 <DataGrid.Resources>
 
@@ -93,19 +154,31 @@
 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Current name"
-                            Binding="{Binding NameBefore}"
-                            Width="*" />
+                                        Binding="{Binding NameBefore}"
+                                        Width="*" />
 
                     <DataGridTextColumn Header="New name"
-                            Binding="{Binding NameAfter}"
-                            Width="*" />
+                                        Binding="{Binding NameAfter}"
+                                        Width="*" />
                 </DataGrid.Columns>
             </DataGrid>
 
-            <StackPanel Grid.Row="4" Margin="0,20,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource SecondaryButtonStyle}" Click="Cancel_Click">Cancel</Button>
-                <Button Margin="8,0,0,0" Click="Rename_Click">Rename files</Button>
+            <StackPanel Grid.Row="4"
+                        Margin="0,20,0,0"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+
+                <Button Style="{StaticResource SecondaryButtonStyle}"
+                        Click="Cancel_Click">
+                    Cancel
+                </Button>
+
+                <Button Margin="8,0,0,0"
+                        Click="Rename_Click">
+                    Rename files
+                </Button>
             </StackPanel>
+
         </Grid>
     </Border>
 </Window>

@@ -12,12 +12,21 @@ namespace FileScannerApp
         {
             string name = Path.GetFileNameWithoutExtension(originalPath);
             string ext = Path.GetExtension(originalPath);
-            string date = File.GetCreationTime(originalPath).ToString("yyyy-MM-dd");
+            string extNoDot = ext.TrimStart('.');
+
+            string created = File.GetCreationTime(originalPath).ToString("yyyy-MM-dd");
+            string modified = File.GetLastWriteTime(originalPath).ToString("yyyy-MM-dd");
+
+            string folder = new DirectoryInfo(Path.GetDirectoryName(originalPath)).Name;
+
 
             string newName = pattern
                 .Replace("{name}", name)
-                .Replace("{date}", date)
-                .Replace("{counter}", counter.ToString());
+                .Replace("{created}", created)
+                .Replace("{modified}", modified)
+                .Replace("{counter}", counter.ToString())
+                .Replace("{folder}", folder)
+                .Replace("{ext}", extNoDot);
 
             switch (option)
             {

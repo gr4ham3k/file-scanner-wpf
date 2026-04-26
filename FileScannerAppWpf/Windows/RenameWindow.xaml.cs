@@ -16,8 +16,11 @@ public partial class RenameWindow : Window
     public RenameWindow(string? folder)
     {
         InitializeComponent();
+
         SelectedFolder = folder;
         FolderTextBox.Text = folder ?? string.Empty;
+
+        PatternTextBox.Text = "{name}_{counter}";
 
         if (!string.IsNullOrWhiteSpace(folder))
         {
@@ -58,11 +61,12 @@ public partial class RenameWindow : Window
         }
 
         int counter = 1;
+
         foreach (var item in previews)
         {
             item.NameAfter = RenameService.GenerateNewName(
                 PatternTextBox.Text,
-                item.NameBefore,
+                item.FullPath, 
                 counter,
                 GetSelectedOption());
 
@@ -83,7 +87,8 @@ public partial class RenameWindow : Window
 
     private void PatternTextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
-        UpdatePreview();
+        if (IsLoaded)
+            UpdatePreview();
     }
 
     private void CaseOption_Checked(object sender, RoutedEventArgs e)
@@ -98,8 +103,13 @@ public partial class RenameWindow : Window
     {
         if (TokensListBox.SelectedItem is ListBoxItem item)
         {
-            PatternTextBox.Text += item.Content?.ToString();
-            PatternTextBox.CaretIndex = PatternTextBox.Text.Length;
+            string token = item.Content?.ToString() ?? "";
+
+            int caretIndex = PatternTextBox.CaretIndex;
+
+            PatternTextBox.Text = PatternTextBox.Text.Insert(caretIndex, token);
+
+            PatternTextBox.CaretIndex = caretIndex + token.Length;
             PatternTextBox.Focus();
         }
     }
@@ -112,15 +122,23 @@ public partial class RenameWindow : Window
             return;
         }
 
+        if (previews.Count == 0)
+        {
+            MessageBox.Show(this, "No files to rename.", "Rename", MessageBoxButton.OK, MessageBoxImage.Information);
+            return;
+        }
+
         try
         {
             RenameService.RenameFiles(previews);
+
             MessageBox.Show(this, "Rename completed.", "Rename", MessageBoxButton.OK, MessageBoxImage.Information);
+
             DialogResult = true;
         }
         catch (Exception ex)
         {
-            MessageBox.Show(this, ex.Message, "Rename", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(this, ex.Message, "Rename error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
