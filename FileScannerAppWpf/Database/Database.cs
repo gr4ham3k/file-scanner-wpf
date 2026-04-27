@@ -295,6 +295,25 @@ namespace FileScannerApp
             }
         }
 
+        public void MarkAsDeletedPermanently(string path)
+        {
+            using (var connection = new SQLiteConnection($"Data Source={this.dbPath}"))
+            {
+                connection.Open();
+
+                var cmd = new SQLiteCommand(@"
+                    UPDATE OperationsLog
+                    SET OperationType = @type,
+                    CanUndo = 0
+                    WHERE NewPath = @path;
+                ", connection);
+
+                cmd.Parameters.AddWithValue("@type", OperationType.DeletedPermanently.ToString());
+                cmd.Parameters.AddWithValue("@path", path);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
 
     }
 }

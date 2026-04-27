@@ -9,10 +9,13 @@ namespace FileScannerApp.Wpf;
 public partial class HistoryWindow : Window
 {
     private OperationLog? selectedLog;
+    private readonly Action _refreshMain;
 
-    public HistoryWindow()
+    public HistoryWindow(Action refreshMain)
     {
         InitializeComponent();
+        _refreshMain = refreshMain;
+
         Loaded += (_, _) =>
         {
             UndoButton.IsEnabled = false;
@@ -112,6 +115,8 @@ public partial class HistoryWindow : Window
         selectedLog = null;
         UndoButton.IsEnabled = false;
         LoadOperations();
+
+        _refreshMain?.Invoke();
 
         MessageBox.Show(this, "Undo completed.", "History", MessageBoxButton.OK, MessageBoxImage.Information);
     }

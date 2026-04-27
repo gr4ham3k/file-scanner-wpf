@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Text.Json;
+using System.Net.NetworkInformation;
 
 namespace FileScannerApp.Services
 {
@@ -30,6 +31,7 @@ namespace FileScannerApp.Services
 
         public async Task<int> ScanFilesAsync(List<FileData> files, int scanId, Func<ScanProgress, Task> onProgress)
         {
+
             int threatsFound = 0;
 
             for (int i = 0; i < files.Count; i++)
@@ -120,6 +122,22 @@ namespace FileScannerApp.Services
 
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsStringAsync();
+            }
+        }
+
+        public static async Task<bool> HasInternet()
+        {
+            try
+            {
+                using var client = new HttpClient();
+                client.Timeout = TimeSpan.FromSeconds(3);
+
+                var response = await client.GetAsync("https://www.google.com");
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

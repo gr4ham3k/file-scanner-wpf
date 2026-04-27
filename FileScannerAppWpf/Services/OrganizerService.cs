@@ -16,6 +16,27 @@ namespace FileScannerApp
             bool createSubfolders,
             bool overwriteExisting)
         {
+            return OrganizeFiles(
+                files,
+                sourceFolder,
+                destinationFolder,
+                fileTypes,
+                operation,
+                createSubfolders,
+                overwriteExisting,
+                null);
+        }
+
+        public static string OrganizeFiles(
+            List<FileData> files,
+            string sourceFolder,
+            string destinationFolder,
+            List<string> fileTypes,
+            string operation,
+            bool createSubfolders,
+            bool overwriteExisting,
+            Database db)
+        {
             if (!Directory.Exists(sourceFolder))
                 throw new DirectoryNotFoundException("Folder źródłowy nie istnieje.");
 
@@ -58,10 +79,30 @@ namespace FileScannerApp
                             File.Delete(targetPath);
 
                         File.Move(file.Path, targetPath);
+
+                        db?.AddOperationLog(new OperationLog
+                        {
+                            OperationType = OperationType.Move,
+                            FileName = Path.GetFileName(targetPath),
+                            OldPath = file.Path,
+                            NewPath = targetPath,
+                            OperationDate = DateTime.Now,
+                            CanUndo = true
+                        });
                     }
                     else
                     {
                         File.Copy(file.Path, targetPath, overwriteExisting);
+
+                        db?.AddOperationLog(new OperationLog
+                        {
+                            OperationType = OperationType.Copy,
+                            FileName = Path.GetFileName(targetPath),
+                            OldPath = file.Path,
+                            NewPath = targetPath,
+                            OperationDate = DateTime.Now,
+                            CanUndo = false
+                        });
                     }
                 }
                 catch (Exception ex)

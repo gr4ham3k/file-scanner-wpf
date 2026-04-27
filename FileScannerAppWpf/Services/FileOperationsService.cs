@@ -15,31 +15,43 @@ namespace FileScannerApp.Services
             this.db = db;
         }
 
-        public (int deleted, int failed) DeleteFiles(List<string> paths)
+        public (int moved, int failed) DeleteFiles(List<string> paths)
         {
-            int deletedCount = 0;
+            int movedCount = 0;
             int failedCount = 0;
+
+            var binRoot = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
+
+            if (!Directory.Exists(binRoot))
+                Directory.CreateDirectory(binRoot);
 
             foreach (var path in paths)
             {
                 try
                 {
-                    if (File.Exists(path))
+                    if (!File.Exists(path))
                     {
-                        File.Delete(path);
+                        failedCount++;
+                        continue;
                     }
+
+                    string fileName = Path.GetFileName(path);
+                    string uniqueName = $"{Guid.NewGuid()}_{fileName}";
+                    string destPath = Path.Combine(binRoot, uniqueName);
+
+                    File.Move(path, destPath);
 
                     db.AddOperationLog(new OperationLog
                     {
                         OperationType = OperationType.Delete,
-                        FileName = Path.GetFileName(path),
+                        FileName = fileName,
                         OldPath = path,
-                        NewPath = null,
+                        NewPath = destPath,
                         OperationDate = DateTime.Now,
-                        CanUndo = false
+                        CanUndo = true
                     });
 
-                    deletedCount++;
+                    movedCount++;
                 }
                 catch
                 {
@@ -47,7 +59,7 @@ namespace FileScannerApp.Services
                 }
             }
 
-            return (deletedCount, failedCount);
+            return (movedCount, failedCount);
         }
 
         public (int moved, int skipped, List<(string oldPath, string newPath)> updatedPaths)
@@ -138,6 +150,61 @@ namespace FileScannerApp.Services
             catch (Exception ex)
             {
                 return (false, null, ex.Message);
+            }
+        }
+
+        public void CleanupBin()
+        {
+            var binRoot = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
+
+            if (!Directory.Exists(binRoot))
+                return;
+
+            foreach (var file in Directory.GetFiles(binRoot))
+            {
+                try
+                {
+                    File.Delete(file);
+
+                    db.MarkAsDeletedPermanently(file);
+                }
+                catch
+                {
+                    
+                }
+            }
+        }
+
+        public void RestoreFile(OperationLog log)
+        {
+            if (string.IsNullOrEmpty(log.NewPath) || !File.Exists(log.NewPath))
+                return;
+
+            try
+            {
+                string? targetDir = Path.GetDirectoryName(log.OldPath);
+
+                if (string.IsNullOrEmpty(targetDir))
+                    return;
+
+                if (!Directory.Exists(targetDir))
+                    Directory.CreateDirectory(targetDir);
+
+                File.Move(log.NewPath, log.OldPath);
+
+                db.AddOperationLog(new OperationLog
+                {
+                    OperationType = OperationType.Move,
+                    FileName = log.FileName,
+                    OldPath = log.NewPath,
+                    NewPath = log.OldPath,
+                    OperationDate = DateTime.Now,
+                    CanUndo = false
+                });
+            }
+            catch
+            {
+
             }
         }
     }

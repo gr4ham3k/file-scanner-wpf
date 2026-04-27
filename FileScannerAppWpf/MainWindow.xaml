@@ -43,7 +43,6 @@
                 <Button Margin="0,0,8,0" Click="SelectFolder_Click">Select folder</Button>
                 <Button Margin="0,0,8,0" Click="Scan_Click">Scan</Button>
                 <Button Margin="0,0,8,0" Click="Organize_Click">Organize</Button>
-                <Button Margin="0,0,8,0" Click="RenameBatch_Click">Rename batch</Button>
                 <Button Margin="0,0,8,0" Click="History_Click">History</Button>
 
                 <Button Style="{StaticResource SecondaryButtonStyle}"

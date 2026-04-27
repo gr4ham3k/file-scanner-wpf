@@ -1,9 +1,10 @@
 using FileScannerApp.Models;
 using FileScannerApp.Services;
 using FileScannerApp.Wpf.Helpers;
-using System.Diagnostics;
+using System.Net.NetworkInformation;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 using MessageBox = System.Windows.MessageBox;
 
 namespace FileScannerApp.Wpf;
@@ -20,8 +21,14 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
-        var config = AppConfig.Load();
         database = new Database();
+
+        fileOperationsService = new FileOperationsService(database);
+
+        fileOperationsService.CleanupBin();
+
+        var config = AppConfig.Load();
+        
         scanService = new ScanService(config, database);
         fileOperationsService = new FileOperationsService(database);
 
@@ -101,11 +108,17 @@ public partial class MainWindow : Window
 
     private async void Scan_Click(object sender, RoutedEventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(selectedPath))
+        if (!await ScanService.HasInternet())
         {
-            MessageBox.Show(this, "Select a folder first.", "Scan", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(this,
+                "No internet connection. Scan cannot start.",
+                "Scan blocked",
+                MessageBoxButton.OK,
+                MessageBoxImage.Warning);
+
             return;
         }
+
 
         var dialog = new ScanOptionsWindow(selectedPath) { Owner = this };
         if (dialog.ShowDialog() != true)
@@ -115,6 +128,12 @@ public partial class MainWindow : Window
 
         selectedPath = dialog.SelectedFolder;
         SelectedPathTextBlock.Text = selectedPath;
+
+        if (string.IsNullOrWhiteSpace(selectedPath))
+        {
+            MessageBox.Show(this, "Select a folder first.", "Scan", MessageBoxButton.OK, MessageBoxImage.Information);
+            return;
+        }
 
         var files = FileScannerService.Map(FileScannerService.Scan(selectedPath));
         if (dialog.FileTypes.Count > 0)
@@ -149,6 +168,7 @@ public partial class MainWindow : Window
                 return Task.CompletedTask;
             });
 
+
         ScanProgressBar.Visibility = Visibility.Collapsed;
         ProgressTextBlock.Text = $"Scan completed. Threats found: {threats}";
         LoadFolder(selectedPath);
@@ -159,43 +179,13 @@ public partial class MainWindow : Window
 
     private void Organize_Click(object sender, RoutedEventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(selectedPath))
-        {
-            MessageBox.Show(this, "Select a folder first.", "Organize", MessageBoxButton.OK, MessageBoxImage.Information);
-            return;
-        }
-
-        var dialog = new OrganizeWindow(selectedPath) { Owner = this };
-        if (dialog.ShowDialog() != true)
-        {
-            return;
-        }
-
-        var files = FileScannerService.Map(FileScannerService.Scan(dialog.SelectedFolder));
-
-        Organizer.OrganizeFiles(
-            files,
-            dialog.SelectedFolder,
-            dialog.SelectedDestination,
-            dialog.FileTypes,
-            dialog.OperationMode,
-            dialog.Options.CreateSubfolders,
-            dialog.Options.OverwriteExisting);
-
-        MessageBox.Show(this, "Files organized.", "Organize", MessageBoxButton.OK, MessageBoxImage.Information);
-        LoadFolder(dialog.SelectedFolder);
-
-        Process.Start(new ProcessStartInfo
-        {
-            FileName = "explorer.exe",
-            Arguments = dialog.SelectedDestination,
-            UseShellExecute = true
-        });
+        OpenBatchTools();
     }
 
-    private void RenameBatch_Click(object sender, RoutedEventArgs e)
+
+    private void OpenBatchTools()
     {
-        var dialog = new RenameWindow(selectedPath) { Owner = this };
+        var dialog = new BatchTools(selectedPath) { Owner = this };
         if (dialog.ShowDialog() == true && !string.IsNullOrWhiteSpace(dialog.SelectedFolder))
         {
             LoadFolder(dialog.SelectedFolder);
@@ -204,8 +194,8 @@ public partial class MainWindow : Window
 
     private void History_Click(object sender, RoutedEventArgs e)
     {
-        var win = new HistoryWindow();
-        win.Show();
+        var window = new HistoryWindow(() => LoadFolder(selectedPath));
+        window.Show();
     }
 
     private void DeleteSelected_Click(object sender, RoutedEventArgs e)
@@ -236,12 +226,8 @@ public partial class MainWindow : Window
         currentFiles = currentFiles.Where(file => !paths.Contains(file.Path)).ToList();
         ApplyFilter();
 
-        MessageBox.Show(
-            this,
-            $"Delete completed.\n\nDeleted: {summary.deleted}\nFailed: {summary.failed}",
-            "Delete",
-            MessageBoxButton.OK,
-            MessageBoxImage.Information);
+        MessageBox.Show(this, $"Delete completed.\n\nDeleted: {summary.moved}\nFailed: {summary.failed}",
+                        "Delete", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
     private void MoveSelected_Click(object sender, RoutedEventArgs e)
