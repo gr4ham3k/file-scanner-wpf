@@ -13,10 +13,11 @@ namespace FileScannerApp
 
         public Database(string dbPath = "database.db")
         {
-            this.dbPath = Path.IsPathRooted(dbPath)
-                ? dbPath
-                : Path.Combine(AppContext.BaseDirectory, dbPath);
-            InitializeDatabase();
+            this.dbPath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Data",
+                dbPath
+            );
         }
 
         private void InitializeDatabase()

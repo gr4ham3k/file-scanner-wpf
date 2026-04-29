@@ -32,7 +32,7 @@ public partial class MainWindow : Window
         scanService = new ScanService(config, database);
         fileOperationsService = new FileOperationsService(database);
 
-        FilterComboBox.ItemsSource = FileTypeCatalog.Filters;
+        FilterComboBox.ItemsSource = FileTypeCatalog.Groups.Keys;
         FilterComboBox.SelectedIndex = 0;
         PreviewContent.Content = PreviewFactory.Create(null);
     }
@@ -74,12 +74,16 @@ public partial class MainWindow : Window
 
     private void ApplyFilter()
     {
-        var filter = FilterComboBox.SelectedItem as FileTypeFilter;
+        var selected = FilterComboBox.SelectedItem as string;
+
         IEnumerable<FileData> filtered = currentFiles;
 
-        if (filter != null && filter.Extensions.Count > 0)
+        if (!string.IsNullOrWhiteSpace(selected) &&
+            FileTypeCatalog.Groups.TryGetValue(selected, out var extensions) &&
+            extensions.Length > 0)
         {
-            filtered = filtered.Where(file => filter.Extensions.Contains(file.Extension.ToLowerInvariant()));
+            filtered = filtered.Where(file =>
+                extensions.Contains(file.Extension.ToLowerInvariant()));
         }
 
         FilesGrid.ItemsSource = filtered.ToList();

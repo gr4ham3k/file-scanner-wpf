@@ -14,28 +14,9 @@ namespace FileScannerApp
             List<string> fileTypes,
             string operation,
             bool createSubfolders,
-            bool overwriteExisting)
-        {
-            return OrganizeFiles(
-                files,
-                sourceFolder,
-                destinationFolder,
-                fileTypes,
-                operation,
-                createSubfolders,
-                overwriteExisting,
-                null);
-        }
-
-        public static string OrganizeFiles(
-            List<FileData> files,
-            string sourceFolder,
-            string destinationFolder,
-            List<string> fileTypes,
-            string operation,
-            bool createSubfolders,
             bool overwriteExisting,
-            Database db)
+            Database db,
+            List<RenamePreview> previews)
         {
             if (!Directory.Exists(sourceFolder))
                 throw new DirectoryNotFoundException("Folder źródłowy nie istnieje.");
@@ -48,10 +29,9 @@ namespace FileScannerApp
                 if (!File.Exists(file.Path))
                     continue;
 
-                string extension = file.Extension.ToLower();
-                bool filterEnabled = fileTypes != null && fileTypes.Count > 0;
+                string extension = file.Extension.ToLowerInvariant();
 
-                if (filterEnabled && !fileTypes.Contains(extension))
+                if (fileTypes != null && fileTypes.Count > 0 && !fileTypes.Contains(extension))
                     continue;
 
                 string targetFolder = destinationFolder;
@@ -66,7 +46,16 @@ namespace FileScannerApp
                 }
 
                 string fileName = Path.GetFileNameWithoutExtension(file.Name);
+
+                var preview = previews.FirstOrDefault(p => p.FullPath == file.Path);
+
+                if (preview != null && !string.IsNullOrWhiteSpace(preview.NameAfter))
+                {
+                    fileName = Path.GetFileNameWithoutExtension(preview.NameAfter);
+                }
+
                 string fileExt = file.Extension;
+
                 string targetPath = Path.Combine(targetFolder, fileName + fileExt);
 
                 targetPath = ResolveConflict(fileName, fileExt, targetPath, overwriteExisting, targetFolder);
@@ -75,9 +64,6 @@ namespace FileScannerApp
                 {
                     if (operation == "move")
                     {
-                        if (File.Exists(targetPath))
-                            File.Delete(targetPath);
-
                         File.Move(file.Path, targetPath);
 
                         db?.AddOperationLog(new OperationLog
@@ -138,28 +124,13 @@ namespace FileScannerApp
 
         private static string GetTypeFolder(string ext)
         {
-            switch (ext)
+            foreach (var group in FileTypeCatalog.Groups)
             {
-                case ".exe":
-                case ".msi":
-                case ".bat":
-                    return "Executables";
-                case ".pdf":
-                case ".docx":
-                case ".txt":
-                    return "Documents";
-                case ".jpg":
-                case ".png":
-                case ".bmp":
-                case ".gif":
-                    return "Images";
-                case ".mp4":
-                case ".avi":
-                case ".mkv":
-                    return "Videos";
-                default:
-                    return "Others";
+                if (group.Value.Contains(ext))
+                    return group.Key;
             }
+
+            return "Others";
         }
     }
 }

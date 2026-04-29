@@ -158,7 +158,6 @@ public partial class BatchTools : Window
 
         try
         {
-            var renameResult = RenameService.RenameFiles(previews, database);
             bool hasOrganizeStep = !string.IsNullOrWhiteSpace(DestinationTextBox.Text);
             int organizedFiles = 0;
 
@@ -174,15 +173,8 @@ public partial class BatchTools : Window
 
                 organizedFiles = files.Count;
 
-                Organizer.OrganizeFiles(
-                    files,
-                    SelectedFolder,
-                    SelectedDestination,
-                    FileTypes,
-                    OperationMode,
-                    Options.CreateSubfolders,
-                    Options.OverwriteExisting,
-                    database);
+                Organizer.OrganizeFiles(files, SelectedFolder, SelectedDestination, FileTypes, OperationMode,
+                                        Options.CreateSubfolders, Options.OverwriteExisting, database, previews);
 
                 Process.Start(new ProcessStartInfo
                 {
@@ -192,10 +184,7 @@ public partial class BatchTools : Window
                 });
             }
 
-            string summary =
-                $"Renamed: {renameResult.renamed}\n" +
-                $"Rename skipped: {renameResult.skipped}\n" +
-                $"Organize step: {(hasOrganizeStep ? $"{OperationMode} {organizedFiles} file(s)" : "not used")}";
+            string summary = $"Organize step: {(hasOrganizeStep ? $"{OperationMode} {organizedFiles} file(s)" : "not used")}";
 
             MessageBox.Show(this, summary, "Batch tools", MessageBoxButton.OK, MessageBoxImage.Information);
             DialogResult = true;

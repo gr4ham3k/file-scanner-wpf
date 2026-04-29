@@ -35,20 +35,22 @@ public partial class ScanOptionsWindow : Window
         }
 
         SelectedFolder = FolderTextBox.Text;
-        FileTypes.Clear();
-        Collect("Executables", ExecutablesCheckBox.IsChecked == true);
-        Collect("Documents", DocumentsCheckBox.IsChecked == true);
-        Collect("Images", ImagesCheckBox.IsChecked == true);
-        Collect("Videos", VideosCheckBox.IsChecked == true);
-        DialogResult = true;
-    }
 
-    private void Collect(string groupName, bool enabled)
-    {
-        if (enabled && FileTypeCatalog.Groups.TryGetValue(groupName, out var extensions))
-        {
-            FileTypes.AddRange(extensions);
-        }
+        FileTypes.Clear();
+
+        if (ExecutablesCheckBox.IsChecked == true)
+            FileTypes.AddRange(FileTypeCatalog.Groups["Executables"]);
+
+        if (DocumentsCheckBox.IsChecked == true)
+            FileTypes.AddRange(FileTypeCatalog.Groups["Documents"]);
+
+        if (ImagesCheckBox.IsChecked == true)
+            FileTypes.AddRange(FileTypeCatalog.Groups["Images"]);
+
+        if (VideosCheckBox.IsChecked == true)
+            FileTypes.AddRange(FileTypeCatalog.Groups["Videos"]);
+
+        DialogResult = true;
     }
 
     private void Cancel_Click(object sender, RoutedEventArgs e)

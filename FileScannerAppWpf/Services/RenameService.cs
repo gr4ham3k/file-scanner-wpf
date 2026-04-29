@@ -23,7 +23,6 @@ namespace FileScannerApp
             string folder = new DirectoryInfo(Path.GetDirectoryName(originalPath)).Name;
             string paddedCounter = counter.ToString("000");
 
-
             string newName = pattern
                 .Replace("{name}", name)
                 .Replace("{created}", created)
@@ -38,11 +37,9 @@ namespace FileScannerApp
                 case "upper":
                     newName = newName.ToUpper();
                     break;
-
                 case "lower":
                     newName = newName.ToLower();
                     break;
-
                 case "capitalize":
                     if (!string.IsNullOrEmpty(newName))
                         newName = char.ToUpper(newName[0]) + newName.Substring(1).ToLower();
@@ -50,56 +47,6 @@ namespace FileScannerApp
             }
 
             return newName + ext;
-        }
-
-        public static (int renamed, int skipped) RenameFiles(List<RenamePreview> files, Database db)
-        {
-            int renamed = 0;
-            int skipped = 0;
-
-            foreach (var item in files)
-            {
-                if (!File.Exists(item.FullPath))
-                {
-                    skipped++;
-                    continue;
-                }
-
-                string currentName = Path.GetFileName(item.FullPath);
-                string targetName = string.IsNullOrWhiteSpace(item.NameAfter) ? currentName : item.NameAfter;
-
-                if (string.Equals(currentName, targetName, StringComparison.OrdinalIgnoreCase))
-                {
-                    skipped++;
-                    continue;
-                }
-
-                string directory = Path.GetDirectoryName(item.FullPath);
-                string newPath = Path.Combine(directory, targetName);
-
-                if (File.Exists(newPath))
-                    throw new Exception($"File exists: {newPath}");
-
-                string oldPath = item.FullPath;
-                File.Move(oldPath, newPath);
-
-                db.AddOperationLog(new OperationLog
-                {
-                    OperationType = OperationType.Rename,
-                    FileName = targetName,
-                    OldPath = oldPath,
-                    NewPath = newPath,
-                    OperationDate = DateTime.Now,
-                    CanUndo = true
-                });
-
-                item.FullPath = newPath;
-                item.NameBefore = targetName;
-                item.NameAfter = targetName;
-                renamed++;
-            }
-
-            return (renamed, skipped);
         }
 
         public static List<RenamePreview> LoadPreview(string path)
@@ -113,23 +60,5 @@ namespace FileScannerApp
                 NameAfter = ""
             }).ToList();
         }
-
-        public static void RenameFiles(List<RenamePreview> files)
-        {
-            foreach (var item in files)
-            {
-                string directory = Path.GetDirectoryName(item.FullPath);
-                string newPath = Path.Combine(directory, item.NameAfter);
-
-                if (!File.Exists(item.FullPath))
-                    continue;
-
-                if (File.Exists(newPath))
-                    throw new Exception($"File exists: {newPath}");
-
-                File.Move(item.FullPath, newPath);
-            }
-        }
-
     }
 }

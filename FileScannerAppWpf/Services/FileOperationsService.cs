@@ -162,16 +162,9 @@ namespace FileScannerApp.Services
 
             foreach (var file in Directory.GetFiles(binRoot))
             {
-                try
-                {
-                    File.Delete(file);
+                File.Delete(file);
 
-                    db.MarkAsDeletedPermanently(file);
-                }
-                catch
-                {
-                    
-                }
+                db.MarkAsDeletedPermanently(file);
             }
         }
 
@@ -180,32 +173,25 @@ namespace FileScannerApp.Services
             if (string.IsNullOrEmpty(log.NewPath) || !File.Exists(log.NewPath))
                 return;
 
-            try
+            string? targetDir = Path.GetDirectoryName(log.OldPath);
+
+            if (string.IsNullOrEmpty(targetDir))
+                return;
+
+            if (!Directory.Exists(targetDir))
+                Directory.CreateDirectory(targetDir);
+
+            File.Move(log.NewPath, log.OldPath);
+
+            db.AddOperationLog(new OperationLog
             {
-                string? targetDir = Path.GetDirectoryName(log.OldPath);
-
-                if (string.IsNullOrEmpty(targetDir))
-                    return;
-
-                if (!Directory.Exists(targetDir))
-                    Directory.CreateDirectory(targetDir);
-
-                File.Move(log.NewPath, log.OldPath);
-
-                db.AddOperationLog(new OperationLog
-                {
-                    OperationType = OperationType.Move,
-                    FileName = log.FileName,
-                    OldPath = log.NewPath,
-                    NewPath = log.OldPath,
-                    OperationDate = DateTime.Now,
-                    CanUndo = false
-                });
-            }
-            catch
-            {
-
-            }
+                OperationType = OperationType.Move,
+                FileName = log.FileName,
+                OldPath = log.NewPath,
+                NewPath = log.OldPath,
+                OperationDate = DateTime.Now,
+                CanUndo = false
+            });
         }
     }
 }

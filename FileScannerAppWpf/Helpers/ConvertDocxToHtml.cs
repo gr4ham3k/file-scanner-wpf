@@ -1,7 +1,5 @@
-﻿using DocumentFormat.OpenXml.Packaging;
-using OpenXmlPowerTools;
-using System.Xml.Linq;
-using System.IO;
+﻿using Mammoth;
+
 
 namespace FileScannerApp.Wpf.Helpers
 {
@@ -9,31 +7,10 @@ namespace FileScannerApp.Wpf.Helpers
     {
         public static string Convert(string filePath)
         {
-            string tempPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".docx");
+            var converter = new DocumentConverter();
+            var result = converter.ConvertToHtml(filePath);
 
-            File.Copy(filePath, tempPath, true);
-
-            try
-            {
-                using var doc = WordprocessingDocument.Open(tempPath, true);
-
-                var settings = new HtmlConverterSettings()
-                {
-                    PageTitle = "Preview"
-                };
-
-                XElement html = HtmlConverter.ConvertToHtml(doc, settings);
-
-                return html.ToString();
-            }
-            finally
-            {
-                if (File.Exists(tempPath))
-                {
-
-                    File.Delete(tempPath);
-                }
-            }
+            return result.Value;
         }
     }
 }
