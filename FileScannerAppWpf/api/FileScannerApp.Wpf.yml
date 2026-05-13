@@ -1,0 +1,65 @@
+### YamlMime:ManagedReference
+items:
+- uid: FileScannerApp.Wpf
+  commentId: N:FileScannerApp.Wpf
+  id: FileScannerApp.Wpf
+  children:
+  - FileScannerApp.Wpf.App
+  - FileScannerApp.Wpf.BatchTools
+  - FileScannerApp.Wpf.HistoryWindow
+  - FileScannerApp.Wpf.MainWindow
+  - FileScannerApp.Wpf.ScanOptionsWindow
+  - FileScannerApp.Wpf.ScanResultsWindow
+  - FileScannerApp.Wpf.TextInputWindow
+  langs:
+  - csharp
+  - vb
+  name: FileScannerApp.Wpf
+  nameWithType: FileScannerApp.Wpf
+  fullName: FileScannerApp.Wpf
+  type: Namespace
+  assemblies:
+  - FileScannerAppWpf
+references:
+- uid: FileScannerApp.Wpf.App
+  commentId: T:FileScannerApp.Wpf.App
+  href: FileScannerApp.Wpf.App.html
+  name: App
+  nameWithType: App
+  fullName: FileScannerApp.Wpf.App
+- uid: FileScannerApp.Wpf.MainWindow
+  commentId: T:FileScannerApp.Wpf.MainWindow
+  href: FileScannerApp.Wpf.MainWindow.html
+  name: MainWindow
+  nameWithType: MainWindow
+  fullName: FileScannerApp.Wpf.MainWindow
+- uid: FileScannerApp.Wpf.BatchTools
+  commentId: T:FileScannerApp.Wpf.BatchTools
+  href: FileScannerApp.Wpf.BatchTools.html
+  name: BatchTools
+  nameWithType: BatchTools
+  fullName: FileScannerApp.Wpf.BatchTools
+- uid: FileScannerApp.Wpf.HistoryWindow
+  commentId: T:FileScannerApp.Wpf.HistoryWindow
+  href: FileScannerApp.Wpf.HistoryWindow.html
+  name: HistoryWindow
+  nameWithType: HistoryWindow
+  fullName: FileScannerApp.Wpf.HistoryWindow
+- uid: FileScannerApp.Wpf.ScanOptionsWindow
+  commentId: T:FileScannerApp.Wpf.ScanOptionsWindow
+  href: FileScannerApp.Wpf.ScanOptionsWindow.html
+  name: ScanOptionsWindow
+  nameWithType: ScanOptionsWindow
+  fullName: FileScannerApp.Wpf.ScanOptionsWindow
+- uid: FileScannerApp.Wpf.ScanResultsWindow
+  commentId: T:FileScannerApp.Wpf.ScanResultsWindow
+  href: FileScannerApp.Wpf.ScanResultsWindow.html
+  name: ScanResultsWindow
+  nameWithType: ScanResultsWindow
+  fullName: FileScannerApp.Wpf.ScanResultsWindow
+- uid: FileScannerApp.Wpf.TextInputWindow
+  commentId: T:FileScannerApp.Wpf.TextInputWindow
+  href: FileScannerApp.Wpf.TextInputWindow.html
+  name: TextInputWindow
+  nameWithType: TextInputWindow
+  fullName: FileScannerApp.Wpf.TextInputWindow

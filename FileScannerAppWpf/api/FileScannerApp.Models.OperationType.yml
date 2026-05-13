@@ -1,0 +1,221 @@
+### YamlMime:ManagedReference
+items:
+- uid: FileScannerApp.Models.OperationType
+  commentId: T:FileScannerApp.Models.OperationType
+  id: OperationType
+  parent: FileScannerApp.Models
+  children:
+  - FileScannerApp.Models.OperationType.Copy
+  - FileScannerApp.Models.OperationType.Delete
+  - FileScannerApp.Models.OperationType.DeletedPermanently
+  - FileScannerApp.Models.OperationType.Move
+  - FileScannerApp.Models.OperationType.Rename
+  langs:
+  - csharp
+  - vb
+  name: OperationType
+  nameWithType: OperationType
+  fullName: FileScannerApp.Models.OperationType
+  type: Enum
+  source:
+    remote:
+      path: FileScannerAppWpf/Models/OperationType.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: OperationType
+    path: Models/OperationType.cs
+    startLine: 13
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Models
+  summary: Okresla rodzaj operacji wykonanej na pliku i zapisanej w historii aplikacji.
+  remarks: >-
+    Typ operacji wplywa na sposob prezentacji wpisu w historii oraz na to, czy dana operacja
+
+    moze zostac cofnieta. Przeniesienie lub zmiana nazwy zwykle moga byc odwracane,
+
+    natomiast trwale usuniecie blokuje taka mozliwosc.
+  example: []
+  syntax:
+    content: public enum OperationType
+    content.vb: Public Enum OperationType
+  seealso:
+  - linkId: FileScannerApp.Models.OperationLog
+    commentId: T:FileScannerApp.Models.OperationLog
+- uid: FileScannerApp.Models.OperationType.Rename
+  commentId: F:FileScannerApp.Models.OperationType.Rename
+  id: Rename
+  parent: FileScannerApp.Models.OperationType
+  langs:
+  - csharp
+  - vb
+  name: Rename
+  nameWithType: OperationType.Rename
+  fullName: FileScannerApp.Models.OperationType.Rename
+  type: Field
+  source:
+    remote:
+      path: FileScannerAppWpf/Models/OperationType.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: Rename
+    path: Models/OperationType.cs
+    startLine: 18
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Models
+  summary: Zmiana nazwy pliku bez zmiany jego zawartosci.
+  example: []
+  syntax:
+    content: Rename = 0
+    return:
+      type: FileScannerApp.Models.OperationType
+- uid: FileScannerApp.Models.OperationType.Delete
+  commentId: F:FileScannerApp.Models.OperationType.Delete
+  id: Delete
+  parent: FileScannerApp.Models.OperationType
+  langs:
+  - csharp
+  - vb
+  name: Delete
+  nameWithType: OperationType.Delete
+  fullName: FileScannerApp.Models.OperationType.Delete
+  type: Field
+  source:
+    remote:
+      path: FileScannerAppWpf/Models/OperationType.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: Delete
+    path: Models/OperationType.cs
+    startLine: 23
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Models
+  summary: Przeniesienie pliku do wewnetrznego kosza aplikacji.
+  example: []
+  syntax:
+    content: Delete = 1
+    return:
+      type: FileScannerApp.Models.OperationType
+- uid: FileScannerApp.Models.OperationType.Move
+  commentId: F:FileScannerApp.Models.OperationType.Move
+  id: Move
+  parent: FileScannerApp.Models.OperationType
+  langs:
+  - csharp
+  - vb
+  name: Move
+  nameWithType: OperationType.Move
+  fullName: FileScannerApp.Models.OperationType.Move
+  type: Field
+  source:
+    remote:
+      path: FileScannerAppWpf/Models/OperationType.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: Move
+    path: Models/OperationType.cs
+    startLine: 28
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Models
+  summary: Przeniesienie pliku do innej lokalizacji.
+  example: []
+  syntax:
+    content: Move = 2
+    return:
+      type: FileScannerApp.Models.OperationType
+- uid: FileScannerApp.Models.OperationType.Copy
+  commentId: F:FileScannerApp.Models.OperationType.Copy
+  id: Copy
+  parent: FileScannerApp.Models.OperationType
+  langs:
+  - csharp
+  - vb
+  name: Copy
+  nameWithType: OperationType.Copy
+  fullName: FileScannerApp.Models.OperationType.Copy
+  type: Field
+  source:
+    remote:
+      path: FileScannerAppWpf/Models/OperationType.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: Copy
+    path: Models/OperationType.cs
+    startLine: 33
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Models
+  summary: Utworzenie kopii pliku w lokalizacji docelowej.
+  example: []
+  syntax:
+    content: Copy = 3
+    return:
+      type: FileScannerApp.Models.OperationType
+- uid: FileScannerApp.Models.OperationType.DeletedPermanently
+  commentId: F:FileScannerApp.Models.OperationType.DeletedPermanently
+  id: DeletedPermanently
+  parent: FileScannerApp.Models.OperationType
+  langs:
+  - csharp
+  - vb
+  name: DeletedPermanently
+  nameWithType: OperationType.DeletedPermanently
+  fullName: FileScannerApp.Models.OperationType.DeletedPermanently
+  type: Field
+  source:
+    remote:
+      path: FileScannerAppWpf/Models/OperationType.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: DeletedPermanently
+    path: Models/OperationType.cs
+    startLine: 38
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Models
+  summary: Trwale usuniecie pliku z kosza aplikacji bez mozliwosci cofniecia.
+  example: []
+  syntax:
+    content: DeletedPermanently = 4
+    return:
+      type: FileScannerApp.Models.OperationType
+references:
+- uid: FileScannerApp.Models.OperationLog
+  commentId: T:FileScannerApp.Models.OperationLog
+  parent: FileScannerApp.Models
+  href: FileScannerApp.Models.OperationLog.html
+  name: OperationLog
+  nameWithType: OperationLog
+  fullName: FileScannerApp.Models.OperationLog
+- uid: FileScannerApp.Models
+  commentId: N:FileScannerApp.Models
+  href: FileScannerApp.html
+  name: FileScannerApp.Models
+  nameWithType: FileScannerApp.Models
+  fullName: FileScannerApp.Models
+  spec.csharp:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Models
+    name: Models
+    href: FileScannerApp.Models.html
+  spec.vb:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Models
+    name: Models
+    href: FileScannerApp.Models.html
+- uid: FileScannerApp.Models.OperationType
+  commentId: T:FileScannerApp.Models.OperationType
+  parent: FileScannerApp.Models
+  href: FileScannerApp.Models.OperationType.html
+  name: OperationType
+  nameWithType: OperationType
+  fullName: FileScannerApp.Models.OperationType

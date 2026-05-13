@@ -1,0 +1,97 @@
+### YamlMime:ManagedReference
+items:
+- uid: FileScannerApp.Models
+  commentId: N:FileScannerApp.Models
+  id: FileScannerApp.Models
+  children:
+  - FileScannerApp.Models.FileData
+  - FileScannerApp.Models.OperationLog
+  - FileScannerApp.Models.OperationType
+  - FileScannerApp.Models.OrganizeOptions
+  - FileScannerApp.Models.RenamePreview
+  - FileScannerApp.Models.Scan
+  - FileScannerApp.Models.ScanProgress
+  - FileScannerApp.Models.ScanResult
+  langs:
+  - csharp
+  - vb
+  name: FileScannerApp.Models
+  nameWithType: FileScannerApp.Models
+  fullName: FileScannerApp.Models
+  type: Namespace
+  assemblies:
+  - FileScannerAppWpf
+references:
+- uid: FileScannerApp.Models.FileData
+  commentId: T:FileScannerApp.Models.FileData
+  href: FileScannerApp.Models.FileData.html
+  name: FileData
+  nameWithType: FileData
+  fullName: FileScannerApp.Models.FileData
+- uid: FileScannerApp.Models.OperationLog
+  commentId: T:FileScannerApp.Models.OperationLog
+  parent: FileScannerApp.Models
+  href: FileScannerApp.Models.OperationLog.html
+  name: OperationLog
+  nameWithType: OperationLog
+  fullName: FileScannerApp.Models.OperationLog
+- uid: FileScannerApp.Models.OperationType
+  commentId: T:FileScannerApp.Models.OperationType
+  parent: FileScannerApp.Models
+  href: FileScannerApp.Models.OperationType.html
+  name: OperationType
+  nameWithType: OperationType
+  fullName: FileScannerApp.Models.OperationType
+- uid: FileScannerApp.Models.OrganizeOptions
+  commentId: T:FileScannerApp.Models.OrganizeOptions
+  parent: FileScannerApp.Models
+  href: FileScannerApp.Models.OrganizeOptions.html
+  name: OrganizeOptions
+  nameWithType: OrganizeOptions
+  fullName: FileScannerApp.Models.OrganizeOptions
+- uid: FileScannerApp.Models.RenamePreview
+  commentId: T:FileScannerApp.Models.RenamePreview
+  href: FileScannerApp.Models.RenamePreview.html
+  name: RenamePreview
+  nameWithType: RenamePreview
+  fullName: FileScannerApp.Models.RenamePreview
+- uid: FileScannerApp.Models.Scan
+  commentId: T:FileScannerApp.Models.Scan
+  href: FileScannerApp.Models.Scan.html
+  name: Scan
+  nameWithType: Scan
+  fullName: FileScannerApp.Models.Scan
+- uid: FileScannerApp.Models.ScanProgress
+  commentId: T:FileScannerApp.Models.ScanProgress
+  href: FileScannerApp.Models.ScanProgress.html
+  name: ScanProgress
+  nameWithType: ScanProgress
+  fullName: FileScannerApp.Models.ScanProgress
+- uid: FileScannerApp.Models.ScanResult
+  commentId: T:FileScannerApp.Models.ScanResult
+  href: FileScannerApp.Models.ScanResult.html
+  name: ScanResult
+  nameWithType: ScanResult
+  fullName: FileScannerApp.Models.ScanResult
+- uid: FileScannerApp.Models
+  commentId: N:FileScannerApp.Models
+  href: FileScannerApp.html
+  name: FileScannerApp.Models
+  nameWithType: FileScannerApp.Models
+  fullName: FileScannerApp.Models
+  spec.csharp:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Models
+    name: Models
+    href: FileScannerApp.Models.html
+  spec.vb:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Models
+    name: Models
+    href: FileScannerApp.Models.html

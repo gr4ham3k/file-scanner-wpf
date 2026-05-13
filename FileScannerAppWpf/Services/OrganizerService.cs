@@ -5,8 +5,37 @@ using System.IO;
 
 namespace FileScannerApp
 {
+    /// <summary>
+    /// Organizuje pliki w folderze docelowym wedlug regul wybranych przez uzytkownika.
+    /// </summary>
+    /// <remarks>
+    /// Klasa pozwala kopiowac lub przenosic pliki, filtrowac je po rozszerzeniach oraz opcjonalnie
+    /// tworzyc podfoldery odpowiadajace kategoriom plikow. Uwzglednia tez konflikty nazw,
+    /// dzieki czemu istniejace pliki nie sa przypadkowo nadpisywane bez decyzji uzytkownika.
+    /// </remarks>
+    /// <seealso cref="FileData"/>
+    /// <seealso cref="RenamePreview"/>
     public static class Organizer
     {
+        /// <summary>
+        /// Przenosi albo kopiuje pliki do folderu docelowego zgodnie z wybranymi filtrami i opcjami.
+        /// </summary>
+        /// <remarks>
+        /// Metoda laczy kilka decyzji uzytkownika: wybrane typy plikow, tryb kopiowania lub przenoszenia,
+        /// tworzenie podfolderow oraz podglad nowych nazw. Gdy plik docelowy juz istnieje, konflikt jest
+        /// rozwiazywany przez nadpisanie albo dopisanie licznika do nazwy.
+        /// </remarks>
+        /// <param name="files">Pliki dostepne do organizowania.</param>
+        /// <param name="sourceFolder">Folder zrodlowy, ktory musi istniec przed rozpoczeciem operacji.</param>
+        /// <param name="destinationFolder">Folder docelowy; zostanie utworzony, jesli nie istnieje.</param>
+        /// <param name="fileTypes">Lista rozszerzen dopuszczonych do organizowania; pusta lista oznacza brak filtrowania.</param>
+        /// <param name="operation">Tryb operacji: "move" oznacza przeniesienie, pozostale wartosci powoduja kopiowanie.</param>
+        /// <param name="createSubfolders">Okresla, czy pliki maja zostac rozdzielone do podfolderow wedlug typu.</param>
+        /// <param name="overwriteExisting">Okresla, czy istniejace pliki w folderze docelowym moga zostac nadpisane.</param>
+        /// <param name="db">Baza danych uzywana do zapisu historii operacji; moze byc null.</param>
+        /// <param name="previews">Podglad nowych nazw przygotowany przed wykonaniem operacji.</param>
+        /// <returns>Sciezka folderu docelowego, do ktorego organizowano pliki.</returns>
+        /// <exception cref="DirectoryNotFoundException">Wyrzucany, gdy folder zrodlowy nie istnieje.</exception>
         public static string OrganizeFiles(
             List<FileData> files,
             string sourceFolder,
@@ -100,6 +129,19 @@ namespace FileScannerApp
             return destinationFolder;
         }
 
+        /// <summary>
+        /// Wyznacza bezpieczna sciezke docelowa, gdy w folderze istnieje juz plik o tej samej nazwie.
+        /// </summary>
+        /// <remarks>
+        /// Jesli nadpisywanie jest wylaczone, metoda dodaje licznik w nawiasie do nazwy pliku
+        /// i szuka pierwszej wolnej sciezki.
+        /// </remarks>
+        /// <param name="fileName">Nazwa pliku bez rozszerzenia.</param>
+        /// <param name="fileExt">Rozszerzenie pliku razem z kropka.</param>
+        /// <param name="targetPath">Pierwotnie planowana sciezka docelowa.</param>
+        /// <param name="overwriteExisting">Informacja, czy istniejacy plik moze zostac nadpisany.</param>
+        /// <param name="targetFolder">Folder, w ktorym szukana jest wolna nazwa.</param>
+        /// <returns>Sciezka bez konfliktu albo pierwotna sciezka, gdy nadpisywanie jest dozwolone.</returns>
         private static string ResolveConflict(string fileName, string fileExt, string targetPath,
             bool overwriteExisting, string targetFolder)
         {
@@ -122,6 +164,15 @@ namespace FileScannerApp
             return newPath;
         }
 
+        /// <summary>
+        /// Dopasowuje rozszerzenie pliku do kategorii uzywanej przy tworzeniu podfolderow.
+        /// </summary>
+        /// <remarks>
+        /// Kategorie sa pobierane z katalogu typow plikow. Nieznane rozszerzenia trafiaja do folderu "Others",
+        /// aby organizowanie nadal dzialalo dla formatow spoza listy.
+        /// </remarks>
+        /// <param name="ext">Rozszerzenie pliku, na przyklad ".pdf".</param>
+        /// <returns>Nazwa kategorii folderu dla danego rozszerzenia.</returns>
         private static string GetTypeFolder(string ext)
         {
             foreach (var group in FileTypeCatalog.Groups)

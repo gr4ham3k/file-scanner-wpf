@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: FileScannerApp.Services
+  commentId: N:FileScannerApp.Services
+  id: FileScannerApp.Services
+  children:
+  - FileScannerApp.Services.FileOperationsService
+  - FileScannerApp.Services.ScanService
+  - FileScannerApp.Services.UndoService
+  langs:
+  - csharp
+  - vb
+  name: FileScannerApp.Services
+  nameWithType: FileScannerApp.Services
+  fullName: FileScannerApp.Services
+  type: Namespace
+  assemblies:
+  - FileScannerAppWpf
+references:
+- uid: FileScannerApp.Services.FileOperationsService
+  commentId: T:FileScannerApp.Services.FileOperationsService
+  href: FileScannerApp.Services.FileOperationsService.html
+  name: FileOperationsService
+  nameWithType: FileOperationsService
+  fullName: FileScannerApp.Services.FileOperationsService
+- uid: FileScannerApp.Services.ScanService
+  commentId: T:FileScannerApp.Services.ScanService
+  href: FileScannerApp.Services.ScanService.html
+  name: ScanService
+  nameWithType: ScanService
+  fullName: FileScannerApp.Services.ScanService
+- uid: FileScannerApp.Services.UndoService
+  commentId: T:FileScannerApp.Services.UndoService
+  href: FileScannerApp.Services.UndoService.html
+  name: UndoService
+  nameWithType: UndoService
+  fullName: FileScannerApp.Services.UndoService

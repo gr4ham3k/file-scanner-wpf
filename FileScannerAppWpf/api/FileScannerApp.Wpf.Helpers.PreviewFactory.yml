@@ -1,0 +1,507 @@
+### YamlMime:ManagedReference
+items:
+- uid: FileScannerApp.Wpf.Helpers.PreviewFactory
+  commentId: T:FileScannerApp.Wpf.Helpers.PreviewFactory
+  id: PreviewFactory
+  parent: FileScannerApp.Wpf.Helpers
+  children:
+  - FileScannerApp.Wpf.Helpers.PreviewFactory.ClearPreview(System.Windows.Controls.ContentControl)
+  - FileScannerApp.Wpf.Helpers.PreviewFactory.Create(System.String)
+  langs:
+  - csharp
+  - vb
+  name: PreviewFactory
+  nameWithType: PreviewFactory
+  fullName: FileScannerApp.Wpf.Helpers.PreviewFactory
+  type: Class
+  source:
+    remote:
+      path: FileScannerAppWpf/Helpers/PreviewFactory.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: PreviewFactory
+    path: Helpers/PreviewFactory.cs
+    startLine: 23
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Wpf.Helpers
+  summary: Tworzy element interfejsu sluzacy do podgladu zawartosci wybranego pliku.
+  remarks: >-
+    Fabryka dobiera sposob prezentacji pliku na podstawie jego rozszerzenia. Obsluguje miedzy innymi
+
+    obrazy, pliki tekstowe, multimedia, PDF oraz DOCX. Dla nieobslugiwanych formatow zwraca komunikat
+
+    zamiast powodowac blad interfejsu.
+  example: []
+  syntax:
+    content: public static class PreviewFactory
+    content.vb: Public Module PreviewFactory
+  seealso:
+  - linkId: FileScannerApp.Wpf.Helpers.ConvertDocxToHtml
+    commentId: T:FileScannerApp.Wpf.Helpers.ConvertDocxToHtml
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: FileScannerApp.Wpf.Helpers.PreviewFactory.Create(System.String)
+  commentId: M:FileScannerApp.Wpf.Helpers.PreviewFactory.Create(System.String)
+  id: Create(System.String)
+  parent: FileScannerApp.Wpf.Helpers.PreviewFactory
+  langs:
+  - csharp
+  - vb
+  name: Create(string?)
+  nameWithType: PreviewFactory.Create(string?)
+  fullName: FileScannerApp.Wpf.Helpers.PreviewFactory.Create(string?)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Helpers/PreviewFactory.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: Create
+    path: Helpers/PreviewFactory.cs
+    startLine: 35
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Wpf.Helpers
+  summary: Tworzy kontrolke WPF odpowiednia do podgladu wskazanego pliku.
+  remarks: >-
+    Metoda ukrywa szczegoly tworzenia roznych kontrolek podgladu przed reszta aplikacji.
+
+    Dzieki temu okno glowne moze ustawic jeden element interfejsu niezaleznie od tego,
+
+    czy uzytkownik wybral obraz, tekst, multimedia, dokument PDF czy plik DOCX.
+  example: []
+  syntax:
+    content: public static FrameworkElement Create(string? filePath)
+    parameters:
+    - id: filePath
+      type: System.String
+      description: Sciezka do pliku, ktory ma zostac wyswietlony w panelu podgladu.
+    return:
+      type: System.Windows.FrameworkElement
+      description: Gotowy element WPF do umieszczenia w kontrolce zawartosci.
+    content.vb: Public Shared Function Create(filePath As String) As FrameworkElement
+  overload: FileScannerApp.Wpf.Helpers.PreviewFactory.Create*
+  nameWithType.vb: PreviewFactory.Create(String)
+  fullName.vb: FileScannerApp.Wpf.Helpers.PreviewFactory.Create(String)
+  name.vb: Create(String)
+- uid: FileScannerApp.Wpf.Helpers.PreviewFactory.ClearPreview(System.Windows.Controls.ContentControl)
+  commentId: M:FileScannerApp.Wpf.Helpers.PreviewFactory.ClearPreview(System.Windows.Controls.ContentControl)
+  id: ClearPreview(System.Windows.Controls.ContentControl)
+  parent: FileScannerApp.Wpf.Helpers.PreviewFactory
+  langs:
+  - csharp
+  - vb
+  name: ClearPreview(ContentControl)
+  nameWithType: PreviewFactory.ClearPreview(ContentControl)
+  fullName: FileScannerApp.Wpf.Helpers.PreviewFactory.ClearPreview(System.Windows.Controls.ContentControl)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Helpers/PreviewFactory.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: ClearPreview
+    path: Helpers/PreviewFactory.cs
+    startLine: 117
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Wpf.Helpers
+  summary: Czysci panel podgladu i zatrzymuje odtwarzanie multimediow, jesli byly aktywne.
+  remarks: >-
+    Samo usuniecie zawartosci nie zawsze wystarcza dla plikow audio lub wideo, dlatego metoda
+
+    jawnie zatrzymuje i zamyka kontrolke multimedialna przed wyczyszczeniem panelu.
+  example: []
+  syntax:
+    content: public static void ClearPreview(ContentControl preview)
+    parameters:
+    - id: preview
+      type: System.Windows.Controls.ContentControl
+      description: Kontrolka zawierajaca aktualnie wyswietlany podglad.
+    content.vb: Public Shared Sub ClearPreview(preview As ContentControl)
+  overload: FileScannerApp.Wpf.Helpers.PreviewFactory.ClearPreview*
+references:
+- uid: FileScannerApp.Wpf.Helpers.ConvertDocxToHtml
+  commentId: T:FileScannerApp.Wpf.Helpers.ConvertDocxToHtml
+  name: ConvertDocxToHtml
+  nameWithType: ConvertDocxToHtml
+  fullName: FileScannerApp.Wpf.Helpers.ConvertDocxToHtml
+- uid: FileScannerApp.Wpf.Helpers
+  commentId: N:FileScannerApp.Wpf.Helpers
+  href: FileScannerApp.html
+  name: FileScannerApp.Wpf.Helpers
+  nameWithType: FileScannerApp.Wpf.Helpers
+  fullName: FileScannerApp.Wpf.Helpers
+  spec.csharp:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Wpf
+    name: Wpf
+    href: FileScannerApp.Wpf.html
+  - name: .
+  - uid: FileScannerApp.Wpf.Helpers
+    name: Helpers
+    href: FileScannerApp.Wpf.Helpers.html
+  spec.vb:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Wpf
+    name: Wpf
+    href: FileScannerApp.Wpf.html
+  - name: .
+  - uid: FileScannerApp.Wpf.Helpers
+    name: Helpers
+    href: FileScannerApp.Wpf.Helpers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: FileScannerApp.Wpf.Helpers.PreviewFactory.Create*
+  commentId: Overload:FileScannerApp.Wpf.Helpers.PreviewFactory.Create
+  href: FileScannerApp.Wpf.Helpers.PreviewFactory.html#FileScannerApp_Wpf_Helpers_PreviewFactory_Create_System_String_
+  name: Create
+  nameWithType: PreviewFactory.Create
+  fullName: FileScannerApp.Wpf.Helpers.PreviewFactory.Create
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Windows.FrameworkElement
+  commentId: T:System.Windows.FrameworkElement
+  parent: System.Windows
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.windows.frameworkelement
+  name: FrameworkElement
+  nameWithType: FrameworkElement
+  fullName: System.Windows.FrameworkElement
+- uid: System.Windows
+  commentId: N:System.Windows
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Windows
+  nameWithType: System.Windows
+  fullName: System.Windows
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Windows
+    name: Windows
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.windows
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Windows
+    name: Windows
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.windows
+- uid: FileScannerApp.Wpf.Helpers.PreviewFactory.ClearPreview*
+  commentId: Overload:FileScannerApp.Wpf.Helpers.PreviewFactory.ClearPreview
+  href: FileScannerApp.Wpf.Helpers.PreviewFactory.html#FileScannerApp_Wpf_Helpers_PreviewFactory_ClearPreview_System_Windows_Controls_ContentControl_
+  name: ClearPreview
+  nameWithType: PreviewFactory.ClearPreview
+  fullName: FileScannerApp.Wpf.Helpers.PreviewFactory.ClearPreview
+- uid: System.Windows.Controls.ContentControl
+  commentId: T:System.Windows.Controls.ContentControl
+  parent: System.Windows.Controls
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.windows.controls.contentcontrol
+  name: ContentControl
+  nameWithType: ContentControl
+  fullName: System.Windows.Controls.ContentControl
+- uid: System.Windows.Controls
+  commentId: N:System.Windows.Controls
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Windows.Controls
+  nameWithType: System.Windows.Controls
+  fullName: System.Windows.Controls
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Windows
+    name: Windows
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.windows
+  - name: .
+  - uid: System.Windows.Controls
+    name: Controls
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.windows.controls
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Windows
+    name: Windows
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.windows
+  - name: .
+  - uid: System.Windows.Controls
+    name: Controls
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.windows.controls

@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: FileScannerApp.Wpf.Helpers
+  commentId: N:FileScannerApp.Wpf.Helpers
+  id: FileScannerApp.Wpf.Helpers
+  children:
+  - FileScannerApp.Wpf.Helpers.FolderPicker
+  - FileScannerApp.Wpf.Helpers.PreviewFactory
+  langs:
+  - csharp
+  - vb
+  name: FileScannerApp.Wpf.Helpers
+  nameWithType: FileScannerApp.Wpf.Helpers
+  fullName: FileScannerApp.Wpf.Helpers
+  type: Namespace
+  assemblies:
+  - FileScannerAppWpf
+references:
+- uid: FileScannerApp.Wpf.Helpers.FolderPicker
+  commentId: T:FileScannerApp.Wpf.Helpers.FolderPicker
+  href: FileScannerApp.Wpf.Helpers.FolderPicker.html
+  name: FolderPicker
+  nameWithType: FolderPicker
+  fullName: FileScannerApp.Wpf.Helpers.FolderPicker
+- uid: FileScannerApp.Wpf.Helpers.PreviewFactory
+  commentId: T:FileScannerApp.Wpf.Helpers.PreviewFactory
+  href: FileScannerApp.Wpf.Helpers.PreviewFactory.html
+  name: PreviewFactory
+  nameWithType: PreviewFactory
+  fullName: FileScannerApp.Wpf.Helpers.PreviewFactory

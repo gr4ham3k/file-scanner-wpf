@@ -1,0 +1,1062 @@
+### YamlMime:ManagedReference
+items:
+- uid: FileScannerApp.Services.FileOperationsService
+  commentId: T:FileScannerApp.Services.FileOperationsService
+  id: FileOperationsService
+  parent: FileScannerApp.Services
+  children:
+  - FileScannerApp.Services.FileOperationsService.#ctor(FileScannerApp.Database)
+  - FileScannerApp.Services.FileOperationsService.CleanupBin
+  - FileScannerApp.Services.FileOperationsService.DeleteFiles(System.Collections.Generic.List{System.String})
+  - FileScannerApp.Services.FileOperationsService.MoveFiles(System.Collections.Generic.List{System.String},System.String)
+  - FileScannerApp.Services.FileOperationsService.RenameFile(System.String,System.String)
+  - FileScannerApp.Services.FileOperationsService.RestoreFile(FileScannerApp.Models.OperationLog)
+  langs:
+  - csharp
+  - vb
+  name: FileOperationsService
+  nameWithType: FileOperationsService
+  fullName: FileScannerApp.Services.FileOperationsService
+  type: Class
+  source:
+    remote:
+      path: FileScannerAppWpf/Services/FileOperationsService.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: FileOperationsService
+    path: Services/FileOperationsService.cs
+    startLine: 19
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Services
+  summary: Wykonuje podstawowe operacje na plikach wybrane przez uzytkownika.
+  remarks: >-
+    Usluga obsluguje przenoszenie, zmiane nazw, usuwanie do wewnetrznego kosza aplikacji
+
+    oraz przywracanie plikow. Operacje, ktore mozna pozniej przeanalizowac lub cofnac,
+
+    sa zapisywane w historii.
+  example: []
+  syntax:
+    content: public class FileOperationsService
+    content.vb: Public Class FileOperationsService
+  seealso:
+  - linkId: FileScannerApp.Models.OperationLog
+    commentId: T:FileScannerApp.Models.OperationLog
+  - linkId: FileScannerApp.Models.OperationType
+    commentId: T:FileScannerApp.Models.OperationType
+  - linkId: FileScannerApp.Database
+    commentId: T:FileScannerApp.Database
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: FileScannerApp.Services.FileOperationsService.#ctor(FileScannerApp.Database)
+  commentId: M:FileScannerApp.Services.FileOperationsService.#ctor(FileScannerApp.Database)
+  id: '#ctor(FileScannerApp.Database)'
+  parent: FileScannerApp.Services.FileOperationsService
+  langs:
+  - csharp
+  - vb
+  name: FileOperationsService(Database)
+  nameWithType: FileOperationsService.FileOperationsService(Database)
+  fullName: FileScannerApp.Services.FileOperationsService.FileOperationsService(FileScannerApp.Database)
+  type: Constructor
+  source:
+    remote:
+      path: FileScannerAppWpf/Services/FileOperationsService.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: .ctor
+    path: Services/FileOperationsService.cs
+    startLine: 27
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Services
+  summary: Tworzy usluge operacji plikowych powiazana z historia operacji w bazie danych.
+  example: []
+  syntax:
+    content: public FileOperationsService(Database db)
+    parameters:
+    - id: db
+      type: FileScannerApp.Database
+      description: Baza danych uzywana do zapisywania operacji wykonanych na plikach.
+    content.vb: Public Sub New(db As Database)
+  overload: FileScannerApp.Services.FileOperationsService.#ctor*
+  nameWithType.vb: FileOperationsService.New(Database)
+  fullName.vb: FileScannerApp.Services.FileOperationsService.New(FileScannerApp.Database)
+  name.vb: New(Database)
+- uid: FileScannerApp.Services.FileOperationsService.DeleteFiles(System.Collections.Generic.List{System.String})
+  commentId: M:FileScannerApp.Services.FileOperationsService.DeleteFiles(System.Collections.Generic.List{System.String})
+  id: DeleteFiles(System.Collections.Generic.List{System.String})
+  parent: FileScannerApp.Services.FileOperationsService
+  langs:
+  - csharp
+  - vb
+  name: DeleteFiles(List<string>)
+  nameWithType: FileOperationsService.DeleteFiles(List<string>)
+  fullName: FileScannerApp.Services.FileOperationsService.DeleteFiles(System.Collections.Generic.List<string>)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Services/FileOperationsService.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: DeleteFiles
+    path: Services/FileOperationsService.cs
+    startLine: 41
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Services
+  summary: Przenosi wskazane pliki do wewnetrznego kosza aplikacji zamiast usuwac je trwale.
+  remarks: >-
+    Kazdy plik otrzymuje unikalna nazwe w katalogu kosza, co chroni przed konfliktami nazw.
+
+    Udane przeniesienie jest zapisywane jako operacja mozliwa do cofniecia.
+  example: []
+  syntax:
+    content: public (int moved, int failed) DeleteFiles(List<string> paths)
+    parameters:
+    - id: paths
+      type: System.Collections.Generic.List{System.String}
+      description: Sciezki plikow przeznaczonych do usuniecia z widoku uzytkownika.
+    return:
+      type: System.ValueTuple{System.Int32,System.Int32}
+      description: Liczba plikow przeniesionych do kosza oraz liczba operacji nieudanych.
+    content.vb: Public Function DeleteFiles(paths As List(Of String)) As (moved As Integer, failed As Integer)
+  overload: FileScannerApp.Services.FileOperationsService.DeleteFiles*
+  nameWithType.vb: FileOperationsService.DeleteFiles(List(Of String))
+  fullName.vb: FileScannerApp.Services.FileOperationsService.DeleteFiles(System.Collections.Generic.List(Of String))
+  name.vb: DeleteFiles(List(Of String))
+- uid: FileScannerApp.Services.FileOperationsService.MoveFiles(System.Collections.Generic.List{System.String},System.String)
+  commentId: M:FileScannerApp.Services.FileOperationsService.MoveFiles(System.Collections.Generic.List{System.String},System.String)
+  id: MoveFiles(System.Collections.Generic.List{System.String},System.String)
+  parent: FileScannerApp.Services.FileOperationsService
+  langs:
+  - csharp
+  - vb
+  name: MoveFiles(List<string>, string)
+  nameWithType: FileOperationsService.MoveFiles(List<string>, string)
+  fullName: FileScannerApp.Services.FileOperationsService.MoveFiles(System.Collections.Generic.List<string>, string)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Services/FileOperationsService.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: MoveFiles
+    path: Services/FileOperationsService.cs
+    startLine: 98
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Services
+  summary: Przenosi pliki do wybranego folderu docelowego i zwraca zaktualizowane sciezki.
+  remarks: >-
+    Metoda pomija pliki, ktore nie istnieja, oraz pliki powodujace konflikt nazwy w folderze docelowym.
+
+    Udane przeniesienia sa zapisywane w historii jako operacje mozliwe do cofniecia.
+  example: []
+  syntax:
+    content: public (int moved, int skipped, List<(string oldPath, string newPath)> updatedPaths) MoveFiles(List<string> paths, string targetFolder)
+    parameters:
+    - id: paths
+      type: System.Collections.Generic.List{System.String}
+      description: Lista sciezek plikow do przeniesienia.
+    - id: targetFolder
+      type: System.String
+      description: Folder, do ktorego maja trafic pliki.
+    return:
+      type: System.ValueTuple{System.Int32,System.Int32,System.Collections.Generic.List{System.ValueTuple{System.String,System.String}}}
+      description: Liczba przeniesionych plikow, liczba pominietych plikow oraz lista zmian sciezek.
+    content.vb: Public Function MoveFiles(paths As List(Of String), targetFolder As String) As (moved As Integer, skipped As Integer, updatedPaths As List(Of (oldPath As String, newPath As String)))
+  overload: FileScannerApp.Services.FileOperationsService.MoveFiles*
+  nameWithType.vb: FileOperationsService.MoveFiles(List(Of String), String)
+  fullName.vb: FileScannerApp.Services.FileOperationsService.MoveFiles(System.Collections.Generic.List(Of String), String)
+  name.vb: MoveFiles(List(Of String), String)
+- uid: FileScannerApp.Services.FileOperationsService.RenameFile(System.String,System.String)
+  commentId: M:FileScannerApp.Services.FileOperationsService.RenameFile(System.String,System.String)
+  id: RenameFile(System.String,System.String)
+  parent: FileScannerApp.Services.FileOperationsService
+  langs:
+  - csharp
+  - vb
+  name: RenameFile(string, string)
+  nameWithType: FileOperationsService.RenameFile(string, string)
+  fullName: FileScannerApp.Services.FileOperationsService.RenameFile(string, string)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Services/FileOperationsService.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: RenameFile
+    path: Services/FileOperationsService.cs
+    startLine: 161
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Services
+  summary: Zmienia nazwe pojedynczego pliku i zapisuje operacje w historii.
+  remarks: >-
+    Jesli nowa nazwa nie zawiera oryginalnego rozszerzenia, metoda dopisuje je automatycznie.
+
+    Zamiast rzucac wyjatki przy typowych problemach uzytkownika, zwraca opis bledu w wyniku metody.
+  example: []
+  syntax:
+    content: public (bool success, string newPath, string error) RenameFile(string oldPath, string newName)
+    parameters:
+    - id: oldPath
+      type: System.String
+      description: Aktualna sciezka pliku.
+    - id: newName
+      type: System.String
+      description: Nowa nazwa pliku podana przez uzytkownika.
+    return:
+      type: System.ValueTuple{System.Boolean,System.String,System.String}
+      description: Informacja o powodzeniu, nowa sciezka albo komunikat bledu.
+    content.vb: Public Function RenameFile(oldPath As String, newName As String) As (success As Boolean, newPath As String, [error] As String)
+  overload: FileScannerApp.Services.FileOperationsService.RenameFile*
+  nameWithType.vb: FileOperationsService.RenameFile(String, String)
+  fullName.vb: FileScannerApp.Services.FileOperationsService.RenameFile(String, String)
+  name.vb: RenameFile(String, String)
+- uid: FileScannerApp.Services.FileOperationsService.CleanupBin
+  commentId: M:FileScannerApp.Services.FileOperationsService.CleanupBin
+  id: CleanupBin
+  parent: FileScannerApp.Services.FileOperationsService
+  langs:
+  - csharp
+  - vb
+  name: CleanupBin()
+  nameWithType: FileOperationsService.CleanupBin()
+  fullName: FileScannerApp.Services.FileOperationsService.CleanupBin()
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Services/FileOperationsService.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: CleanupBin
+    path: Services/FileOperationsService.cs
+    startLine: 206
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Services
+  summary: Trwale usuwa pliki znajdujace sie w wewnetrznym koszu aplikacji.
+  remarks: >-
+    Po usunieciu pliku odpowiadajacy wpis historii jest oznaczany jako trwale usuniety,
+
+    aby aplikacja nie probowala pozniej przywrocic pliku, ktorego juz nie ma.
+  example: []
+  syntax:
+    content: public void CleanupBin()
+    content.vb: Public Sub CleanupBin()
+  overload: FileScannerApp.Services.FileOperationsService.CleanupBin*
+- uid: FileScannerApp.Services.FileOperationsService.RestoreFile(FileScannerApp.Models.OperationLog)
+  commentId: M:FileScannerApp.Services.FileOperationsService.RestoreFile(FileScannerApp.Models.OperationLog)
+  id: RestoreFile(FileScannerApp.Models.OperationLog)
+  parent: FileScannerApp.Services.FileOperationsService
+  langs:
+  - csharp
+  - vb
+  name: RestoreFile(OperationLog)
+  nameWithType: FileOperationsService.RestoreFile(OperationLog)
+  fullName: FileScannerApp.Services.FileOperationsService.RestoreFile(FileScannerApp.Models.OperationLog)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Services/FileOperationsService.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: RestoreFile
+    path: Services/FileOperationsService.cs
+    startLine: 229
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Services
+  summary: Przywraca plik na podstawie wpisu historii operacji.
+  remarks: >-
+    Metoda korzysta ze sciezki docelowej zapisanej przy usunieciu lub przeniesieniu pliku.
+
+    Jesli plik nie istnieje albo nie da sie ustalic folderu docelowego, metoda konczy prace bez bledu.
+  example: []
+  syntax:
+    content: public void RestoreFile(OperationLog log)
+    parameters:
+    - id: log
+      type: FileScannerApp.Models.OperationLog
+      description: Wpis historii zawierajacy poprzednia i aktualna sciezke pliku.
+    content.vb: Public Sub RestoreFile(log As OperationLog)
+  overload: FileScannerApp.Services.FileOperationsService.RestoreFile*
+references:
+- uid: FileScannerApp.Models.OperationLog
+  commentId: T:FileScannerApp.Models.OperationLog
+  parent: FileScannerApp.Models
+  href: FileScannerApp.Models.OperationLog.html
+  name: OperationLog
+  nameWithType: OperationLog
+  fullName: FileScannerApp.Models.OperationLog
+- uid: FileScannerApp.Models.OperationType
+  commentId: T:FileScannerApp.Models.OperationType
+  parent: FileScannerApp.Models
+  href: FileScannerApp.Models.OperationType.html
+  name: OperationType
+  nameWithType: OperationType
+  fullName: FileScannerApp.Models.OperationType
+- uid: FileScannerApp.Database
+  commentId: T:FileScannerApp.Database
+  parent: FileScannerApp
+  href: FileScannerApp.Database.html
+  name: Database
+  nameWithType: Database
+  fullName: FileScannerApp.Database
+- uid: FileScannerApp.Services
+  commentId: N:FileScannerApp.Services
+  href: FileScannerApp.html
+  name: FileScannerApp.Services
+  nameWithType: FileScannerApp.Services
+  fullName: FileScannerApp.Services
+  spec.csharp:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Services
+    name: Services
+    href: FileScannerApp.Services.html
+  spec.vb:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Services
+    name: Services
+    href: FileScannerApp.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: FileScannerApp.Models
+  commentId: N:FileScannerApp.Models
+  href: FileScannerApp.html
+  name: FileScannerApp.Models
+  nameWithType: FileScannerApp.Models
+  fullName: FileScannerApp.Models
+  spec.csharp:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Models
+    name: Models
+    href: FileScannerApp.Models.html
+  spec.vb:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Models
+    name: Models
+    href: FileScannerApp.Models.html
+- uid: FileScannerApp
+  commentId: N:FileScannerApp
+  href: FileScannerApp.html
+  name: FileScannerApp
+  nameWithType: FileScannerApp
+  fullName: FileScannerApp
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: FileScannerApp.Services.FileOperationsService.#ctor*
+  commentId: Overload:FileScannerApp.Services.FileOperationsService.#ctor
+  href: FileScannerApp.Services.FileOperationsService.html#FileScannerApp_Services_FileOperationsService__ctor_FileScannerApp_Database_
+  name: FileOperationsService
+  nameWithType: FileOperationsService.FileOperationsService
+  fullName: FileScannerApp.Services.FileOperationsService.FileOperationsService
+  nameWithType.vb: FileOperationsService.New
+  fullName.vb: FileScannerApp.Services.FileOperationsService.New
+  name.vb: New
+- uid: FileScannerApp.Services.FileOperationsService.DeleteFiles*
+  commentId: Overload:FileScannerApp.Services.FileOperationsService.DeleteFiles
+  href: FileScannerApp.Services.FileOperationsService.html#FileScannerApp_Services_FileOperationsService_DeleteFiles_System_Collections_Generic_List_System_String__
+  name: DeleteFiles
+  nameWithType: FileOperationsService.DeleteFiles
+  fullName: FileScannerApp.Services.FileOperationsService.DeleteFiles
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<string>
+  nameWithType: List<string>
+  fullName: System.Collections.Generic.List<string>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.ValueTuple{System.Int32,System.Int32}
+  commentId: T:System.ValueTuple{System.Int32,System.Int32}
+  parent: System
+  definition: System.ValueTuple`2
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: (int moved, int failed)
+  nameWithType: (int moved, int failed)
+  fullName: (int moved, int failed)
+  nameWithType.vb: (moved As Integer, failed As Integer)
+  fullName.vb: (moved As Integer, failed As Integer)
+  name.vb: (moved As Integer, failed As Integer)
+  spec.csharp:
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: " "
+  - uid: System.ValueTuple{System.Int32,System.Int32}.moved
+    name: moved
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.moved
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: " "
+  - uid: System.ValueTuple{System.Int32,System.Int32}.failed
+    name: failed
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.failed
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{System.Int32,System.Int32}.moved
+    name: moved
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.moved
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Int32,System.Int32}.failed
+    name: failed
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.failed
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.ValueTuple`2
+  commentId: T:System.ValueTuple`2
+  name: (T1, T2)
+  nameWithType: (T1, T2)
+  fullName: (T1, T2)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+- uid: FileScannerApp.Services.FileOperationsService.MoveFiles*
+  commentId: Overload:FileScannerApp.Services.FileOperationsService.MoveFiles
+  href: FileScannerApp.Services.FileOperationsService.html#FileScannerApp_Services_FileOperationsService_MoveFiles_System_Collections_Generic_List_System_String__System_String_
+  name: MoveFiles
+  nameWithType: FileOperationsService.MoveFiles
+  fullName: FileScannerApp.Services.FileOperationsService.MoveFiles
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.ValueTuple{System.Int32,System.Int32,System.Collections.Generic.List{System.ValueTuple{System.String,System.String}}}
+  commentId: T:System.ValueTuple{System.Int32,System.Int32,System.Collections.Generic.List{System.ValueTuple{System.String,System.String}}}
+  parent: System
+  definition: System.ValueTuple`3
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: (int moved, int skipped, List<(string oldPath, string newPath)> updatedPaths)
+  nameWithType: (int moved, int skipped, List<(string oldPath, string newPath)> updatedPaths)
+  fullName: (int moved, int skipped, System.Collections.Generic.List<(string oldPath, string newPath)> updatedPaths)
+  nameWithType.vb: (moved As Integer, skipped As Integer, updatedPaths As List(Of (oldPath As String, newPath As String)))
+  fullName.vb: (moved As Integer, skipped As Integer, updatedPaths As System.Collections.Generic.List(Of (oldPath As String, newPath As String)))
+  name.vb: (moved As Integer, skipped As Integer, updatedPaths As List(Of (oldPath As String, newPath As String)))
+  spec.csharp:
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: " "
+  - uid: System.ValueTuple{System.Int32,System.Int32,System.Collections.Generic.List{System.ValueTuple{System.String,System.String}}}.moved
+    name: moved
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32,system.collections.generic.list-system.valuetuple-system.string,system.string---.moved
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: " "
+  - uid: System.ValueTuple{System.Int32,System.Int32,System.Collections.Generic.List{System.ValueTuple{System.String,System.String}}}.skipped
+    name: skipped
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32,system.collections.generic.list-system.valuetuple-system.string,system.string---.skipped
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.String}.oldPath
+    name: oldPath
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.oldpath
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.String}.newPath
+    name: newPath
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.newpath
+  - name: )
+  - name: '>'
+  - name: " "
+  - uid: System.ValueTuple{System.Int32,System.Int32,System.Collections.Generic.List{System.ValueTuple{System.String,System.String}}}.updatedPaths
+    name: updatedPaths
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32,system.collections.generic.list-system.valuetuple-system.string,system.string---.updatedpaths
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{System.Int32,System.Int32,System.Collections.Generic.List{System.ValueTuple{System.String,System.String}}}.moved
+    name: moved
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32,system.collections.generic.list-system.valuetuple-system.string,system.string---.moved
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Int32,System.Int32,System.Collections.Generic.List{System.ValueTuple{System.String,System.String}}}.skipped
+    name: skipped
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32,system.collections.generic.list-system.valuetuple-system.string,system.string---.skipped
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Int32,System.Int32,System.Collections.Generic.List{System.ValueTuple{System.String,System.String}}}.updatedPaths
+    name: updatedPaths
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32,system.collections.generic.list-system.valuetuple-system.string,system.string---.updatedpaths
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: (
+  - uid: System.ValueTuple{System.String,System.String}.oldPath
+    name: oldPath
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.oldpath
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.String}.newPath
+    name: newPath
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.newpath
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+  - name: )
+- uid: System.ValueTuple`3
+  commentId: T:System.ValueTuple`3
+  name: (T1, T2, T3)
+  nameWithType: (T1, T2, T3)
+  fullName: (T1, T2, T3)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+- uid: FileScannerApp.Services.FileOperationsService.RenameFile*
+  commentId: Overload:FileScannerApp.Services.FileOperationsService.RenameFile
+  href: FileScannerApp.Services.FileOperationsService.html#FileScannerApp_Services_FileOperationsService_RenameFile_System_String_System_String_
+  name: RenameFile
+  nameWithType: FileOperationsService.RenameFile
+  fullName: FileScannerApp.Services.FileOperationsService.RenameFile
+- uid: System.ValueTuple{System.Boolean,System.String,System.String}
+  commentId: T:System.ValueTuple{System.Boolean,System.String,System.String}
+  parent: System
+  definition: System.ValueTuple`3
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: (bool success, string newPath, string error)
+  nameWithType: (bool success, string newPath, string error)
+  fullName: (bool success, string newPath, string error)
+  nameWithType.vb: (success As Boolean, newPath As String, error As String)
+  fullName.vb: (success As Boolean, newPath As String, error As String)
+  name.vb: (success As Boolean, newPath As String, error As String)
+  spec.csharp:
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.String,System.String}.success
+    name: success
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.string,system.string-.success
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.String,System.String}.newPath
+    name: newPath
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.string,system.string-.newpath
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.String,System.String}.error
+    name: error
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.string,system.string-.error
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{System.Boolean,System.String,System.String}.success
+    name: success
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.string,system.string-.success
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.String,System.String}.newPath
+    name: newPath
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.string,system.string-.newpath
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.String,System.String}.error
+    name: error
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.string,system.string-.error
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: FileScannerApp.Services.FileOperationsService.CleanupBin*
+  commentId: Overload:FileScannerApp.Services.FileOperationsService.CleanupBin
+  href: FileScannerApp.Services.FileOperationsService.html#FileScannerApp_Services_FileOperationsService_CleanupBin
+  name: CleanupBin
+  nameWithType: FileOperationsService.CleanupBin
+  fullName: FileScannerApp.Services.FileOperationsService.CleanupBin
+- uid: FileScannerApp.Services.FileOperationsService.RestoreFile*
+  commentId: Overload:FileScannerApp.Services.FileOperationsService.RestoreFile
+  href: FileScannerApp.Services.FileOperationsService.html#FileScannerApp_Services_FileOperationsService_RestoreFile_FileScannerApp_Models_OperationLog_
+  name: RestoreFile
+  nameWithType: FileOperationsService.RestoreFile
+  fullName: FileScannerApp.Services.FileOperationsService.RestoreFile

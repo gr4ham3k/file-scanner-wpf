@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Uruchomienie projektu dla developera | mysite </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Uruchomienie projektu dla developera | mysite ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/docs/getting-started.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="mysite">
+            mysite
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="uruchomienie-projektu-dla-developera">Uruchomienie projektu dla developera</h1>
+
+<p>Ta sekcja opisuje uruchomienie projektu w trybie deweloperskim na czystym komputerze.</p>
+<h2 id="uzyte-technologie">Uzyte technologie</h2>
+<table>
+<thead>
+<tr>
+<th>Technologia</th>
+<th>Wersja w projekcie</th>
+<th>Zastosowanie</th>
+<th>Oficjalna strona</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.NET SDK</td>
+<td>10.0.203</td>
+<td>Budowanie i uruchamianie aplikacji</td>
+<td><a href="https://dotnet.microsoft.com/">.NET</a></td>
+</tr>
+<tr>
+<td>Target Framework</td>
+<td>net10.0-windows</td>
+<td>Platforma docelowa aplikacji WPF</td>
+<td><a href="https://learn.microsoft.com/dotnet/standard/frameworks">.NET target frameworks</a></td>
+</tr>
+<tr>
+<td>WPF</td>
+<td>.NET 10 / Windows</td>
+<td>Interfejs aplikacji desktopowej</td>
+<td><a href="https://learn.microsoft.com/dotnet/desktop/wpf/">WPF</a></td>
+</tr>
+<tr>
+<td>Windows Forms</td>
+<td>.NET 10 / Windows</td>
+<td>Pomocnicze elementy wyboru folderow</td>
+<td><a href="https://learn.microsoft.com/dotnet/desktop/winforms/">Windows Forms</a></td>
+</tr>
+<tr>
+<td>SQLite</td>
+<td>System.Data.SQLite compatible package 1.0.119</td>
+<td>Lokalna baza danych aplikacji</td>
+<td><a href="https://www.sqlite.org/">SQLite</a></td>
+</tr>
+<tr>
+<td>Microsoft WebView2</td>
+<td>1.0.3912.50</td>
+<td>Podglad PDF/DOCX przez kontrolke webowa</td>
+<td><a href="https://developer.microsoft.com/microsoft-edge/webview2/">WebView2</a></td>
+</tr>
+<tr>
+<td>DocumentFormat.OpenXml</td>
+<td>3.5.1</td>
+<td>Obsluga dokumentow Office</td>
+<td><a href="https://learn.microsoft.com/office/open-xml/open-xml-sdk">Open XML SDK</a></td>
+</tr>
+<tr>
+<td>Mammoth</td>
+<td>1.11.0</td>
+<td>Konwersja DOCX do HTML</td>
+<td><a href="https://github.com/mwilliamson/dotnet-mammoth">Mammoth .NET</a></td>
+</tr>
+<tr>
+<td>OpenXmlPowerTools</td>
+<td>4.5.3.2</td>
+<td>Pomocnicza obsluga dokumentow Open XML</td>
+<td><a href="https://github.com/OfficeDev/Open-Xml-PowerTools">OpenXmlPowerTools</a></td>
+</tr>
+<tr>
+<td>DocFX</td>
+<td>2.78.5</td>
+<td>Generowanie dokumentacji technicznej</td>
+<td><a href="https://dotnet.github.io/docfx/">DocFX</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="wymagania-programowe">Wymagania programowe</h2>
+<table>
+<thead>
+<tr>
+<th>Wymaganie</th>
+<th>Opis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System operacyjny</td>
+<td>Windows 10 lub Windows 11</td>
+</tr>
+<tr>
+<td>.NET SDK</td>
+<td>.NET SDK 10.0.203 albo kompatybilny SDK .NET 10</td>
+</tr>
+<tr>
+<td>Runtime desktopowy</td>
+<td>.NET Desktop Runtime zgodny z .NET 10, jesli aplikacja jest uruchamiana bez SDK</td>
+</tr>
+<tr>
+<td>WebView2 Runtime</td>
+<td>Microsoft Edge WebView2 Runtime wymagany do podgladu PDF/DOCX</td>
+</tr>
+<tr>
+<td>Git</td>
+<td>Narzedzie do pobrania repozytorium</td>
+</tr>
+<tr>
+<td>Baza danych</td>
+<td>Lokalny plik SQLite <code>Data/database.db</code>, kopiowany do katalogu wyjsciowego</td>
+</tr>
+<tr>
+<td>DocFX</td>
+<td>Opcjonalnie, tylko do generowania dokumentacji</td>
+</tr>
+</tbody>
+</table>
+<p>Projekt jest aplikacja WPF, dlatego nie jest przeznaczony do uruchamiania na macOS ani Linux bez dodatkowych warstw zgodnosci.</p>
+<h2 id="proces-instalacji">Proces instalacji</h2>
+<ol>
+<li>Pobierz projekt z repozytorium:</li>
+</ol>
+<pre><code class="lang-powershell">git clone &lt;adres-repozytorium&gt;
+cd &lt;folder-repozytorium&gt;\FileScannerAppWpf
+</code></pre>
+<ol start="2">
+<li>Przywroc zaleznosci NuGet:</li>
+</ol>
+<pre><code class="lang-powershell">dotnet restore
+</code></pre>
+<ol start="3">
+<li>Zbuduj projekt:</li>
+</ol>
+<pre><code class="lang-powershell">dotnet build
+</code></pre>
+<ol start="4">
+<li>Uruchom aplikacje:</li>
+</ol>
+<pre><code class="lang-powershell">dotnet run
+</code></pre>
+<p>Aplikacja jest programem desktopowym, wiec po uruchomieniu otworzy sie okno systemowe. Nie bedzie dostepna pod adresem <code>localhost</code>, poniewaz nie jest aplikacja webowa.</p>
+<h2 id="generowanie-dokumentacji-docfx">Generowanie dokumentacji DocFX</h2>
+<ol>
+<li>Zainstaluj lub zaktualizuj DocFX:</li>
+</ol>
+<pre><code class="lang-powershell">dotnet tool update -g docfx
+</code></pre>
+<ol start="2">
+<li>Wygeneruj metadane API:</li>
+</ol>
+<pre><code class="lang-powershell">docfx metadata docfx.json
+</code></pre>
+<ol start="3">
+<li>Zbuduj strone dokumentacji:</li>
+</ol>
+<pre><code class="lang-powershell">docfx build docfx.json
+</code></pre>
+<ol start="4">
+<li>Uruchom lokalny serwer dokumentacji:</li>
+</ol>
+<pre><code class="lang-powershell">docfx serve _site --port 8080
+</code></pre>
+<p>Dokumentacja bedzie dostepna pod adresem:</p>
+<pre><code class="lang-text">http://localhost:8080
+</code></pre>
+<p>Sekcja API bedzie dostepna pod adresem:</p>
+<pre><code class="lang-text">http://localhost:8080/api/
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/docs/getting-started.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

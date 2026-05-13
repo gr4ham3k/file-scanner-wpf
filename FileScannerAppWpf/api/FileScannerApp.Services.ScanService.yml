@@ -1,0 +1,1007 @@
+### YamlMime:ManagedReference
+items:
+- uid: FileScannerApp.Services.ScanService
+  commentId: T:FileScannerApp.Services.ScanService
+  id: ScanService
+  parent: FileScannerApp.Services
+  children:
+  - FileScannerApp.Services.ScanService.#ctor(FileScannerApp.AppConfig,FileScannerApp.Database)
+  - FileScannerApp.Services.ScanService.CalculateSHA256(System.String)
+  - FileScannerApp.Services.ScanService.CreateScan(System.String,System.Int32)
+  - FileScannerApp.Services.ScanService.GetFileReportAsync(System.String)
+  - FileScannerApp.Services.ScanService.HasInternet
+  - FileScannerApp.Services.ScanService.ScanFilesAsync(System.Collections.Generic.List{FileScannerApp.Models.FileData},System.Int32,System.Func{FileScannerApp.Models.ScanProgress,System.Threading.Tasks.Task})
+  langs:
+  - csharp
+  - vb
+  name: ScanService
+  nameWithType: ScanService
+  fullName: FileScannerApp.Services.ScanService
+  type: Class
+  source:
+    remote:
+      path: FileScannerAppWpf/Services/ScannerService.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: ScanService
+    path: Services/ScannerService.cs
+    startLine: 24
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Services
+  summary: Obsluguje proces skanowania plikow pod katem zagrozen przy uzyciu zewnetrznego API VirusTotal.
+  remarks: >-
+    Klasa laczy logike obliczania skrotu SHA-256, komunikacji z API, zapisu wynikow do bazy danych
+
+    oraz raportowania postepu skanowania. Jest centralnym elementem funkcji bezpieczenstwa aplikacji.
+
+    Ze wzgledu na ograniczenia API skanowanie wykonywane jest sekwencyjnie z opoznieniem miedzy plikami.
+  example: []
+  syntax:
+    content: public class ScanService
+    content.vb: Public Class ScanService
+  seealso:
+  - linkId: FileScannerApp.Database
+    commentId: T:FileScannerApp.Database
+  - linkId: FileScannerApp.Models.ScanProgress
+    commentId: T:FileScannerApp.Models.ScanProgress
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: FileScannerApp.Services.ScanService.#ctor(FileScannerApp.AppConfig,FileScannerApp.Database)
+  commentId: M:FileScannerApp.Services.ScanService.#ctor(FileScannerApp.AppConfig,FileScannerApp.Database)
+  id: '#ctor(FileScannerApp.AppConfig,FileScannerApp.Database)'
+  parent: FileScannerApp.Services.ScanService
+  langs:
+  - csharp
+  - vb
+  name: ScanService(AppConfig, Database)
+  nameWithType: ScanService.ScanService(AppConfig, Database)
+  fullName: FileScannerApp.Services.ScanService.ScanService(FileScannerApp.AppConfig, FileScannerApp.Database)
+  type: Constructor
+  source:
+    remote:
+      path: FileScannerAppWpf/Services/ScannerService.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: .ctor
+    path: Services/ScannerService.cs
+    startLine: 39
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Services
+  summary: Tworzy usluge skanowania z konfiguracja API oraz dostepem do bazy danych.
+  remarks: >-
+    Klucz API jest pobierany z konfiguracji aplikacji, dlatego obiekt tej klasy powinien byc tworzony
+
+    dopiero wtedy, gdy konfiguracja zostala juz wczytana.
+  example: []
+  syntax:
+    content: public ScanService(AppConfig appConfig, Database db)
+    parameters:
+    - id: appConfig
+      type: FileScannerApp.AppConfig
+      description: Konfiguracja zawierajaca klucz do uslugi VirusTotal.
+    - id: db
+      type: FileScannerApp.Database
+      description: Obiekt odpowiedzialny za zapis historii skanow i wynikow.
+    content.vb: Public Sub New(appConfig As AppConfig, db As Database)
+  overload: FileScannerApp.Services.ScanService.#ctor*
+  nameWithType.vb: ScanService.New(AppConfig, Database)
+  fullName.vb: FileScannerApp.Services.ScanService.New(FileScannerApp.AppConfig, FileScannerApp.Database)
+  name.vb: New(AppConfig, Database)
+- uid: FileScannerApp.Services.ScanService.CreateScan(System.String,System.Int32)
+  commentId: M:FileScannerApp.Services.ScanService.CreateScan(System.String,System.Int32)
+  id: CreateScan(System.String,System.Int32)
+  parent: FileScannerApp.Services.ScanService
+  langs:
+  - csharp
+  - vb
+  name: CreateScan(string, int)
+  nameWithType: ScanService.CreateScan(string, int)
+  fullName: FileScannerApp.Services.ScanService.CreateScan(string, int)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Services/ScannerService.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: CreateScan
+    path: Services/ScannerService.cs
+    startLine: 55
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Services
+  summary: Rozpoczyna nowy wpis skanowania w bazie danych.
+  remarks: >-
+    Metoda zapisuje skan ze statusem poczatkowym, aby pozniejsze wyniki plikow mogly byc
+
+    przypisane do jednego procesu skanowania.
+  example: []
+  syntax:
+    content: public int CreateScan(string folder, int count)
+    parameters:
+    - id: folder
+      type: System.String
+      description: Sciezka folderu wybranego do skanowania.
+    - id: count
+      type: System.Int32
+      description: Liczba plikow przewidzianych do sprawdzenia.
+    return:
+      type: System.Int32
+      description: Identyfikator utworzonego skanu, uzywany przy zapisie wynikow.
+    content.vb: Public Function CreateScan(folder As String, count As Integer) As Integer
+  overload: FileScannerApp.Services.ScanService.CreateScan*
+  nameWithType.vb: ScanService.CreateScan(String, Integer)
+  fullName.vb: FileScannerApp.Services.ScanService.CreateScan(String, Integer)
+  name.vb: CreateScan(String, Integer)
+- uid: FileScannerApp.Services.ScanService.ScanFilesAsync(System.Collections.Generic.List{FileScannerApp.Models.FileData},System.Int32,System.Func{FileScannerApp.Models.ScanProgress,System.Threading.Tasks.Task})
+  commentId: M:FileScannerApp.Services.ScanService.ScanFilesAsync(System.Collections.Generic.List{FileScannerApp.Models.FileData},System.Int32,System.Func{FileScannerApp.Models.ScanProgress,System.Threading.Tasks.Task})
+  id: ScanFilesAsync(System.Collections.Generic.List{FileScannerApp.Models.FileData},System.Int32,System.Func{FileScannerApp.Models.ScanProgress,System.Threading.Tasks.Task})
+  parent: FileScannerApp.Services.ScanService
+  langs:
+  - csharp
+  - vb
+  name: ScanFilesAsync(List<FileData>, int, Func<ScanProgress, Task>)
+  nameWithType: ScanService.ScanFilesAsync(List<FileData>, int, Func<ScanProgress, Task>)
+  fullName: FileScannerApp.Services.ScanService.ScanFilesAsync(System.Collections.Generic.List<FileScannerApp.Models.FileData>, int, System.Func<FileScannerApp.Models.ScanProgress, System.Threading.Tasks.Task>)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Services/ScannerService.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: ScanFilesAsync
+    path: Services/ScannerService.cs
+    startLine: 72
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Services
+  summary: Skanuje kolekcje plikow, zapisuje wyniki i przekazuje postep do interfejsu uzytkownika.
+  remarks: >-
+    Dla kazdego istniejacego pliku obliczany jest skrot SHA-256, a nastepnie pobierany jest raport
+
+    z VirusTotal. Bledy pojedynczych plikow sa zapisywane jako wynik skanowania, aby awaria jednego
+
+    pliku nie przerywala calego procesu. Po kazdym pliku wywolywany jest callback postepu.
+  example: []
+  syntax:
+    content: public Task<int> ScanFilesAsync(List<FileData> files, int scanId, Func<ScanProgress, Task> onProgress)
+    parameters:
+    - id: files
+      type: System.Collections.Generic.List{FileScannerApp.Models.FileData}
+      description: Lista plikow wybranych do skanowania.
+    - id: scanId
+      type: System.Int32
+      description: Identyfikator skanu, do ktorego zostana przypisane wyniki.
+    - id: onProgress
+      type: System.Func{FileScannerApp.Models.ScanProgress,System.Threading.Tasks.Task}
+      description: Funkcja wywolywana po przetworzeniu kolejnego pliku.
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+      description: Liczba plikow oznaczonych jako potencjalnie zlosliwe.
+    content.vb: Public Function ScanFilesAsync(files As List(Of FileData), scanId As Integer, onProgress As Func(Of ScanProgress, Task)) As Task(Of Integer)
+  overload: FileScannerApp.Services.ScanService.ScanFilesAsync*
+  nameWithType.vb: ScanService.ScanFilesAsync(List(Of FileData), Integer, Func(Of ScanProgress, Task))
+  fullName.vb: FileScannerApp.Services.ScanService.ScanFilesAsync(System.Collections.Generic.List(Of FileScannerApp.Models.FileData), Integer, System.Func(Of FileScannerApp.Models.ScanProgress, System.Threading.Tasks.Task))
+  name.vb: ScanFilesAsync(List(Of FileData), Integer, Func(Of ScanProgress, Task))
+- uid: FileScannerApp.Services.ScanService.CalculateSHA256(System.String)
+  commentId: M:FileScannerApp.Services.ScanService.CalculateSHA256(System.String)
+  id: CalculateSHA256(System.String)
+  parent: FileScannerApp.Services.ScanService
+  langs:
+  - csharp
+  - vb
+  name: CalculateSHA256(string)
+  nameWithType: ScanService.CalculateSHA256(string)
+  fullName: FileScannerApp.Services.ScanService.CalculateSHA256(string)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Services/ScannerService.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: CalculateSHA256
+    path: Services/ScannerService.cs
+    startLine: 141
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Services
+  summary: Oblicza skrot SHA-256 pliku, ktory jest uzywany jako identyfikator w usludze VirusTotal.
+  remarks: >-
+    API VirusTotal pozwala sprawdzic plik po jego skrocie, bez wysylania zawartosci pliku.
+
+    Metoda wymaga istniejacej sciezki, poniewaz otwiera plik bezposrednio z dysku.
+  example: []
+  syntax:
+    content: public string CalculateSHA256(string filePath)
+    parameters:
+    - id: filePath
+      type: System.String
+      description: Pelna sciezka do pliku, dla ktorego ma zostac obliczony skrot.
+    return:
+      type: System.String
+      description: Skrot SHA-256 zapisany malymi literami bez separatorow.
+    content.vb: Public Function CalculateSHA256(filePath As String) As String
+  overload: FileScannerApp.Services.ScanService.CalculateSHA256*
+  nameWithType.vb: ScanService.CalculateSHA256(String)
+  fullName.vb: FileScannerApp.Services.ScanService.CalculateSHA256(String)
+  name.vb: CalculateSHA256(String)
+- uid: FileScannerApp.Services.ScanService.GetFileReportAsync(System.String)
+  commentId: M:FileScannerApp.Services.ScanService.GetFileReportAsync(System.String)
+  id: GetFileReportAsync(System.String)
+  parent: FileScannerApp.Services.ScanService
+  langs:
+  - csharp
+  - vb
+  name: GetFileReportAsync(string)
+  nameWithType: ScanService.GetFileReportAsync(string)
+  fullName: FileScannerApp.Services.ScanService.GetFileReportAsync(string)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Services/ScannerService.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: GetFileReportAsync
+    path: Services/ScannerService.cs
+    startLine: 163
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Services
+  summary: Pobiera raport VirusTotal dla pliku zidentyfikowanego przez skrot.
+  remarks: >-
+    Gdy VirusTotal nie zna danego skrotu, metoda zwraca null. Inne bledy HTTP sa przekazywane dalej,
+
+    poniewaz moga oznaczac problem z kluczem API, limitem zapytan albo dostepnoscia uslugi.
+  example: []
+  syntax:
+    content: public Task<string> GetFileReportAsync(string fileHash)
+    parameters:
+    - id: fileHash
+      type: System.String
+      description: Skrot SHA-256 pliku sprawdzanego w VirusTotal.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: Odpowiedz API w formacie JSON albo null, gdy raport nie istnieje.
+    content.vb: Public Function GetFileReportAsync(fileHash As String) As Task(Of String)
+  overload: FileScannerApp.Services.ScanService.GetFileReportAsync*
+  nameWithType.vb: ScanService.GetFileReportAsync(String)
+  fullName.vb: FileScannerApp.Services.ScanService.GetFileReportAsync(String)
+  name.vb: GetFileReportAsync(String)
+- uid: FileScannerApp.Services.ScanService.HasInternet
+  commentId: M:FileScannerApp.Services.ScanService.HasInternet
+  id: HasInternet
+  parent: FileScannerApp.Services.ScanService
+  langs:
+  - csharp
+  - vb
+  name: HasInternet()
+  nameWithType: ScanService.HasInternet()
+  fullName: FileScannerApp.Services.ScanService.HasInternet()
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Services/ScannerService.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: HasInternet
+    path: Services/ScannerService.cs
+    startLine: 194
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Services
+  summary: Sprawdza, czy aplikacja ma podstawowy dostep do internetu.
+  remarks: >-
+    Metoda wykonuje krotkie zapytanie testowe i zwraca false przy dowolnym bledzie, aby interfejs
+
+    mogl bezpiecznie poinformowac uzytkownika o braku polaczenia bez przerywania aplikacji wyjatkiem.
+  example: []
+  syntax:
+    content: public static Task<bool> HasInternet()
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: True, gdy testowe zapytanie HTTP zakonczylo sie powodzeniem; w przeciwnym razie false.
+    content.vb: Public Shared Function HasInternet() As Task(Of Boolean)
+  overload: FileScannerApp.Services.ScanService.HasInternet*
+references:
+- uid: FileScannerApp.Database
+  commentId: T:FileScannerApp.Database
+  parent: FileScannerApp
+  href: FileScannerApp.Database.html
+  name: Database
+  nameWithType: Database
+  fullName: FileScannerApp.Database
+- uid: FileScannerApp.Models.ScanProgress
+  commentId: T:FileScannerApp.Models.ScanProgress
+  href: FileScannerApp.Models.ScanProgress.html
+  name: ScanProgress
+  nameWithType: ScanProgress
+  fullName: FileScannerApp.Models.ScanProgress
+- uid: FileScannerApp.Services
+  commentId: N:FileScannerApp.Services
+  href: FileScannerApp.html
+  name: FileScannerApp.Services
+  nameWithType: FileScannerApp.Services
+  fullName: FileScannerApp.Services
+  spec.csharp:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Services
+    name: Services
+    href: FileScannerApp.Services.html
+  spec.vb:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Services
+    name: Services
+    href: FileScannerApp.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: FileScannerApp
+  commentId: N:FileScannerApp
+  href: FileScannerApp.html
+  name: FileScannerApp
+  nameWithType: FileScannerApp
+  fullName: FileScannerApp
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: FileScannerApp.Services.ScanService.#ctor*
+  commentId: Overload:FileScannerApp.Services.ScanService.#ctor
+  href: FileScannerApp.Services.ScanService.html#FileScannerApp_Services_ScanService__ctor_FileScannerApp_AppConfig_FileScannerApp_Database_
+  name: ScanService
+  nameWithType: ScanService.ScanService
+  fullName: FileScannerApp.Services.ScanService.ScanService
+  nameWithType.vb: ScanService.New
+  fullName.vb: FileScannerApp.Services.ScanService.New
+  name.vb: New
+- uid: FileScannerApp.AppConfig
+  commentId: T:FileScannerApp.AppConfig
+  parent: FileScannerApp
+  href: FileScannerApp.AppConfig.html
+  name: AppConfig
+  nameWithType: AppConfig
+  fullName: FileScannerApp.AppConfig
+- uid: FileScannerApp.Services.ScanService.CreateScan*
+  commentId: Overload:FileScannerApp.Services.ScanService.CreateScan
+  href: FileScannerApp.Services.ScanService.html#FileScannerApp_Services_ScanService_CreateScan_System_String_System_Int32_
+  name: CreateScan
+  nameWithType: ScanService.CreateScan
+  fullName: FileScannerApp.Services.ScanService.CreateScan
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: FileScannerApp.Services.ScanService.ScanFilesAsync*
+  commentId: Overload:FileScannerApp.Services.ScanService.ScanFilesAsync
+  href: FileScannerApp.Services.ScanService.html#FileScannerApp_Services_ScanService_ScanFilesAsync_System_Collections_Generic_List_FileScannerApp_Models_FileData__System_Int32_System_Func_FileScannerApp_Models_ScanProgress_System_Threading_Tasks_Task__
+  name: ScanFilesAsync
+  nameWithType: ScanService.ScanFilesAsync
+  fullName: FileScannerApp.Services.ScanService.ScanFilesAsync
+- uid: System.Collections.Generic.List{FileScannerApp.Models.FileData}
+  commentId: T:System.Collections.Generic.List{FileScannerApp.Models.FileData}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<FileData>
+  nameWithType: List<FileData>
+  fullName: System.Collections.Generic.List<FileScannerApp.Models.FileData>
+  nameWithType.vb: List(Of FileData)
+  fullName.vb: System.Collections.Generic.List(Of FileScannerApp.Models.FileData)
+  name.vb: List(Of FileData)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: FileScannerApp.Models.FileData
+    name: FileData
+    href: FileScannerApp.Models.FileData.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FileScannerApp.Models.FileData
+    name: FileData
+    href: FileScannerApp.Models.FileData.html
+  - name: )
+- uid: System.Func{FileScannerApp.Models.ScanProgress,System.Threading.Tasks.Task}
+  commentId: T:System.Func{FileScannerApp.Models.ScanProgress,System.Threading.Tasks.Task}
+  parent: System
+  definition: System.Func`2
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<ScanProgress, Task>
+  nameWithType: Func<ScanProgress, Task>
+  fullName: System.Func<FileScannerApp.Models.ScanProgress, System.Threading.Tasks.Task>
+  nameWithType.vb: Func(Of ScanProgress, Task)
+  fullName.vb: System.Func(Of FileScannerApp.Models.ScanProgress, System.Threading.Tasks.Task)
+  name.vb: Func(Of ScanProgress, Task)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: FileScannerApp.Models.ScanProgress
+    name: ScanProgress
+    href: FileScannerApp.Models.ScanProgress.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.Tasks.Task
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FileScannerApp.Models.ScanProgress
+    name: ScanProgress
+    href: FileScannerApp.Models.ScanProgress.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.Tasks.Task
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  - name: )
+- uid: System.Threading.Tasks.Task{System.Int32}
+  commentId: T:System.Threading.Tasks.Task{System.Int32}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<int>
+  nameWithType: Task<int>
+  fullName: System.Threading.Tasks.Task<int>
+  nameWithType.vb: Task(Of Integer)
+  fullName.vb: System.Threading.Tasks.Task(Of Integer)
+  name.vb: Task(Of Integer)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: FileScannerApp.Services.ScanService.CalculateSHA256*
+  commentId: Overload:FileScannerApp.Services.ScanService.CalculateSHA256
+  href: FileScannerApp.Services.ScanService.html#FileScannerApp_Services_ScanService_CalculateSHA256_System_String_
+  name: CalculateSHA256
+  nameWithType: ScanService.CalculateSHA256
+  fullName: FileScannerApp.Services.ScanService.CalculateSHA256
+- uid: FileScannerApp.Services.ScanService.GetFileReportAsync*
+  commentId: Overload:FileScannerApp.Services.ScanService.GetFileReportAsync
+  href: FileScannerApp.Services.ScanService.html#FileScannerApp_Services_ScanService_GetFileReportAsync_System_String_
+  name: GetFileReportAsync
+  nameWithType: ScanService.GetFileReportAsync
+  fullName: FileScannerApp.Services.ScanService.GetFileReportAsync
+- uid: System.Threading.Tasks.Task{System.String}
+  commentId: T:System.Threading.Tasks.Task{System.String}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<string>
+  nameWithType: Task<string>
+  fullName: System.Threading.Tasks.Task<string>
+  nameWithType.vb: Task(Of String)
+  fullName.vb: System.Threading.Tasks.Task(Of String)
+  name.vb: Task(Of String)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: FileScannerApp.Services.ScanService.HasInternet*
+  commentId: Overload:FileScannerApp.Services.ScanService.HasInternet
+  href: FileScannerApp.Services.ScanService.html#FileScannerApp_Services_ScanService_HasInternet
+  name: HasInternet
+  nameWithType: ScanService.HasInternet
+  fullName: FileScannerApp.Services.ScanService.HasInternet
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )

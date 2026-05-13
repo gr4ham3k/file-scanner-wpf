@@ -6,8 +6,31 @@ using System.Linq;
 
 namespace FileScannerApp
 {
+    /// <summary>
+    /// Generuje nowe nazwy plikow na podstawie wzorca podanego przez uzytkownika.
+    /// </summary>
+    /// <remarks>
+    /// Usluga obsluguje dynamiczne znaczniki, takie jak nazwa pliku, data utworzenia, data modyfikacji,
+    /// numer porzadkowy, nazwa folderu oraz rozszerzenie. Dzieki temu umozliwia seryjna zmiane nazw
+    /// bez recznego edytowania kazdego pliku osobno.
+    /// </remarks>
+    /// <seealso cref="RenamePreview"/>
+    /// <seealso cref="FileScannerService"/>
     public static class RenameService
     {
+        /// <summary>
+        /// Buduje nowa nazwe pliku na podstawie wzorca i danych oryginalnego pliku.
+        /// </summary>
+        /// <remarks>
+        /// Wzorzec moze zawierac znaczniki: {name}, {created}, {modified}, {counter},
+        /// {counter:000}, {folder} oraz {ext}. Oryginalne rozszerzenie jest dopisywane na koncu,
+        /// aby zmiana nazwy nie zmieniala typu pliku.
+        /// </remarks>
+        /// <param name="pattern">Wzorzec nowej nazwy; pusty wzorzec pozostawia nazwe bez zmian.</param>
+        /// <param name="originalPath">Pelna sciezka oryginalnego pliku.</param>
+        /// <param name="counter">Numer porzadkowy uzywany w znacznikach licznika.</param>
+        /// <param name="option">Opcja formatowania tekstu: "upper", "lower", "capitalize" albo brak zmiany.</param>
+        /// <returns>Nowa nazwa pliku wraz z oryginalnym rozszerzeniem.</returns>
         public static string GenerateNewName(string pattern, string originalPath, int counter, string option)
         {
             string name = Path.GetFileNameWithoutExtension(originalPath);
@@ -49,6 +72,15 @@ namespace FileScannerApp
             return newName + ext;
         }
 
+        /// <summary>
+        /// Przygotowuje liste podgladu nazw dla plikow znajdujacych sie w folderze.
+        /// </summary>
+        /// <remarks>
+        /// Metoda nie zmienia nazw plikow na dysku. Tworzy jedynie dane pomocnicze, ktore moga zostac
+        /// pokazane uzytkownikowi przed wykonaniem faktycznej operacji zmiany nazw lub organizowania.
+        /// </remarks>
+        /// <param name="path">Folder, z ktorego maja zostac pobrane pliki do podgladu.</param>
+        /// <returns>Lista obiektow zawierajacych obecna nazwe pliku oraz miejsce na nazwe po zmianie.</returns>
         public static List<RenamePreview> LoadPreview(string path)
         {
             var files = FileScannerService.Scan(path);

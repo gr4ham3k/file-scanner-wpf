@@ -1,0 +1,12 @@
+- name: Temat projektu
+  href: introduction.md
+- name: Uruchomienie projektu (developer)
+  href: getting-started.md
+- name: Konfiguracja projektu
+  href: configuration.md
+- name: Uruchomienie projektu (user)
+  href: user-installation.md
+- name: Podrecznik uzytkownika
+  href: user-guide.md
+- name: Plany rozbudowy
+  href: roadmap.md

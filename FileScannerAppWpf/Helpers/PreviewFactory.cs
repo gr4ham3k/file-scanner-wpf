@@ -12,8 +12,27 @@ using Microsoft.Web.WebView2.Wpf;
 
 namespace FileScannerApp.Wpf.Helpers;
 
+/// <summary>
+/// Tworzy element interfejsu sluzacy do podgladu zawartosci wybranego pliku.
+/// </summary>
+/// <remarks>
+/// Fabryka dobiera sposob prezentacji pliku na podstawie jego rozszerzenia. Obsluguje miedzy innymi
+/// obrazy, pliki tekstowe, multimedia, PDF oraz DOCX. Dla nieobslugiwanych formatow zwraca komunikat
+/// zamiast powodowac blad interfejsu.
+/// </remarks>
+/// <seealso cref="ConvertDocxToHtml"/>
 public static class PreviewFactory
 {
+    /// <summary>
+    /// Tworzy kontrolke WPF odpowiednia do podgladu wskazanego pliku.
+    /// </summary>
+    /// <remarks>
+    /// Metoda ukrywa szczegoly tworzenia roznych kontrolek podgladu przed reszta aplikacji.
+    /// Dzieki temu okno glowne moze ustawic jeden element interfejsu niezaleznie od tego,
+    /// czy uzytkownik wybral obraz, tekst, multimedia, dokument PDF czy plik DOCX.
+    /// </remarks>
+    /// <param name="filePath">Sciezka do pliku, ktory ma zostac wyswietlony w panelu podgladu.</param>
+    /// <returns>Gotowy element WPF do umieszczenia w kontrolce zawartosci.</returns>
     public static FrameworkElement Create(string? filePath)
     {
         if (string.IsNullOrWhiteSpace(filePath) || !File.Exists(filePath))
@@ -88,6 +107,14 @@ public static class PreviewFactory
         return CreateMessage("Preview not supported for this file type.");
     }
 
+    /// <summary>
+    /// Czysci panel podgladu i zatrzymuje odtwarzanie multimediow, jesli byly aktywne.
+    /// </summary>
+    /// <remarks>
+    /// Samo usuniecie zawartosci nie zawsze wystarcza dla plikow audio lub wideo, dlatego metoda
+    /// jawnie zatrzymuje i zamyka kontrolke multimedialna przed wyczyszczeniem panelu.
+    /// </remarks>
+    /// <param name="preview">Kontrolka zawierajaca aktualnie wyswietlany podglad.</param>
     public static void ClearPreview(ContentControl preview)
     {
         if (preview.Content is MediaElement media)
@@ -102,6 +129,15 @@ public static class PreviewFactory
         GC.WaitForPendingFinalizers();
     }
 
+    /// <summary>
+    /// Tworzy prosty komunikat wyswietlany w miejscu podgladu pliku.
+    /// </summary>
+    /// <remarks>
+    /// Komunikat jest uzywany zamiast wyjatku, gdy nie wybrano pliku albo format nie jest obslugiwany.
+    /// Dzieki temu panel podgladu pozostaje stabilny nawet dla nieznanych typow plikow.
+    /// </remarks>
+    /// <param name="message">Tekst komunikatu widoczny dla uzytkownika.</param>
+    /// <returns>Element WPF z wysrodkowanym komunikatem.</returns>
     private static FrameworkElement CreateMessage(string message)
     {
         return new Grid

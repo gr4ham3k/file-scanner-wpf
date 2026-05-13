@@ -1,0 +1,969 @@
+### YamlMime:ManagedReference
+items:
+- uid: FileScannerApp.Database
+  commentId: T:FileScannerApp.Database
+  id: Database
+  parent: FileScannerApp
+  children:
+  - FileScannerApp.Database.#ctor(System.String)
+  - FileScannerApp.Database.AddOperationLog(FileScannerApp.Models.OperationLog)
+  - FileScannerApp.Database.CreateScan(System.String,System.Int32)
+  - FileScannerApp.Database.DeleteOperationLog(System.Int32)
+  - FileScannerApp.Database.GetAllScansWithFiles
+  - FileScannerApp.Database.GetFilesForScan(System.Int32)
+  - FileScannerApp.Database.GetOperationsLog
+  - FileScannerApp.Database.MarkAsDeletedPermanently(System.String)
+  - FileScannerApp.Database.SaveScanResult(System.Int32,System.String,System.String,System.String)
+  - FileScannerApp.Database.UpdateScanResults(System.Int32,System.Int32,System.String)
+  langs:
+  - csharp
+  - vb
+  name: Database
+  nameWithType: Database
+  fullName: FileScannerApp.Database
+  type: Class
+  source:
+    remote:
+      path: FileScannerAppWpf/Database/Database.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: Database
+    path: Database/Database.cs
+    startLine: 20
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp
+  summary: Zarzadza trwalym zapisem danych aplikacji w lokalnej bazie SQLite.
+  remarks: >-
+    Klasa odpowiada za przechowywanie historii skanow, wynikow analizy plikow oraz dziennika operacji
+
+    wykonywanych na plikach. Stanowi warstwe dostepu do danych dla uslug skanowania, cofania operacji
+
+    i historii dzialan uzytkownika.
+  example: []
+  syntax:
+    content: public class Database
+    content.vb: Public Class Database
+  seealso:
+  - linkId: FileScannerApp.Models.Scan
+    commentId: T:FileScannerApp.Models.Scan
+  - linkId: FileScannerApp.Models.ScanResult
+    commentId: T:FileScannerApp.Models.ScanResult
+  - linkId: FileScannerApp.Models.OperationLog
+    commentId: T:FileScannerApp.Models.OperationLog
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: FileScannerApp.Database.#ctor(System.String)
+  commentId: M:FileScannerApp.Database.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: FileScannerApp.Database
+  langs:
+  - csharp
+  - vb
+  name: Database(string)
+  nameWithType: Database.Database(string)
+  fullName: FileScannerApp.Database.Database(string)
+  type: Constructor
+  source:
+    remote:
+      path: FileScannerAppWpf/Database/Database.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: .ctor
+    path: Database/Database.cs
+    startLine: 32
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp
+  summary: Ustawia sciezke do pliku bazy danych uzywanej przez aplikacje.
+  remarks: >-
+    Nazwa pliku jest laczona z katalogiem Data w folderze uruchomieniowym aplikacji.
+
+    Dzieki temu kod korzysta z tej samej lokalizacji niezaleznie od miejsca instalacji programu.
+  example: []
+  syntax:
+    content: public Database(string dbPath = "database.db")
+    parameters:
+    - id: dbPath
+      type: System.String
+      description: Nazwa pliku bazy danych; domyslnie "database.db".
+    content.vb: Public Sub New(dbPath As String = "database.db")
+  overload: FileScannerApp.Database.#ctor*
+  nameWithType.vb: Database.New(String)
+  fullName.vb: FileScannerApp.Database.New(String)
+  name.vb: New(String)
+- uid: FileScannerApp.Database.CreateScan(System.String,System.Int32)
+  commentId: M:FileScannerApp.Database.CreateScan(System.String,System.Int32)
+  id: CreateScan(System.String,System.Int32)
+  parent: FileScannerApp.Database
+  langs:
+  - csharp
+  - vb
+  name: CreateScan(string, int)
+  nameWithType: Database.CreateScan(string, int)
+  fullName: FileScannerApp.Database.CreateScan(string, int)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Database/Database.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: CreateScan
+    path: Database/Database.cs
+    startLine: 67
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp
+  summary: Tworzy rekord nowego skanu i oznacza go jako trwajacy.
+  remarks: >-
+    Rekord skanu jest zapisywany przed rozpoczeciem analizy pojedynczych plikow,
+
+    aby wyniki mogly zostac powiazane z jedna sesja skanowania.
+  example: []
+  syntax:
+    content: public int CreateScan(string folderPath, int filesCount)
+    parameters:
+    - id: folderPath
+      type: System.String
+      description: Folder, ktory uzytkownik wybral do skanowania.
+    - id: filesCount
+      type: System.Int32
+      description: Liczba plikow planowanych do sprawdzenia.
+    return:
+      type: System.Int32
+      description: Identyfikator utworzonego rekordu skanu.
+    content.vb: Public Function CreateScan(folderPath As String, filesCount As Integer) As Integer
+  overload: FileScannerApp.Database.CreateScan*
+  nameWithType.vb: Database.CreateScan(String, Integer)
+  fullName.vb: FileScannerApp.Database.CreateScan(String, Integer)
+  name.vb: CreateScan(String, Integer)
+- uid: FileScannerApp.Database.SaveScanResult(System.Int32,System.String,System.String,System.String)
+  commentId: M:FileScannerApp.Database.SaveScanResult(System.Int32,System.String,System.String,System.String)
+  id: SaveScanResult(System.Int32,System.String,System.String,System.String)
+  parent: FileScannerApp.Database
+  langs:
+  - csharp
+  - vb
+  name: SaveScanResult(int, string, string, string)
+  nameWithType: Database.SaveScanResult(int, string, string, string)
+  fullName: FileScannerApp.Database.SaveScanResult(int, string, string, string)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Database/Database.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: SaveScanResult
+    path: Database/Database.cs
+    startLine: 100
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp
+  summary: Zapisuje wynik skanowania pojedynczego pliku.
+  remarks: >-
+    W bazie przechowywany jest zarowno uproszczony status, jak i surowa odpowiedz API.
+
+    Surowy JSON pozwala pozniej odczytac dodatkowe informacje, na przyklad liczbe silnikow
+
+    oznaczajacych plik jako zlosliwy.
+  example: []
+  syntax:
+    content: public void SaveScanResult(int scanId, string fileName, string status, string apiResponse)
+    parameters:
+    - id: scanId
+      type: System.Int32
+      description: Identyfikator skanu, do ktorego nalezy wynik.
+    - id: fileName
+      type: System.String
+      description: Nazwa analizowanego pliku.
+    - id: status
+      type: System.String
+      description: Status ustalony przez aplikacje, na przyklad Completed, Malicious albo Error.
+    - id: apiResponse
+      type: System.String
+      description: Odpowiedz API VirusTotal albo opis bledu zapisany dla danego pliku.
+    content.vb: Public Sub SaveScanResult(scanId As Integer, fileName As String, status As String, apiResponse As String)
+  overload: FileScannerApp.Database.SaveScanResult*
+  nameWithType.vb: Database.SaveScanResult(Integer, String, String, String)
+  fullName.vb: FileScannerApp.Database.SaveScanResult(Integer, String, String, String)
+  name.vb: SaveScanResult(Integer, String, String, String)
+- uid: FileScannerApp.Database.UpdateScanResults(System.Int32,System.Int32,System.String)
+  commentId: M:FileScannerApp.Database.UpdateScanResults(System.Int32,System.Int32,System.String)
+  id: UpdateScanResults(System.Int32,System.Int32,System.String)
+  parent: FileScannerApp.Database
+  langs:
+  - csharp
+  - vb
+  name: UpdateScanResults(int, int, string)
+  nameWithType: Database.UpdateScanResults(int, int, string)
+  fullName: FileScannerApp.Database.UpdateScanResults(int, int, string)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Database/Database.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: UpdateScanResults
+    path: Database/Database.cs
+    startLine: 130
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp
+  summary: Aktualizuje podsumowanie skanu po zakonczeniu analizowania plikow.
+  remarks: >-
+    Metoda zapisuje laczna liczbe wykrytych zagrozen i koncowy status skanu,
+
+    dzieki czemu historia moze pokazac wynik bez ponownego przeliczania wszystkich plikow.
+  example: []
+  syntax:
+    content: public void UpdateScanResults(int scanId, int threatsFound, string status)
+    parameters:
+    - id: scanId
+      type: System.Int32
+      description: Identyfikator skanu do zaktualizowania.
+    - id: threatsFound
+      type: System.Int32
+      description: Liczba plikow oznaczonych jako zagrozenie.
+    - id: status
+      type: System.String
+      description: Koncowy status skanu.
+    content.vb: Public Sub UpdateScanResults(scanId As Integer, threatsFound As Integer, status As String)
+  overload: FileScannerApp.Database.UpdateScanResults*
+  nameWithType.vb: Database.UpdateScanResults(Integer, Integer, String)
+  fullName.vb: FileScannerApp.Database.UpdateScanResults(Integer, Integer, String)
+  name.vb: UpdateScanResults(Integer, Integer, String)
+- uid: FileScannerApp.Database.GetFilesForScan(System.Int32)
+  commentId: M:FileScannerApp.Database.GetFilesForScan(System.Int32)
+  id: GetFilesForScan(System.Int32)
+  parent: FileScannerApp.Database
+  langs:
+  - csharp
+  - vb
+  name: GetFilesForScan(int)
+  nameWithType: Database.GetFilesForScan(int)
+  fullName: FileScannerApp.Database.GetFilesForScan(int)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Database/Database.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: GetFilesForScan
+    path: Database/Database.cs
+    startLine: 160
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp
+  summary: Pobiera pliki nalezace do konkretnego skanu wraz z uproszczona informacja o zagrozeniu.
+  remarks: >-
+    Metoda interpretuje zapisany JSON z VirusTotal i sprowadza wynik do wartosci czytelnej dla widoku.
+
+    Jesli odpowiedz API jest pusta albo nie da sie jej odczytac, plik jest traktowany jako niezlosliwy
+
+    na potrzeby prezentacji.
+  example: []
+  syntax:
+    content: public List<dynamic> GetFilesForScan(int scanId)
+    parameters:
+    - id: scanId
+      type: System.Int32
+      description: Identyfikator skanu, ktorego wyniki maja zostac pobrane.
+    return:
+      type: System.Collections.Generic.List{System.Object}
+      description: Lista obiektow zawierajacych nazwe pliku, status i informacje Malicious.
+    content.vb: Public Function GetFilesForScan(scanId As Integer) As List(Of Object)
+  overload: FileScannerApp.Database.GetFilesForScan*
+  nameWithType.vb: Database.GetFilesForScan(Integer)
+  fullName.vb: FileScannerApp.Database.GetFilesForScan(Integer)
+  name.vb: GetFilesForScan(Integer)
+- uid: FileScannerApp.Database.GetAllScansWithFiles
+  commentId: M:FileScannerApp.Database.GetAllScansWithFiles
+  id: GetAllScansWithFiles
+  parent: FileScannerApp.Database
+  langs:
+  - csharp
+  - vb
+  name: GetAllScansWithFiles()
+  nameWithType: Database.GetAllScansWithFiles()
+  fullName: FileScannerApp.Database.GetAllScansWithFiles()
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Database/Database.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: GetAllScansWithFiles
+    path: Database/Database.cs
+    startLine: 223
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp
+  summary: Pobiera historie skanow razem z powiazanymi plikami.
+  remarks: >-
+    Wynik laczy dane tabeli skanow i wynikow plikow, aby okno historii moglo pokazac pelny obraz
+
+    poprzednich analiz. Brak wyniku pliku nie usuwa skanu z listy, poniewaz uzywane jest zlaczenie LEFT JOIN.
+  example: []
+  syntax:
+    content: public List<dynamic> GetAllScansWithFiles()
+    return:
+      type: System.Collections.Generic.List{System.Object}
+      description: Lista dynamicznych rekordow przeznaczonych do wyswietlenia w historii skanowania.
+    content.vb: Public Function GetAllScansWithFiles() As List(Of Object)
+  overload: FileScannerApp.Database.GetAllScansWithFiles*
+- uid: FileScannerApp.Database.AddOperationLog(FileScannerApp.Models.OperationLog)
+  commentId: M:FileScannerApp.Database.AddOperationLog(FileScannerApp.Models.OperationLog)
+  id: AddOperationLog(FileScannerApp.Models.OperationLog)
+  parent: FileScannerApp.Database
+  langs:
+  - csharp
+  - vb
+  name: AddOperationLog(OperationLog)
+  nameWithType: Database.AddOperationLog(OperationLog)
+  fullName: FileScannerApp.Database.AddOperationLog(FileScannerApp.Models.OperationLog)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Database/Database.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: AddOperationLog
+    path: Database/Database.cs
+    startLine: 291
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp
+  summary: Dodaje wpis do historii operacji wykonanych na plikach.
+  remarks: >-
+    Historia przechowuje sciezki sprzed i po operacji, poniewaz sa one potrzebne do cofania zmian
+
+    oraz do pokazania uzytkownikowi, co dokladnie stalo sie z plikiem.
+  example: []
+  syntax:
+    content: public void AddOperationLog(OperationLog log)
+    parameters:
+    - id: log
+      type: FileScannerApp.Models.OperationLog
+      description: Opis operacji, ktora ma zostac zapisana.
+    content.vb: Public Sub AddOperationLog(log As OperationLog)
+  overload: FileScannerApp.Database.AddOperationLog*
+- uid: FileScannerApp.Database.GetOperationsLog
+  commentId: M:FileScannerApp.Database.GetOperationsLog
+  id: GetOperationsLog
+  parent: FileScannerApp.Database
+  langs:
+  - csharp
+  - vb
+  name: GetOperationsLog()
+  nameWithType: Database.GetOperationsLog()
+  fullName: FileScannerApp.Database.GetOperationsLog()
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Database/Database.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: GetOperationsLog
+    path: Database/Database.cs
+    startLine: 334
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp
+  summary: Pobiera historie operacji plikowych od najnowszych wpisow.
+  remarks: >-
+    Dane z bazy sa mapowane z powrotem na model <xref href="FileScannerApp.Models.OperationLog" data-throw-if-not-resolved="false"></xref>, w tym na typ wyliczeniowy
+
+    operacji. Kolejnosc sortowania ulatwia pokazanie ostatnich dzialan na gorze listy.
+  example: []
+  syntax:
+    content: public List<OperationLog> GetOperationsLog()
+    return:
+      type: System.Collections.Generic.List{FileScannerApp.Models.OperationLog}
+      description: Lista wpisow historii operacji.
+    content.vb: Public Function GetOperationsLog() As List(Of OperationLog)
+  overload: FileScannerApp.Database.GetOperationsLog*
+- uid: FileScannerApp.Database.DeleteOperationLog(System.Int32)
+  commentId: M:FileScannerApp.Database.DeleteOperationLog(System.Int32)
+  id: DeleteOperationLog(System.Int32)
+  parent: FileScannerApp.Database
+  langs:
+  - csharp
+  - vb
+  name: DeleteOperationLog(int)
+  nameWithType: Database.DeleteOperationLog(int)
+  fullName: FileScannerApp.Database.DeleteOperationLog(int)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Database/Database.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: DeleteOperationLog
+    path: Database/Database.cs
+    startLine: 382
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp
+  summary: Usuwa pojedynczy wpis historii operacji.
+  remarks: >-
+    Metoda usuwa tylko rekord historii. Nie wykonuje zadnej operacji na pliku,
+
+    dlatego nie nalezy jej traktowac jako cofniecia lub usuniecia pliku z dysku.
+  example: []
+  syntax:
+    content: public void DeleteOperationLog(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+      description: Identyfikator wpisu historii do usuniecia.
+    content.vb: Public Sub DeleteOperationLog(id As Integer)
+  overload: FileScannerApp.Database.DeleteOperationLog*
+  nameWithType.vb: Database.DeleteOperationLog(Integer)
+  fullName.vb: FileScannerApp.Database.DeleteOperationLog(Integer)
+  name.vb: DeleteOperationLog(Integer)
+- uid: FileScannerApp.Database.MarkAsDeletedPermanently(System.String)
+  commentId: M:FileScannerApp.Database.MarkAsDeletedPermanently(System.String)
+  id: MarkAsDeletedPermanently(System.String)
+  parent: FileScannerApp.Database
+  langs:
+  - csharp
+  - vb
+  name: MarkAsDeletedPermanently(string)
+  nameWithType: Database.MarkAsDeletedPermanently(string)
+  fullName: FileScannerApp.Database.MarkAsDeletedPermanently(string)
+  type: Method
+  source:
+    remote:
+      path: FileScannerAppWpf/Database/Database.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: MarkAsDeletedPermanently
+    path: Database/Database.cs
+    startLine: 406
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp
+  summary: Oznacza plik z kosza aplikacji jako trwale usuniety.
+  remarks: >-
+    Po wyczyszczeniu kosza aplikacja nie powinna juz oferowac cofniecia operacji.
+
+    Metoda aktualizuje wpis historii, ustawiajac typ operacji na trwale usuniecie i blokujac cofanie.
+  example: []
+  syntax:
+    content: public void MarkAsDeletedPermanently(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: Sciezka pliku w wewnetrznym koszu aplikacji.
+    content.vb: Public Sub MarkAsDeletedPermanently(path As String)
+  overload: FileScannerApp.Database.MarkAsDeletedPermanently*
+  nameWithType.vb: Database.MarkAsDeletedPermanently(String)
+  fullName.vb: FileScannerApp.Database.MarkAsDeletedPermanently(String)
+  name.vb: MarkAsDeletedPermanently(String)
+references:
+- uid: FileScannerApp.Models.Scan
+  commentId: T:FileScannerApp.Models.Scan
+  href: FileScannerApp.Models.Scan.html
+  name: Scan
+  nameWithType: Scan
+  fullName: FileScannerApp.Models.Scan
+- uid: FileScannerApp.Models.ScanResult
+  commentId: T:FileScannerApp.Models.ScanResult
+  href: FileScannerApp.Models.ScanResult.html
+  name: ScanResult
+  nameWithType: ScanResult
+  fullName: FileScannerApp.Models.ScanResult
+- uid: FileScannerApp.Models.OperationLog
+  commentId: T:FileScannerApp.Models.OperationLog
+  parent: FileScannerApp.Models
+  href: FileScannerApp.Models.OperationLog.html
+  name: OperationLog
+  nameWithType: OperationLog
+  fullName: FileScannerApp.Models.OperationLog
+- uid: FileScannerApp
+  commentId: N:FileScannerApp
+  href: FileScannerApp.html
+  name: FileScannerApp
+  nameWithType: FileScannerApp
+  fullName: FileScannerApp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: FileScannerApp.Models
+  commentId: N:FileScannerApp.Models
+  href: FileScannerApp.html
+  name: FileScannerApp.Models
+  nameWithType: FileScannerApp.Models
+  fullName: FileScannerApp.Models
+  spec.csharp:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Models
+    name: Models
+    href: FileScannerApp.Models.html
+  spec.vb:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Models
+    name: Models
+    href: FileScannerApp.Models.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: FileScannerApp.Database.#ctor*
+  commentId: Overload:FileScannerApp.Database.#ctor
+  href: FileScannerApp.Database.html#FileScannerApp_Database__ctor_System_String_
+  name: Database
+  nameWithType: Database.Database
+  fullName: FileScannerApp.Database.Database
+  nameWithType.vb: Database.New
+  fullName.vb: FileScannerApp.Database.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: FileScannerApp.Database.CreateScan*
+  commentId: Overload:FileScannerApp.Database.CreateScan
+  href: FileScannerApp.Database.html#FileScannerApp_Database_CreateScan_System_String_System_Int32_
+  name: CreateScan
+  nameWithType: Database.CreateScan
+  fullName: FileScannerApp.Database.CreateScan
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: FileScannerApp.Database.SaveScanResult*
+  commentId: Overload:FileScannerApp.Database.SaveScanResult
+  href: FileScannerApp.Database.html#FileScannerApp_Database_SaveScanResult_System_Int32_System_String_System_String_System_String_
+  name: SaveScanResult
+  nameWithType: Database.SaveScanResult
+  fullName: FileScannerApp.Database.SaveScanResult
+- uid: FileScannerApp.Database.UpdateScanResults*
+  commentId: Overload:FileScannerApp.Database.UpdateScanResults
+  href: FileScannerApp.Database.html#FileScannerApp_Database_UpdateScanResults_System_Int32_System_Int32_System_String_
+  name: UpdateScanResults
+  nameWithType: Database.UpdateScanResults
+  fullName: FileScannerApp.Database.UpdateScanResults
+- uid: FileScannerApp.Database.GetFilesForScan*
+  commentId: Overload:FileScannerApp.Database.GetFilesForScan
+  href: FileScannerApp.Database.html#FileScannerApp_Database_GetFilesForScan_System_Int32_
+  name: GetFilesForScan
+  nameWithType: Database.GetFilesForScan
+  fullName: FileScannerApp.Database.GetFilesForScan
+- uid: System.Collections.Generic.List{System.Object}
+  commentId: T:System.Collections.Generic.List{System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<dynamic>
+  nameWithType: List<dynamic>
+  fullName: System.Collections.Generic.List<dynamic>
+  nameWithType.vb: List(Of Object)
+  fullName.vb: System.Collections.Generic.List(Of Object)
+  name.vb: List(Of Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: dynamic
+    name: dynamic
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: Object
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: FileScannerApp.Database.GetAllScansWithFiles*
+  commentId: Overload:FileScannerApp.Database.GetAllScansWithFiles
+  href: FileScannerApp.Database.html#FileScannerApp_Database_GetAllScansWithFiles
+  name: GetAllScansWithFiles
+  nameWithType: Database.GetAllScansWithFiles
+  fullName: FileScannerApp.Database.GetAllScansWithFiles
+- uid: FileScannerApp.Database.AddOperationLog*
+  commentId: Overload:FileScannerApp.Database.AddOperationLog
+  href: FileScannerApp.Database.html#FileScannerApp_Database_AddOperationLog_FileScannerApp_Models_OperationLog_
+  name: AddOperationLog
+  nameWithType: Database.AddOperationLog
+  fullName: FileScannerApp.Database.AddOperationLog
+- uid: FileScannerApp.Database.GetOperationsLog*
+  commentId: Overload:FileScannerApp.Database.GetOperationsLog
+  href: FileScannerApp.Database.html#FileScannerApp_Database_GetOperationsLog
+  name: GetOperationsLog
+  nameWithType: Database.GetOperationsLog
+  fullName: FileScannerApp.Database.GetOperationsLog
+- uid: System.Collections.Generic.List{FileScannerApp.Models.OperationLog}
+  commentId: T:System.Collections.Generic.List{FileScannerApp.Models.OperationLog}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<OperationLog>
+  nameWithType: List<OperationLog>
+  fullName: System.Collections.Generic.List<FileScannerApp.Models.OperationLog>
+  nameWithType.vb: List(Of OperationLog)
+  fullName.vb: System.Collections.Generic.List(Of FileScannerApp.Models.OperationLog)
+  name.vb: List(Of OperationLog)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: FileScannerApp.Models.OperationLog
+    name: OperationLog
+    href: FileScannerApp.Models.OperationLog.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FileScannerApp.Models.OperationLog
+    name: OperationLog
+    href: FileScannerApp.Models.OperationLog.html
+  - name: )
+- uid: FileScannerApp.Database.DeleteOperationLog*
+  commentId: Overload:FileScannerApp.Database.DeleteOperationLog
+  href: FileScannerApp.Database.html#FileScannerApp_Database_DeleteOperationLog_System_Int32_
+  name: DeleteOperationLog
+  nameWithType: Database.DeleteOperationLog
+  fullName: FileScannerApp.Database.DeleteOperationLog
+- uid: FileScannerApp.Database.MarkAsDeletedPermanently*
+  commentId: Overload:FileScannerApp.Database.MarkAsDeletedPermanently
+  href: FileScannerApp.Database.html#FileScannerApp_Database_MarkAsDeletedPermanently_System_String_
+  name: MarkAsDeletedPermanently
+  nameWithType: Database.MarkAsDeletedPermanently
+  fullName: FileScannerApp.Database.MarkAsDeletedPermanently

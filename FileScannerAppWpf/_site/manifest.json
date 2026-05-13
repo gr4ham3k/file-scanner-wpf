@@ -1,0 +1,544 @@
+{
+  "source_base_path": "C:/Users/jakub/Desktop/c#/projekt/FileScannerAppWpf",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.AppConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.AppConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.AppConfig",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Database.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Database.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Database",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Database.yml\" sourcestartlinenumber=\"1\">Zarzadza trwalym zapisem danych aplikacji w lokalnej bazie SQLite.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Models.FileData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Models.FileData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Models.FileData",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Models.FileData.yml\" sourcestartlinenumber=\"1\">Reprezentuje podstawowe metadane pliku wykorzystywane przez aplikacje.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Models.OperationLog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Models.OperationLog.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Models.OperationLog",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Models.OperationLog.yml\" sourcestartlinenumber=\"1\">Reprezentuje pojedynczy wpis historii operacji wykonanej na pliku.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Models.OperationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Models.OperationType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Models.OperationType",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Models.OperationType.yml\" sourcestartlinenumber=\"1\">Okresla rodzaj operacji wykonanej na pliku i zapisanej w historii aplikacji.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Models.OrganizeOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Models.OrganizeOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Models.OrganizeOptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Models.RenamePreview.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Models.RenamePreview.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Models.RenamePreview",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Models.Scan.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Models.Scan.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Models.Scan",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Models.ScanProgress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Models.ScanProgress.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Models.ScanProgress",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Models.ScanProgress.yml\" sourcestartlinenumber=\"1\">Przechowuje biezacy stan dlugotrwalego skanowania plikow.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Models.ScanResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Models.ScanResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Models.ScanResult",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Organizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Organizer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Organizer",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Organizer.yml\" sourcestartlinenumber=\"1\">Organizuje pliki w folderze docelowym wedlug regul wybranych przez uzytkownika.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.RenameService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.RenameService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.RenameService",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.RenameService.yml\" sourcestartlinenumber=\"1\">Generuje nowe nazwy plikow na podstawie wzorca podanego przez uzytkownika.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Services.FileOperationsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Services.FileOperationsService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Services.FileOperationsService",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Services.FileOperationsService.yml\" sourcestartlinenumber=\"1\">Wykonuje podstawowe operacje na plikach wybrane przez uzytkownika.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Services.ScanService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Services.ScanService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Services.ScanService",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Services.ScanService.yml\" sourcestartlinenumber=\"1\">Obsluguje proces skanowania plikow pod katem zagrozen przy uzyciu zewnetrznego API VirusTotal.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Services.UndoService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Services.UndoService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Services.UndoService",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Services.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Services",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Wpf.App.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Wpf.App.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Wpf.App",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Wpf.App.yml\" sourcestartlinenumber=\"1\">Interaction logic for App.xaml</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Wpf.BatchTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Wpf.BatchTools.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Wpf.BatchTools",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Wpf.BatchTools.yml\" sourcestartlinenumber=\"1\">BatchTools</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Wpf.Helpers.FolderPicker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Wpf.Helpers.FolderPicker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Wpf.Helpers.FolderPicker",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Wpf.Helpers.PreviewFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Wpf.Helpers.PreviewFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Wpf.Helpers.PreviewFactory",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Wpf.Helpers.PreviewFactory.yml\" sourcestartlinenumber=\"1\">Tworzy element interfejsu sluzacy do podgladu zawartosci wybranego pliku.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Wpf.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Wpf.Helpers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Wpf.Helpers",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Wpf.HistoryWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Wpf.HistoryWindow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Wpf.HistoryWindow",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Wpf.HistoryWindow.yml\" sourcestartlinenumber=\"1\">HistoryWindow</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Wpf.MainWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Wpf.MainWindow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Wpf.MainWindow",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Wpf.MainWindow.yml\" sourcestartlinenumber=\"1\">MainWindow</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Wpf.ScanOptionsWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Wpf.ScanOptionsWindow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Wpf.ScanOptionsWindow",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Wpf.ScanOptionsWindow.yml\" sourcestartlinenumber=\"1\">ScanOptionsWindow</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Wpf.ScanResultsWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Wpf.ScanResultsWindow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Wpf.ScanResultsWindow",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Wpf.ScanResultsWindow.yml\" sourcestartlinenumber=\"1\">ScanResultsWindow</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Wpf.TextInputWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Wpf.TextInputWindow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Wpf.TextInputWindow",
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Wpf.TextInputWindow.yml\" sourcestartlinenumber=\"1\">TextInputWindow</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.Wpf.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.Wpf.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp.Wpf",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FileScannerApp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FileScannerApp.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FileScannerApp",
+      "Summary": null
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/configuration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/roadmap.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/roadmap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/user-guide.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/user-guide.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/user-installation.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/user-installation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

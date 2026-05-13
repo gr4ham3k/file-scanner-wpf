@@ -1,0 +1,95 @@
+### YamlMime:TableOfContent
+items:
+- uid: FileScannerApp
+  name: FileScannerApp
+  type: Namespace
+  items:
+  - uid: FileScannerApp.AppConfig
+    name: AppConfig
+    type: Class
+  - uid: FileScannerApp.Database
+    name: Database
+    type: Class
+  - uid: FileScannerApp.Organizer
+    name: Organizer
+    type: Class
+  - uid: FileScannerApp.RenameService
+    name: RenameService
+    type: Class
+- uid: FileScannerApp.Models
+  name: FileScannerApp.Models
+  type: Namespace
+  items:
+  - uid: FileScannerApp.Models.FileData
+    name: FileData
+    type: Class
+  - uid: FileScannerApp.Models.OperationLog
+    name: OperationLog
+    type: Class
+  - uid: FileScannerApp.Models.OperationType
+    name: OperationType
+    type: Enum
+  - uid: FileScannerApp.Models.OrganizeOptions
+    name: OrganizeOptions
+    type: Class
+  - uid: FileScannerApp.Models.RenamePreview
+    name: RenamePreview
+    type: Class
+  - uid: FileScannerApp.Models.Scan
+    name: Scan
+    type: Class
+  - uid: FileScannerApp.Models.ScanProgress
+    name: ScanProgress
+    type: Class
+  - uid: FileScannerApp.Models.ScanResult
+    name: ScanResult
+    type: Class
+- uid: FileScannerApp.Services
+  name: FileScannerApp.Services
+  type: Namespace
+  items:
+  - uid: FileScannerApp.Services.FileOperationsService
+    name: FileOperationsService
+    type: Class
+  - uid: FileScannerApp.Services.ScanService
+    name: ScanService
+    type: Class
+  - uid: FileScannerApp.Services.UndoService
+    name: UndoService
+    type: Class
+- uid: FileScannerApp.Wpf
+  name: FileScannerApp.Wpf
+  type: Namespace
+  items:
+  - uid: FileScannerApp.Wpf.App
+    name: App
+    type: Class
+  - uid: FileScannerApp.Wpf.BatchTools
+    name: BatchTools
+    type: Class
+  - uid: FileScannerApp.Wpf.HistoryWindow
+    name: HistoryWindow
+    type: Class
+  - uid: FileScannerApp.Wpf.MainWindow
+    name: MainWindow
+    type: Class
+  - uid: FileScannerApp.Wpf.ScanOptionsWindow
+    name: ScanOptionsWindow
+    type: Class
+  - uid: FileScannerApp.Wpf.ScanResultsWindow
+    name: ScanResultsWindow
+    type: Class
+  - uid: FileScannerApp.Wpf.TextInputWindow
+    name: TextInputWindow
+    type: Class
+- uid: FileScannerApp.Wpf.Helpers
+  name: FileScannerApp.Wpf.Helpers
+  type: Namespace
+  items:
+  - uid: FileScannerApp.Wpf.Helpers.FolderPicker
+    name: FolderPicker
+    type: Class
+  - uid: FileScannerApp.Wpf.Helpers.PreviewFactory
+    name: PreviewFactory
+    type: Class
+memberLayout: SamePage

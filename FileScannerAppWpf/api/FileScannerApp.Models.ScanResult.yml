@@ -1,0 +1,500 @@
+### YamlMime:ManagedReference
+items:
+- uid: FileScannerApp.Models.ScanResult
+  commentId: T:FileScannerApp.Models.ScanResult
+  id: ScanResult
+  parent: FileScannerApp.Models
+  children:
+  - FileScannerApp.Models.ScanResult.ApiResponse
+  - FileScannerApp.Models.ScanResult.FileName
+  - FileScannerApp.Models.ScanResult.Id
+  - FileScannerApp.Models.ScanResult.ScanId
+  - FileScannerApp.Models.ScanResult.Status
+  langs:
+  - csharp
+  - vb
+  name: ScanResult
+  nameWithType: ScanResult
+  fullName: FileScannerApp.Models.ScanResult
+  type: Class
+  source:
+    remote:
+      path: FileScannerAppWpf/Models/ScanResult.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: ScanResult
+    path: Models/ScanResult.cs
+    startLine: 8
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Models
+  syntax:
+    content: public class ScanResult
+    content.vb: Public Class ScanResult
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: FileScannerApp.Models.ScanResult.Id
+  commentId: P:FileScannerApp.Models.ScanResult.Id
+  id: Id
+  parent: FileScannerApp.Models.ScanResult
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: ScanResult.Id
+  fullName: FileScannerApp.Models.ScanResult.Id
+  type: Property
+  source:
+    remote:
+      path: FileScannerAppWpf/Models/ScanResult.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: Id
+    path: Models/ScanResult.cs
+    startLine: 10
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Models
+  syntax:
+    content: public int Id { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Id As Integer
+  overload: FileScannerApp.Models.ScanResult.Id*
+- uid: FileScannerApp.Models.ScanResult.ScanId
+  commentId: P:FileScannerApp.Models.ScanResult.ScanId
+  id: ScanId
+  parent: FileScannerApp.Models.ScanResult
+  langs:
+  - csharp
+  - vb
+  name: ScanId
+  nameWithType: ScanResult.ScanId
+  fullName: FileScannerApp.Models.ScanResult.ScanId
+  type: Property
+  source:
+    remote:
+      path: FileScannerAppWpf/Models/ScanResult.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: ScanId
+    path: Models/ScanResult.cs
+    startLine: 11
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Models
+  syntax:
+    content: public int ScanId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ScanId As Integer
+  overload: FileScannerApp.Models.ScanResult.ScanId*
+- uid: FileScannerApp.Models.ScanResult.FileName
+  commentId: P:FileScannerApp.Models.ScanResult.FileName
+  id: FileName
+  parent: FileScannerApp.Models.ScanResult
+  langs:
+  - csharp
+  - vb
+  name: FileName
+  nameWithType: ScanResult.FileName
+  fullName: FileScannerApp.Models.ScanResult.FileName
+  type: Property
+  source:
+    remote:
+      path: FileScannerAppWpf/Models/ScanResult.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: FileName
+    path: Models/ScanResult.cs
+    startLine: 12
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Models
+  syntax:
+    content: public string FileName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property FileName As String
+  overload: FileScannerApp.Models.ScanResult.FileName*
+- uid: FileScannerApp.Models.ScanResult.Status
+  commentId: P:FileScannerApp.Models.ScanResult.Status
+  id: Status
+  parent: FileScannerApp.Models.ScanResult
+  langs:
+  - csharp
+  - vb
+  name: Status
+  nameWithType: ScanResult.Status
+  fullName: FileScannerApp.Models.ScanResult.Status
+  type: Property
+  source:
+    remote:
+      path: FileScannerAppWpf/Models/ScanResult.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: Status
+    path: Models/ScanResult.cs
+    startLine: 13
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Models
+  syntax:
+    content: public string Status { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Status As String
+  overload: FileScannerApp.Models.ScanResult.Status*
+- uid: FileScannerApp.Models.ScanResult.ApiResponse
+  commentId: P:FileScannerApp.Models.ScanResult.ApiResponse
+  id: ApiResponse
+  parent: FileScannerApp.Models.ScanResult
+  langs:
+  - csharp
+  - vb
+  name: ApiResponse
+  nameWithType: ScanResult.ApiResponse
+  fullName: FileScannerApp.Models.ScanResult.ApiResponse
+  type: Property
+  source:
+    remote:
+      path: FileScannerAppWpf/Models/ScanResult.cs
+      branch: main
+      repo: https://github.com/gr4ham3k/file-scanner-wpf.git
+    id: ApiResponse
+    path: Models/ScanResult.cs
+    startLine: 14
+  assemblies:
+  - FileScannerAppWpf
+  namespace: FileScannerApp.Models
+  syntax:
+    content: public string ApiResponse { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ApiResponse As String
+  overload: FileScannerApp.Models.ScanResult.ApiResponse*
+references:
+- uid: FileScannerApp.Models
+  commentId: N:FileScannerApp.Models
+  href: FileScannerApp.html
+  name: FileScannerApp.Models
+  nameWithType: FileScannerApp.Models
+  fullName: FileScannerApp.Models
+  spec.csharp:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Models
+    name: Models
+    href: FileScannerApp.Models.html
+  spec.vb:
+  - uid: FileScannerApp
+    name: FileScannerApp
+    href: FileScannerApp.html
+  - name: .
+  - uid: FileScannerApp.Models
+    name: Models
+    href: FileScannerApp.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: FileScannerApp.Models.ScanResult.Id*
+  commentId: Overload:FileScannerApp.Models.ScanResult.Id
+  href: FileScannerApp.Models.ScanResult.html#FileScannerApp_Models_ScanResult_Id
+  name: Id
+  nameWithType: ScanResult.Id
+  fullName: FileScannerApp.Models.ScanResult.Id
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: FileScannerApp.Models.ScanResult.ScanId*
+  commentId: Overload:FileScannerApp.Models.ScanResult.ScanId
+  href: FileScannerApp.Models.ScanResult.html#FileScannerApp_Models_ScanResult_ScanId
+  name: ScanId
+  nameWithType: ScanResult.ScanId
+  fullName: FileScannerApp.Models.ScanResult.ScanId
+- uid: FileScannerApp.Models.ScanResult.FileName*
+  commentId: Overload:FileScannerApp.Models.ScanResult.FileName
+  href: FileScannerApp.Models.ScanResult.html#FileScannerApp_Models_ScanResult_FileName
+  name: FileName
+  nameWithType: ScanResult.FileName
+  fullName: FileScannerApp.Models.ScanResult.FileName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: FileScannerApp.Models.ScanResult.Status*
+  commentId: Overload:FileScannerApp.Models.ScanResult.Status
+  href: FileScannerApp.Models.ScanResult.html#FileScannerApp_Models_ScanResult_Status
+  name: Status
+  nameWithType: ScanResult.Status
+  fullName: FileScannerApp.Models.ScanResult.Status
+- uid: FileScannerApp.Models.ScanResult.ApiResponse*
+  commentId: Overload:FileScannerApp.Models.ScanResult.ApiResponse
+  href: FileScannerApp.Models.ScanResult.html#FileScannerApp_Models_ScanResult_ApiResponse
+  name: ApiResponse
+  nameWithType: ScanResult.ApiResponse
+  fullName: FileScannerApp.Models.ScanResult.ApiResponse

@@ -1,0 +1,52 @@
+### YamlMime:ManagedReference
+items:
+- uid: FileScannerApp
+  commentId: N:FileScannerApp
+  id: FileScannerApp
+  children:
+  - FileScannerApp.AppConfig
+  - FileScannerApp.Database
+  - FileScannerApp.Organizer
+  - FileScannerApp.RenameService
+  langs:
+  - csharp
+  - vb
+  name: FileScannerApp
+  nameWithType: FileScannerApp
+  fullName: FileScannerApp
+  type: Namespace
+  assemblies:
+  - FileScannerAppWpf
+references:
+- uid: FileScannerApp.AppConfig
+  commentId: T:FileScannerApp.AppConfig
+  parent: FileScannerApp
+  href: FileScannerApp.AppConfig.html
+  name: AppConfig
+  nameWithType: AppConfig
+  fullName: FileScannerApp.AppConfig
+- uid: FileScannerApp.Database
+  commentId: T:FileScannerApp.Database
+  parent: FileScannerApp
+  href: FileScannerApp.Database.html
+  name: Database
+  nameWithType: Database
+  fullName: FileScannerApp.Database
+- uid: FileScannerApp.Organizer
+  commentId: T:FileScannerApp.Organizer
+  href: FileScannerApp.Organizer.html
+  name: Organizer
+  nameWithType: Organizer
+  fullName: FileScannerApp.Organizer
+- uid: FileScannerApp.RenameService
+  commentId: T:FileScannerApp.RenameService
+  href: FileScannerApp.RenameService.html
+  name: RenameService
+  nameWithType: RenameService
+  fullName: FileScannerApp.RenameService
+- uid: FileScannerApp
+  commentId: N:FileScannerApp
+  href: FileScannerApp.html
+  name: FileScannerApp
+  nameWithType: FileScannerApp
+  fullName: FileScannerApp
