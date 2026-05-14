@@ -1,53 +1,33 @@
 # Plany rozbudowy
 
-> Sekcja do uzupelnienia po zakonczeniu pierwszej wersji projektu i ocenie brakujacych funkcji.
+Ta sekcja opisuje możliwe kierunki rozwoju aplikacji po przygotowaniu pierwszej wersji projektu. Lista nie oznacza błędów aktualnej wersji, tylko pokazuje funkcje, które mogłyby zwiekszyć wygodę, bezpieczeństwo i zakres zastosowań programu.
 
-## Czego zabraklo w pierwszej wersji?
+## Czego zabraklo w pierwszej wersji
 
-TODO: Wypisz funkcje, ktore byly planowane, ale nie zostaly wykonane w aktualnej wersji.
+W pierwszej wersji aplikacja skupia sie na podstawowym przepływie pracy: wybór folderu, lista plików, podgląd, skanowanie, organizowanie, zmiana nazw i historia operacji. Część funkcji mogłaby zostać rozwinięta w kolejnych etapach.
 
-Przykladowe punkty do rozwazenia:
+Najważniejsze braki:
 
-- bardziej rozbudowane filtrowanie plikow,
-- konfiguracja kategorii plikow z poziomu interfejsu,
-- eksport wynikow skanowania do pliku CSV/PDF,
-- pelniejsze obslugiwanie bledow API VirusTotal,
-- wygodniejszy instalator dla uzytkownika koncowego.
+- brak ekranu ustawien aplikacji,
+- brak możliwości edycji kategorii plików z poziomu interfejsu,
+- brak eksportu historii skanowania do pliku,
+- brak kreatora instalacji dla uzytkownika końcowego,
+- brak rozbudowanych filtrów, na przykład po dacie, rozmiarze lub nazwie,
+- brak mechanizmu zapamiętywania ostatnio używanych folderów,
+- brak pełnego panelu diagnostycznego dla problemow z API VirusTotal.
 
 ## Funkcjonalnosci dla wersji 2.0
 
-TODO: Opisz potencjalne funkcje kolejnej wersji aplikacji.
+Wersja 2.0 mogłaby rozszerzyć aplikację o funkcje związane z automatyzacją, raportowaniem i personalizacją.
 
-Propozycje:
+Proponowane funkcje:
 
-- integracja z dodatkowymi silnikami analizy plikow,
-- harmonogram automatycznego skanowania folderow,
-- system powiadomien po zakonczeniu skanowania,
-- zapis ustawien uzytkownika,
-- tryb ciemny,
-- podglad wiekszej liczby formatow plikow,
-- raporty z historii operacji i skanow.
-
-## Potencjalne optymalizacje
-
-TODO: Opisz miejsca, ktore mozna usprawnic technicznie.
-
-Propozycje:
-
-- cache'owanie wynikow skanowania dla plikow o tym samym hashu SHA-256,
-- ograniczenie liczby zapytan do API w zaleznosci od limitow VirusTotal,
-- lepsze indeksy w bazie SQLite dla historii i wynikow skanowania,
-- przeniesienie czesci operacji do zadan w tle,
-- poprawa obslugi bardzo duzych folderow,
-- rozdzielenie logiki interfejsu od logiki biznesowej.
-
-## Ryzyka i ograniczenia
-
-TODO: Dodaj ograniczenia projektu, ktore warto opisac w dokumentacji.
-
-Przyklady:
-
-- aplikacja wymaga systemu Windows,
-- skanowanie wymaga polaczenia z internetem,
-- API VirusTotal moze miec limity zapytan,
-- aplikacja operuje na rzeczywistych plikach uzytkownika, dlatego operacje przenoszenia i usuwania wymagaja ostroznosci.
+| Funkcja | Opis | Korzyść dla użytkownika |
+| --- | --- | --- |
+| Ustawienia aplikacji | Osobne okno do konfiguracji klucza API, folderów i preferencji | Łatwiejsza konfiguracja bez zmiennych środowiskowych |
+| Eksport raportów | Zapis historii skanów do CSV, PDF lub HTML | Możliwość archiwizacji i przekazania wyników dalej |
+| Własne kategorie plików | Edycja grup rozszerzeń w interfejsie | Lepsze dopasowanie organizowania do potrzeb użytkownika |
+| Harmonogram skanowania | Automatyczne skanowanie wybranego folderu | Mniej recznej pracy przy cyklicznych kontrolach |
+| Cache wynikow | Ponowne użycie wyniku dla pliku o tym samym hash'u | Mniej zapytań do API i szybsze skanowanie |
+| Tryb ciemny | Alternatywny motyw interfejsu | Większy komfort pracy |
+| Rozszerzony podgląd | Obsługa dodatkowych formatów plików | Więcej informacji bez otwierania zewnętrznych programów |

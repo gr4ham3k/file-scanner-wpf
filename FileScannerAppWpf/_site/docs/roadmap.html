@@ -87,51 +87,68 @@
         <article data-uid="">
 <h1 id="plany-rozbudowy">Plany rozbudowy</h1>
 
-<blockquote>
-<p>Sekcja do uzupelnienia po zakonczeniu pierwszej wersji projektu i ocenie brakujacych funkcji.</p>
-</blockquote>
-<h2 id="czego-zabraklo-w-pierwszej-wersji">Czego zabraklo w pierwszej wersji?</h2>
-<p>TODO: Wypisz funkcje, ktore byly planowane, ale nie zostaly wykonane w aktualnej wersji.</p>
-<p>Przykladowe punkty do rozwazenia:</p>
+<p>Ta sekcja opisuje możliwe kierunki rozwoju aplikacji po przygotowaniu pierwszej wersji projektu. Lista nie oznacza błędów aktualnej wersji, tylko pokazuje funkcje, które mogłyby zwiekszyć wygodę, bezpieczeństwo i zakres zastosowań programu.</p>
+<h2 id="czego-zabraklo-w-pierwszej-wersji">Czego zabraklo w pierwszej wersji</h2>
+<p>W pierwszej wersji aplikacja skupia sie na podstawowym przepływie pracy: wybór folderu, lista plików, podgląd, skanowanie, organizowanie, zmiana nazw i historia operacji. Część funkcji mogłaby zostać rozwinięta w kolejnych etapach.</p>
+<p>Najważniejsze braki:</p>
 <ul>
-<li>bardziej rozbudowane filtrowanie plikow,</li>
-<li>konfiguracja kategorii plikow z poziomu interfejsu,</li>
-<li>eksport wynikow skanowania do pliku CSV/PDF,</li>
-<li>pelniejsze obslugiwanie bledow API VirusTotal,</li>
-<li>wygodniejszy instalator dla uzytkownika koncowego.</li>
+<li>brak ekranu ustawien aplikacji,</li>
+<li>brak możliwości edycji kategorii plików z poziomu interfejsu,</li>
+<li>brak eksportu historii skanowania do pliku,</li>
+<li>brak kreatora instalacji dla uzytkownika końcowego,</li>
+<li>brak rozbudowanych filtrów, na przykład po dacie, rozmiarze lub nazwie,</li>
+<li>brak mechanizmu zapamiętywania ostatnio używanych folderów,</li>
+<li>brak pełnego panelu diagnostycznego dla problemow z API VirusTotal.</li>
 </ul>
 <h2 id="funkcjonalnosci-dla-wersji-20">Funkcjonalnosci dla wersji 2.0</h2>
-<p>TODO: Opisz potencjalne funkcje kolejnej wersji aplikacji.</p>
-<p>Propozycje:</p>
-<ul>
-<li>integracja z dodatkowymi silnikami analizy plikow,</li>
-<li>harmonogram automatycznego skanowania folderow,</li>
-<li>system powiadomien po zakonczeniu skanowania,</li>
-<li>zapis ustawien uzytkownika,</li>
-<li>tryb ciemny,</li>
-<li>podglad wiekszej liczby formatow plikow,</li>
-<li>raporty z historii operacji i skanow.</li>
-</ul>
-<h2 id="potencjalne-optymalizacje">Potencjalne optymalizacje</h2>
-<p>TODO: Opisz miejsca, ktore mozna usprawnic technicznie.</p>
-<p>Propozycje:</p>
-<ul>
-<li>cache'owanie wynikow skanowania dla plikow o tym samym hashu SHA-256,</li>
-<li>ograniczenie liczby zapytan do API w zaleznosci od limitow VirusTotal,</li>
-<li>lepsze indeksy w bazie SQLite dla historii i wynikow skanowania,</li>
-<li>przeniesienie czesci operacji do zadan w tle,</li>
-<li>poprawa obslugi bardzo duzych folderow,</li>
-<li>rozdzielenie logiki interfejsu od logiki biznesowej.</li>
-</ul>
-<h2 id="ryzyka-i-ograniczenia">Ryzyka i ograniczenia</h2>
-<p>TODO: Dodaj ograniczenia projektu, ktore warto opisac w dokumentacji.</p>
-<p>Przyklady:</p>
-<ul>
-<li>aplikacja wymaga systemu Windows,</li>
-<li>skanowanie wymaga polaczenia z internetem,</li>
-<li>API VirusTotal moze miec limity zapytan,</li>
-<li>aplikacja operuje na rzeczywistych plikach uzytkownika, dlatego operacje przenoszenia i usuwania wymagaja ostroznosci.</li>
-</ul>
+<p>Wersja 2.0 mogłaby rozszerzyć aplikację o funkcje związane z automatyzacją, raportowaniem i personalizacją.</p>
+<p>Proponowane funkcje:</p>
+<table>
+<thead>
+<tr>
+<th>Funkcja</th>
+<th>Opis</th>
+<th>Korzyść dla użytkownika</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ustawienia aplikacji</td>
+<td>Osobne okno do konfiguracji klucza API, folderów i preferencji</td>
+<td>Łatwiejsza konfiguracja bez zmiennych środowiskowych</td>
+</tr>
+<tr>
+<td>Eksport raportów</td>
+<td>Zapis historii skanów do CSV, PDF lub HTML</td>
+<td>Możliwość archiwizacji i przekazania wyników dalej</td>
+</tr>
+<tr>
+<td>Własne kategorie plików</td>
+<td>Edycja grup rozszerzeń w interfejsie</td>
+<td>Lepsze dopasowanie organizowania do potrzeb użytkownika</td>
+</tr>
+<tr>
+<td>Harmonogram skanowania</td>
+<td>Automatyczne skanowanie wybranego folderu</td>
+<td>Mniej recznej pracy przy cyklicznych kontrolach</td>
+</tr>
+<tr>
+<td>Cache wynikow</td>
+<td>Ponowne użycie wyniku dla pliku o tym samym hash'u</td>
+<td>Mniej zapytań do API i szybsze skanowanie</td>
+</tr>
+<tr>
+<td>Tryb ciemny</td>
+<td>Alternatywny motyw interfejsu</td>
+<td>Większy komfort pracy</td>
+</tr>
+<tr>
+<td>Rozszerzony podgląd</td>
+<td>Obsługa dodatkowych formatów plików</td>
+<td>Więcej informacji bez otwierania zewnętrznych programów</td>
+</tr>
+</tbody>
+</table>
 
 </article>
 

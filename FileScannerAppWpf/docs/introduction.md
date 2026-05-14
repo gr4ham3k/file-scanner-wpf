@@ -1,23 +1,14 @@
-# Temat projektu
+# FileScannerAppWpf
 
-FileScannerAppWpf to aplikacja desktopowa WPF sluzaca do zarzadzania plikami w wybranym folderze. Program pozwala skanowac pliki przez VirusTotal, porzadkowac je wedlug typow, seryjnie zmieniac nazwy oraz sledzic historie wykonanych operacji.
+FileScannerAppWpf to desktopowa aplikacja dla systemu Windows, która pomaga przeglądać, porządkować i skanować pliki z wybranego folderu. Program jest przeznaczony dla użytkowników, którzy chcą szybciej zarządzać lokalnymi plikami, zmieniać ich nazwy seryjnie, przenosić je według typów oraz sprawdzać potencjalne zagrożenia z wykorzystaniem VirusTotal.
 
-Projekt jest przeznaczony dla osob, ktore pracuja z wieloma lokalnymi plikami i chca ograniczyc reczne, powtarzalne czynnosci wykonywane w eksploratorze systemowym. Glowne zastosowanie aplikacji to szybkie sprawdzenie, uporzadkowanie i opisanie plikow bez koniecznosci korzystania z kilku osobnych narzedzi.
+Aplikacja rozwiązuje problem ręcznego porządkowania dużej liczby plików oraz łączy kilka przydatnych operacji w jednym narzędziu: podgląd plików, organizowanie, zmiane nazw, historie operacji i skanowanie antywirusowe po hashu SHA-256. W odróżnieniu od prostego eksploratora plików projekt zapisuje historie działań, pozwala przywracać część operacji i udostępnia widok wyników skanowania.
 
-## Jaki problem rozwiazuje aplikacja?
+## Najwazniejsze funkcje
 
-Aplikacja rozwiazuje problem chaotycznych folderow, w ktorych znajduje sie wiele plikow roznych typow. Uzytkownik moze w jednym miejscu:
-
-- wyswietlic metadane plikow,
-- sprawdzic pliki pod katem zagrozen,
-- podgladac wybrane formaty,
-- przenosic lub kopiowac pliki do folderu docelowego,
-- automatycznie tworzyc podfoldery wedlug kategorii,
-- seryjnie zmieniac nazwy plikow wedlug wzorca,
-- przegladac historie skanow i operacji.
-
-## Czym aplikacja sie wyroznia?
-
-Podobne zadania mozna wykonac przy pomocy eksploratora plikow, skryptow albo osobnych programow do zmiany nazw i skanowania. FileScannerAppWpf laczy te funkcje w jednym interfejsie oraz zapisuje historie dzialan w lokalnej bazie SQLite.
-
-Istotnym elementem projektu jest rowniez skanowanie po skrocie SHA-256. Aplikacja nie musi wysylac zawartosci pliku do zewnetrznej uslugi, tylko sprawdza raport VirusTotal na podstawie hasha pliku.
+- skanowanie plików z użyciem API VirusTotal,
+- podgląd wybranych typów plikow,
+- przenoszenie, kopiowanie, usuwanie i przywracanie plików,
+- seryjna zmiana nazw według wzorca,
+- organizowanie plikow według rozszerzeń i kategorii,
+- historia skanów oraz operacji wykonanych na plikach.

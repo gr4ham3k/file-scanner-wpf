@@ -87,34 +87,27 @@
         <article data-uid="">
 <h1 id="uruchomienie-projektu-dla-uzytkownika">Uruchomienie projektu dla uzytkownika</h1>
 
-<blockquote>
-<p>Sekcja do uzupelnienia po przygotowaniu wersji instalacyjnej aplikacji.</p>
-</blockquote>
-<h2 id="sposob-pobrania-aplikacji">Sposob pobrania aplikacji</h2>
-<p>TODO: Opisz, skad uzytkownik koncowy ma pobrac gotowa aplikacje.</p>
-<p>Przykladowe informacje do uzupelnienia:</p>
+<p>Ta sekcja opisuje sposób uruchomienia aplikacji przez użytkownika końcowego, który nie pracuje bezpośrednio z kodem źródłowym.</p>
+<h2 id="pobranie-aplikacji">Pobranie aplikacji</h2>
+<p>Gotowa wersja aplikacji jest dostępna w sekcji <code>Releases</code> repozytorium projektu:</p>
 <ul>
-<li>link do zakladki Releases w repozytorium,</li>
-<li>nazwa pliku instalatora, na przyklad <code>FileScannerAppWpfSetup.exe</code>,</li>
-<li>informacja, czy aplikacja jest dostepna jako instalator, archiwum ZIP czy pojedynczy plik <code>.exe</code>.</li>
+<li><a href="https://github.com/gr4ham3k/file-scanner-wpf/releases/tag/V1.0.0">File Scanner WPF - V1.0.0</a></li>
 </ul>
+<p>Aplikacja jest udostepniona jako archiwum <code>.zip</code>. Po pobraniu należy rozpakować paczkę i uruchomić plik <code>.exe</code> znajdujący się w rozpakowanym folderze.</p>
 <h2 id="instalacja">Instalacja</h2>
-<p>TODO: Opisz proces instalacji krok po kroku.</p>
-<p>Przykladowy schemat:</p>
+<p>Przykładowy proces instalacji dla użytkownika:</p>
 <ol>
-<li>Pobierz plik instalatora.</li>
-<li>Uruchom instalator.</li>
-<li>Przejdz przez kroki kreatora instalacji.</li>
-<li>Uruchom aplikacje ze skrotu na pulpicie albo z menu Start.</li>
+<li>Wejdź na stronę wydania: <a href="https://github.com/gr4ham3k/file-scanner-wpf/releases/tag/V1.0.0">V1.0.0</a>.</li>
+<li>Pobierz plik <code>.zip</code> z sekcji <code>Assets</code>.</li>
+<li>Rozpakuj archiwum.</li>
+<li>Uruchom plik <code>.exe</code> z rozpakowanego folderu.</li>
 </ol>
-<h2 id="wymagania-sprzetowe">Wymagania sprzetowe</h2>
-<p>TODO: Uzupelnij wymagania po przetestowaniu aplikacji na komputerze uzytkownika.</p>
-<p>Propozycja do sprawdzenia:</p>
+<h2 id="wymagania-systemowe">Wymagania systemowe</h2>
 <table>
 <thead>
 <tr>
 <th>Element</th>
-<th>Minimalne wymaganie</th>
+<th>Wymaganie</th>
 </tr>
 </thead>
 <tbody>
@@ -123,25 +116,32 @@
 <td>Windows 10 lub Windows 11</td>
 </tr>
 <tr>
-<td>Procesor</td>
-<td>Dwurdzeniowy procesor 64-bit</td>
+<td>Architektura</td>
+<td>64-bit</td>
 </tr>
 <tr>
-<td>Pamiec RAM</td>
-<td>4 GB</td>
+<td>Pamięć RAM</td>
+<td>Minimum 4 GB</td>
 </tr>
 <tr>
 <td>Miejsce na dysku</td>
-<td>200 MB na aplikacje oraz dodatkowe miejsce na pliki uzytkownika</td>
+<td>Minimum 200 MB na aplikacje oraz dodatkowe miejsce na pliki użytkownika</td>
 </tr>
 <tr>
 <td>Internet</td>
-<td>Wymagany do skanowania plikow przez VirusTotal</td>
+<td>Wymagany do skanowania plików przez VirusTotal</td>
+</tr>
+<tr>
+<td>WebView2 Runtime</td>
+<td>Wymagany do podglądu plików PDF i DOCX</td>
 </tr>
 </tbody>
 </table>
-<h2 id="uwagi-dla-uzytkownika">Uwagi dla uzytkownika</h2>
-<p>TODO: Dodaj informacje o pierwszym uruchomieniu, wymaganym kluczu API albo ograniczeniach wersji demonstracyjnej, jesli beda potrzebne.</p>
+<h2 id="konfiguracja-po-stronie-uzytkownika">Konfiguracja po stronie uzytkownika</h2>
+<p>Aplikacja korzysta z API VirusTotal. Jeżeli wersja udostępniona użytkownikowi nie zawiera własnego sposobu konfiguracji klucza, należy ustawić zmienną srodowiskową:</p>
+<pre><code class="lang-text">VIRUSTOTAL_API_KEY
+</code></pre>
+<p>Bez klucza API funkcje niezależne od VirusTotal nadal mogą działać, ale skanowanie plikow nie będzie mogło pobrać raportów z usługi zewnętrznej.</p>
 
 </article>
 

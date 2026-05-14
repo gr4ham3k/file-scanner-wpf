@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Podrecznik uzytkownika | mysite </title>
+      <title>Podręcznik użytkownika | mysite </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Podrecznik uzytkownika | mysite ">
+      <meta name="title" content="Podręcznik użytkownika | mysite ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -85,83 +85,193 @@
         </div>
 
         <article data-uid="">
-<h1 id="podrecznik-uzytkownika">Podrecznik uzytkownika</h1>
+<h1 id="podręcznik-użytkownika">Podręcznik użytkownika</h1>
 
-<blockquote>
-<p>Sekcja do uzupelnienia recznie po przygotowaniu zrzutow ekranu z dzialajacej aplikacji.</p>
-</blockquote>
-<p>W tej czesci nalezy opisac aplikacje z perspektywy uzytkownika koncowego, bez wchodzenia w szczegoly kodu.</p>
-<h2 id="proponowane-zrzuty-ekranu">Proponowane zrzuty ekranu</h2>
-<p>TODO: Dodaj zrzuty ekranu do folderu <code>images/</code> i osadz je w tej sekcji.</p>
-<p>Kazdy zrzut powinien miec krotki opis wyjasniajacy, co widac na ekranie.</p>
-<p>Przykladowy zapis:</p>
-<pre><code class="lang-markdown">![Glowne okno aplikacji](../images/main-window.png)
-
-Rysunek 1. Glowne okno aplikacji po wybraniu folderu z plikami.
-</code></pre>
-<h2 id="glowne-scenariusze-uzytkownika">Glowne scenariusze uzytkownika</h2>
-<p>TODO: Opisz najwazniejsze przeplywy uzytkownika.</p>
-<p>Proponowane scenariusze:</p>
+<p>FileScannerAppWpf służy do pracy z plikami w wybranym folderze. Użytkownik może przeglądać pliki, podglądać ich zawartość, skanować je przez VirusTotal, porządkować według typów, seryjnie zmieniać nazwy oraz sprawdzać historię operacji.</p>
+<p>Najważniejszą funkcją aplikacji jest Organizer, dostępny w oknie <code>Batch tools</code>. Pozwala on szybko uporządkować większą liczbę plików, przenieść lub skopiować je do wybranego miejsca, utworzyć podfoldery według typów oraz seryjnie zmienić nazwy plików według ustalonego wzorca.</p>
+<h2 id="główne-okno-aplikacji">Główne okno aplikacji</h2>
+<p>Po uruchomieniu aplikacji widoczne jest główne okno z paskiem przycisków, listą plików, panelem podglądu oraz informacjami o liczbie plików i postępie operacji.</p>
+<p><img src="../images/user-guide-main-window.png" alt="Główne okno aplikacji"></p>
+<p>Rysunek 1. Główne okno aplikacji z listą plików i panelem podglądu.</p>
+<h2 id="wybór-folderu">Wybór folderu</h2>
+<ol>
+<li>Kliknij przycisk <code>Select folder</code>.</li>
+<li>Wybierz folder, którego zawartość ma zostać wyświetlona.</li>
+<li>Aplikacja załaduje pliki do tabeli.</li>
+<li>W dolnej części okna zostanie pokazana łączna liczba plików.</li>
+</ol>
+<p>Lista plików zawiera nazwę, typ, rozmiar oraz datę ostatniej modyfikacji. Po kliknięciu pliku aplikacja próbuje wyświetlić jego podgląd.</p>
+<h2 id="podgląd-plików">Podgląd plików</h2>
+<p>Panel podglądu pokazuje zawartość wybranego pliku, jeżeli jego format jest obsługiwany. Aplikacja obsługuje między innymi obrazy, pliki tekstowe, multimedia, PDF oraz DOCX.</p>
+<p>Jeżeli format nie jest obsługiwany albo plik nie istnieje, w panelu zostanie wyświetlony komunikat zamiast zawartości pliku.</p>
+<h2 id="filtrowanie-plików">Filtrowanie plików</h2>
+<p>Lista plików może być filtrowana według typu. Użytkownik wybiera kategorię z listy rozwijanej, a aplikacja ogranicza widok do pasujących rozszerzeń.</p>
+<p>Mechanizm filtrowania ułatwia pracę z dużymi folderami, w których znajdują się dokumenty, obrazy, filmy oraz pliki wykonywalne.</p>
+<p><img src="../images/user-guide-filtering.png" alt="Filtrowanie plików"></p>
+<p>Rysunek 2. Lista plików po zastosowaniu filtra typu.</p>
+<h2 id="skanowanie-plików">Skanowanie plików</h2>
+<p>Skanowanie pozwala sprawdzić pliki przy użyciu usługi VirusTotal.</p>
+<ol>
+<li>Wybierz folder z plikami.</li>
+<li>Kliknij <code>Scan</code>.</li>
+<li>W oknie <code>Scan options</code> wybierz grupy plików, które mają zostać sprawdzone.</li>
+<li>Kliknij <code>Start scan</code>.</li>
+<li>Aplikacja obliczy hash SHA-256 każdego pliku i pobierze raport z VirusTotal.</li>
+<li>Po zakończeniu skanowania zostanie wyświetlone okno z wynikami.</li>
+</ol>
+<p><img src="../images/user-guide-scan-options.png" alt="Opcje skanowania"></p>
+<p>Rysunek 3. Okno wyboru typów plików do skanowania.</p>
+<p><img src="../images/user-guide-scan-results.png" alt="Wyniki skanowania"></p>
+<p>Rysunek 4. Wyniki skanowania plików przez VirusTotal.</p>
+<h2 id="organizowanie-plików">Organizowanie plików</h2>
+<p>Funkcja <code>Organize</code> otwiera okno narzędzi wsadowych <code>Batch tools</code>. Jest to najważniejszy element aplikacji, ponieważ pozwala szybko uporządkować dużą liczbę plików bez ręcznego przenoszenia ich jeden po drugim.</p>
+<p>Użytkownik może wybrać folder docelowy, tryb operacji oraz grupy plików, które mają zostać przetworzone.</p>
+<p>Dostępne tryby:</p>
 <ul>
-<li>wybor folderu z plikami,</li>
-<li>podglad wybranego pliku,</li>
-<li>skanowanie plikow przez VirusTotal,</li>
-<li>wyswietlenie wynikow skanowania,</li>
-<li>seryjna zmiana nazw plikow,</li>
-<li>organizowanie plikow wedlug typow,</li>
-<li>przenoszenie lub usuwanie plikow,</li>
-<li>przywracanie plikow z historii operacji.</li>
+<li><code>Move files</code> - przenosi pliki do folderu docelowego.</li>
+<li><code>Copy files</code> - kopiuje pliki do folderu docelowego.</li>
 </ul>
-<h2 id="zasady-dzialania-najwazniejszych-funkcji">Zasady dzialania najwazniejszych funkcji</h2>
-<p>TODO: Wyjasnij, jak dzialaja glowne funkcje aplikacji.</p>
-<p>Przykladowe pytania pomocnicze:</p>
+<p>Dostępne opcje:</p>
 <ul>
-<li>Co dzieje sie po wybraniu folderu?</li>
-<li>Jak aplikacja decyduje, do jakiej kategorii nalezy plik?</li>
-<li>Jak dziala wzorzec zmiany nazw?</li>
-<li>Co oznaczaja statusy skanowania?</li>
-<li>Kiedy operacje mozna cofnac?</li>
+<li><code>Create subfolders by type</code> - tworzy podfoldery dla kategorii plików.</li>
+<li><code>Overwrite existing files</code> - pozwala nadpisać istniejące pliki w folderze docelowym.</li>
 </ul>
+<p>Jeżeli nadpisywanie jest wyłączone, aplikacja rozwiązuje konflikt nazw przez dopisanie numeru do nazwy pliku.</p>
+<p><img src="../images/user-guide-organize.png" alt="Organizowanie plików"></p>
+<p>Rysunek 5. Okno organizowania plików z wyborem folderu docelowego i kategorii.</p>
+<h2 id="seryjna-zmiana-nazw">Seryjna zmiana nazw</h2>
+<p>W oknie <code>Batch tools</code> dostępna jest sekcja <code>Batch rename</code>. To druga część Organizera, która pozwala seryjnie zmieniać nazwy wielu plików według jednego wzorca. Dzięki temu użytkownik może szybko ujednolicić nazwy dokumentów, zdjęć, filmów lub innych plików.</p>
+<p>Użytkownik wpisuje wzorzec nowej nazwy, wybiera opcje wielkości liter i sprawdza podgląd zmian w tabeli przed wykonaniem operacji.</p>
+<p>Dostępne znaczniki:</p>
+<table>
+<thead>
+<tr>
+<th>Znacznik</th>
+<th>Znaczenie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{name}</code></td>
+<td>Oryginalna nazwa pliku bez rozszerzenia</td>
+</tr>
+<tr>
+<td><code>{created}</code></td>
+<td>Data utworzenia pliku</td>
+</tr>
+<tr>
+<td><code>{modified}</code></td>
+<td>Data ostatniej modyfikacji</td>
+</tr>
+<tr>
+<td><code>{counter}</code></td>
+<td>Numer porządkowy</td>
+</tr>
+<tr>
+<td><code>{counter:000}</code></td>
+<td>Numer porządkowy zapisany trzema cyframi</td>
+</tr>
+<tr>
+<td><code>{folder}</code></td>
+<td>Nazwa folderu źródłowego</td>
+</tr>
+<tr>
+<td><code>{ext}</code></td>
+<td>Rozszerzenie bez kropki</td>
+</tr>
+</tbody>
+</table>
+<h2 id="operacje-z-menu-kontekstowego">Operacje z menu kontekstowego</h2>
+<p>Po zaznaczeniu pliku na liście użytkownik może skorzystać z menu kontekstowego.</p>
+<p>Dostępne operacje:</p>
+<ul>
+<li><code>Rename</code> - zmiana nazwy pojedynczego pliku.</li>
+<li><code>Move</code> - przeniesienie pliku do innego folderu.</li>
+<li><code>Delete</code> - przeniesienie pliku do wewnętrznego kosza aplikacji.</li>
+</ul>
+<p>Operacje, które mogą zostać odtworzone, są zapisywane w historii.</p>
+<p><img src="../images/user-guide-context-menu.png" alt="Menu kontekstowe pliku"></p>
+<p>Rysunek 6. Menu kontekstowe z operacjami dostępnymi dla zaznaczonego pliku.</p>
+<h2 id="historia-skanów-i-operacji">Historia skanów i operacji</h2>
+<p>Przycisk <code>History</code> otwiera okno historii. Okno zawiera dwie zakładki:</p>
+<ul>
+<li><code>Scans</code> - historia skanowań i wyniki plików.</li>
+<li><code>Operations</code> - historia operacji wykonanych na plikach.</li>
+</ul>
+<p>W zakładce operacji można wybrać wpis i kliknąć <code>Undo selected</code>, jeżeli dana operacja może zostać cofnięta.</p>
+<p><img src="../images/user-guide-history.png" alt="Historia aplikacji"></p>
+<p>Rysunek 7. Okno historii skanów i operacji.</p>
 <h2 id="role-w-systemie">Role w systemie</h2>
-<p>Aplikacja nie posiada systemu logowania ani podzialu na role. Kazdy uzytkownik korzysta z tego samego zestawu funkcji.</p>
-<p>TODO: Jesli w przyszlosci zostanie dodany system kont, opisz role uzytkownikow w tym miejscu.</p>
+<p>Aplikacja nie posiada systemu logowania ani podziału na role. Każdy użytkownik ma dostęp do tych samych funkcji.</p>
 <h2 id="przypadki-brzegowe">Przypadki brzegowe</h2>
-<p>TODO: Opisz przypadki brzegowe obslugiwane przez aplikacje.</p>
-<p>Propozycje do opisania:</p>
+<table>
+<thead>
+<tr>
+<th>Sytuacja</th>
+<th>Zachowanie aplikacji</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brak wybranego folderu</td>
+<td>Lista plików pozostaje pusta, a aplikacja informuje, że folder nie został wybrany</td>
+</tr>
+<tr>
+<td>Brak internetu</td>
+<td>Skanowanie VirusTotal nie może pobrać raportów z usługi zewnętrznej</td>
+</tr>
+<tr>
+<td>Brak klucza API</td>
+<td>Zapytania do VirusTotal nie zostaną poprawnie autoryzowane</td>
+</tr>
+<tr>
+<td>Plik został usunięty poza aplikacją</td>
+<td>Operacja jest pomijana albo oznaczana jako nieudana</td>
+</tr>
+<tr>
+<td>Konflikt nazw w folderze docelowym</td>
+<td>Plik jest pomijany albo otrzymuje nazwę z licznikiem, zależnie od funkcji i ustawień</td>
+</tr>
+<tr>
+<td>Nieobsługiwany format podglądu</td>
+<td>Panel podglądu wyświetla komunikat o braku obsługi formatu</td>
+</tr>
+<tr>
+<td>Plik usunięty trwale</td>
+<td>Cofnięcie operacji nie jest już możliwe</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dane-przechowywane-przez-aplikację">Dane przechowywane przez aplikację</h2>
+<p>Aplikacja przechowuje dane lokalnie w bazie SQLite. Są to:</p>
 <ul>
-<li>brak internetu podczas skanowania,</li>
-<li>brak klucza API VirusTotal,</li>
-<li>wybranie pustego folderu,</li>
-<li>proba przeniesienia pliku, ktory juz nie istnieje,</li>
-<li>konflikt nazw w folderze docelowym,</li>
-<li>nieobslugiwany format podgladu,</li>
-<li>plik usuniety trwale, ktorego nie mozna juz przywrocic.</li>
-</ul>
-<h2 id="dane-przechowywane-przez-system">Dane przechowywane przez system</h2>
-<p>TODO: Opisz dane przechowywane lokalnie przez aplikacje.</p>
-<p>Do uwzglednienia:</p>
-<ul>
-<li>historia skanow,</li>
-<li>wyniki skanowania plikow,</li>
+<li>historia skanów,</li>
+<li>wyniki skanowania plików,</li>
+<li>statusy plików,</li>
+<li>odpowiedzi API VirusTotal,</li>
 <li>historia operacji na plikach,</li>
-<li>sciezki plikow przed i po operacji,</li>
-<li>odpowiedzi API VirusTotal zapisane przy wynikach skanowania.</li>
+<li>ścieżki plików przed i po operacji,</li>
+<li>informacja, czy operację można cofnąć.</li>
 </ul>
-<h2 id="responsywnosc-i-mniejsze-ekrany">Responsywnosc i mniejsze ekrany</h2>
-<p>TODO: Aplikacja jest desktopowa WPF, dlatego zamiast responsywnosci webowej opisz zachowanie okien przy zmianie rozmiaru.</p>
-<p>Dodaj zrzuty ekranu pokazujace:</p>
-<ul>
-<li>standardowy rozmiar okna,</li>
-<li>zmniejszone okno,</li>
-<li>widok z dluzsza lista plikow,</li>
-<li>okna pomocnicze, takie jak historia albo opcje skanowania.</li>
-</ul>
-<h2 id="najwazniejszy-mechanizm-aplikacji">Najwazniejszy mechanizm aplikacji</h2>
-<p>TODO: Opisz najwazniejszy mechanizm projektu.</p>
-<p>Proponowany temat:</p>
-<blockquote>
-<p>Proces skanowania plikow: aplikacja oblicza hash SHA-256, wysyla zapytanie do VirusTotal, zapisuje wynik w bazie danych i pokazuje postep w interfejsie.</p>
-</blockquote>
+<h2 id="zachowanie-na-mniejszych-oknach">Zachowanie na mniejszych oknach</h2>
+<p>Aplikacja jest programem desktopowym WPF, dlatego nie posiada wersji mobilnej. Przy zmniejszeniu okna najważniejsze jest zachowanie czytelności listy plików, panelu podglądu oraz przycisków.</p>
+<p>Miejsce na zrzut ekranu:</p>
+<p><img src="../images/user-guide-main-window.png" alt="Zmniejszone okno aplikacji"></p>
+<p>Rysunek 8. Zachowanie interfejsu po zmniejszeniu okna aplikacji.</p>
+<h2 id="najważniejszy-mechanizm-aplikacji">Najważniejszy mechanizm aplikacji</h2>
+<p>Najważniejszym mechanizmem aplikacji jest Organizer, czyli zestaw narzędzi wsadowych dostępnych w oknie <code>Batch tools</code>. Jego głównym zadaniem jest szybkie porządkowanie plików oraz seryjna zmiana ich nazw.</p>
+<p>Organizer jest szczególnie przydatny, gdy użytkownik ma folder z dużą liczbą różnych plików i chce szybko doprowadzić go do porządku. Zamiast ręcznie przenosić każdy plik, aplikacja może przenieść lub skopiować wybrane typy plików do folderu docelowego, a opcjonalnie także utworzyć podfoldery według kategorii.</p>
+<p>Druga ważna część Organizera to seryjna zmiana nazw. Użytkownik może zdefiniować wzorzec nazwy, wykorzystać znaczniki takie jak <code>{name}</code>, <code>{counter}</code>, <code>{created}</code>, <code>{modified}</code>, <code>{folder}</code> lub <code>{ext}</code>, a następnie sprawdzić podgląd zmian przed ich zastosowaniem.</p>
+<p>Proces korzystania z Organizera wygląda następująco:</p>
+<ol>
+<li>Użytkownik wybiera folder z plikami.</li>
+<li>Otwiera okno <code>Batch tools</code> za pomocą funkcji <code>Organize</code>.</li>
+<li>Wybiera tryb działania: przenoszenie, kopiowanie albo seryjną zmianę nazw.</li>
+<li>Wskazuje typy plików, folder docelowy lub wzorzec nowej nazwy.</li>
+<li>Sprawdza podgląd zmian.</li>
+<li>Uruchamia operację.</li>
+<li>Aplikacja porządkuje pliki lub zmienia ich nazwy zgodnie z wybranymi ustawieniami.</li>
+</ol>
 
 </article>
 

@@ -87,64 +87,64 @@
         <article data-uid="">
 <h1 id="konfiguracja-projektu">Konfiguracja projektu</h1>
 
-<p>Ta sekcja opisuje ustawienia wymagane przed pierwszym uruchomieniem aplikacji w srodowisku deweloperskim.</p>
+<p>Ta sekcja opisuje ustawienia wymagane przed pierwszym uruchomieniem aplikacji w środowisku deweloperskim.</p>
 <h2 id="zmienne-srodowiskowe">Zmienne srodowiskowe</h2>
-<p>Aplikacja korzysta z klucza API VirusTotal. Klucz powinien byc zapisany jako zmienna srodowiskowa:</p>
+<p>Aplikacja korzysta z klucza API VirusTotal. Klucz powinien byc zapisany jako zmienna środowiskowa:</p>
 <pre><code class="lang-text">VIRUSTOTAL_API_KEY
 </code></pre>
-<p>Przyklad ustawienia zmiennej w PowerShell dla aktualnej sesji terminala:</p>
+<p>Przykład ustawienia zmiennej w PowerShell dla aktualnej sesji terminala:</p>
 <pre><code class="lang-powershell">$env:VIRUSTOTAL_API_KEY=&quot;twoj-klucz-api&quot;
 </code></pre>
-<p>Przyklad ustawienia zmiennej na stale dla konta uzytkownika:</p>
+<p>Przykład ustawienia zmiennej na stałe dla konta użytkownika:</p>
 <pre><code class="lang-powershell">[Environment]::SetEnvironmentVariable(&quot;VIRUSTOTAL_API_KEY&quot;, &quot;twoj-klucz-api&quot;, &quot;User&quot;)
 </code></pre>
-<p>Po ustawieniu zmiennej na stale nalezy uruchomic terminal lub Visual Studio ponownie, aby nowa wartosc byla widoczna dla aplikacji.</p>
+<p>Po ustawieniu zmiennej na stałe należy uruchomic terminal lub Visual Studio ponownie, aby nowa wartość była widoczna dla aplikacji.</p>
 <h2 id="baza-danych">Baza danych</h2>
 <p>Projekt korzysta z lokalnej bazy SQLite zapisanej w pliku:</p>
 <pre><code class="lang-text">Data/database.db
 </code></pre>
-<p>Plik bazy jest dolaczony do projektu i kopiowany do katalogu wyjsciowego podczas budowania aplikacji dzieki konfiguracji w pliku <code>.csproj</code>:</p>
+<p>Plik bazy jest dołączony do projektu i kopiowany do katalogu wyjściowego podczas budowania aplikacji dzięki konfiguracji w pliku <code>.csproj</code>:</p>
 <pre><code class="lang-xml">&lt;Content Include=&quot;Data\database.db&quot;&gt;
   &lt;CopyToOutputDirectory&gt;PreserveNewest&lt;/CopyToOutputDirectory&gt;
 &lt;/Content&gt;
 </code></pre>
 <p>Aplikacja nie wymaga osobnego serwera bazy danych, takiego jak PostgreSQL, MySQL lub SQL Server.</p>
 <h2 id="connection-string">Connection string</h2>
-<p>Sciezka do bazy jest budowana w klasie <code>Database</code> na podstawie katalogu uruchomieniowego aplikacji:</p>
+<p>Ścieżka do bazy jest budowana w klasie <code>Database</code> na podstawie katalogu uruchomieniowego aplikacji:</p>
 <pre><code class="lang-text">&lt;folder-aplikacji&gt;/Data/database.db
 </code></pre>
-<p>Nie trzeba ustawiac connection stringa w pliku konfiguracyjnym. Jesli baza ma zostac przeniesiona w inne miejsce, nalezy zmienic sposob tworzenia sciezki w klasie <code>Database</code>.</p>
+<p>Nie trzeba ustawiać connection stringa w pliku konfiguracyjnym. Jeśli baza ma zostać przeniesiona w inne miejsce, należy zmienić sposób tworzenia ścieżki w klasie <code>Database</code>.</p>
 <h2 id="migracje">Migracje</h2>
-<p>Projekt nie korzysta z migracji Entity Framework. Struktura bazy znajduje sie w gotowym pliku SQLite.</p>
+<p>Projekt nie korzysta z migracji Entity Framework. Struktura bazy znajduje się w gotowym pliku SQLite.</p>
 <p>Nie ma komendy typu:</p>
 <pre><code class="lang-powershell">dotnet ef database update
 </code></pre>
 <h2 id="dane-poczatkowe">Dane poczatkowe</h2>
-<p>Projekt nie ma mechanizmu seedowania danych testowych ani kont uzytkownikow. Aplikacja nie posiada systemu logowania, wiec nie istnieje domyslne konto administratora.</p>
+<p>Projekt nie ma mechanizmu seedowania danych testowych ani kont użytkowników. Aplikacja nie posiada systemu logowania, więc nie istnieje domyślne konto administratora.</p>
 <h2 id="najczestsze-problemy-konfiguracyjne">Najczestsze problemy konfiguracyjne</h2>
 <table>
 <thead>
 <tr>
 <th>Problem</th>
-<th>Mozliwa przyczyna</th>
-<th>Rozwiazanie</th>
+<th>Możliwa przyczyna</th>
+<th>Rozwiązanie</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Skanowanie nie dziala</td>
+<td>Skanowanie nie działa</td>
 <td>Brak zmiennej <code>VIRUSTOTAL_API_KEY</code></td>
-<td>Ustaw klucz API jako zmienna srodowiskowa</td>
+<td>Ustaw klucz API jako zmienna środowiskowa</td>
 </tr>
 <tr>
-<td>Podglad PDF/DOCX nie dziala</td>
+<td>Podgląd PDF/DOCX nie działa</td>
 <td>Brak WebView2 Runtime</td>
 <td>Zainstaluj Microsoft Edge WebView2 Runtime</td>
 </tr>
 <tr>
 <td>Baza nie zapisuje danych</td>
-<td>Brak pliku <code>Data/database.db</code> w katalogu wyjsciowym</td>
-<td>Sprawdz, czy plik jest dolaczony jako <code>Content</code> i kopiowany przy buildzie</td>
+<td>Brak pliku <code>Data/database.db</code> w katalogu wyjściowym</td>
+<td>Sprawdź, czy plik jest dołączony jako <code>Content</code> i kopiowany przy buildzie</td>
 </tr>
 <tr>
 <td>DocFX nie pokazuje API</td>

@@ -120,7 +120,7 @@
 <tr>
 <td>Windows Forms</td>
 <td>.NET 10 / Windows</td>
-<td>Pomocnicze elementy wyboru folderow</td>
+<td>Pomocnicze elementy wyboru folderów</td>
 <td><a href="https://learn.microsoft.com/dotnet/desktop/winforms/">Windows Forms</a></td>
 </tr>
 <tr>
@@ -132,13 +132,13 @@
 <tr>
 <td>Microsoft WebView2</td>
 <td>1.0.3912.50</td>
-<td>Podglad PDF/DOCX przez kontrolke webowa</td>
+<td>Podgląd PDF/DOCX przez kontrolkę webową</td>
 <td><a href="https://developer.microsoft.com/microsoft-edge/webview2/">WebView2</a></td>
 </tr>
 <tr>
 <td>DocumentFormat.OpenXml</td>
 <td>3.5.1</td>
-<td>Obsluga dokumentow Office</td>
+<td>Obsługa dokumentów Office</td>
 <td><a href="https://learn.microsoft.com/office/open-xml/open-xml-sdk">Open XML SDK</a></td>
 </tr>
 <tr>
@@ -150,7 +150,7 @@
 <tr>
 <td>OpenXmlPowerTools</td>
 <td>4.5.3.2</td>
-<td>Pomocnicza obsluga dokumentow Open XML</td>
+<td>Pomocnicza obsługa dokumentów Open XML</td>
 <td><a href="https://github.com/OfficeDev/Open-Xml-PowerTools">OpenXmlPowerTools</a></td>
 </tr>
 <tr>
@@ -180,19 +180,19 @@
 </tr>
 <tr>
 <td>Runtime desktopowy</td>
-<td>.NET Desktop Runtime zgodny z .NET 10, jesli aplikacja jest uruchamiana bez SDK</td>
+<td>.NET Desktop Runtime zgodny z .NET 10, jeśli aplikacja jest uruchamiana bez SDK</td>
 </tr>
 <tr>
 <td>WebView2 Runtime</td>
-<td>Microsoft Edge WebView2 Runtime wymagany do podgladu PDF/DOCX</td>
+<td>Microsoft Edge WebView2 Runtime wymagany do podglądu PDF/DOCX</td>
 </tr>
 <tr>
 <td>Git</td>
-<td>Narzedzie do pobrania repozytorium</td>
+<td>Narzędzie do pobrania repozytorium</td>
 </tr>
 <tr>
 <td>Baza danych</td>
-<td>Lokalny plik SQLite <code>Data/database.db</code>, kopiowany do katalogu wyjsciowego</td>
+<td>Lokalny plik SQLite <code>Data/database.db</code>, kopiowany do katalogu wyjściowego</td>
 </tr>
 <tr>
 <td>DocFX</td>
@@ -200,7 +200,7 @@
 </tr>
 </tbody>
 </table>
-<p>Projekt jest aplikacja WPF, dlatego nie jest przeznaczony do uruchamiania na macOS ani Linux bez dodatkowych warstw zgodnosci.</p>
+<p>Projekt jest aplikacją WPF, dlatego nie jest przeznaczony do uruchamiania na macOS ani Linux bez dodatkowych warstw zgodności.</p>
 <h2 id="proces-instalacji">Proces instalacji</h2>
 <ol>
 <li>Pobierz projekt z repozytorium:</li>
@@ -209,7 +209,7 @@
 cd &lt;folder-repozytorium&gt;\FileScannerAppWpf
 </code></pre>
 <ol start="2">
-<li>Przywroc zaleznosci NuGet:</li>
+<li>Przywróć zależności NuGet:</li>
 </ol>
 <pre><code class="lang-powershell">dotnet restore
 </code></pre>
@@ -219,11 +219,11 @@ cd &lt;folder-repozytorium&gt;\FileScannerAppWpf
 <pre><code class="lang-powershell">dotnet build
 </code></pre>
 <ol start="4">
-<li>Uruchom aplikacje:</li>
+<li>Uruchom aplikację:</li>
 </ol>
 <pre><code class="lang-powershell">dotnet run
 </code></pre>
-<p>Aplikacja jest programem desktopowym, wiec po uruchomieniu otworzy sie okno systemowe. Nie bedzie dostepna pod adresem <code>localhost</code>, poniewaz nie jest aplikacja webowa.</p>
+<p>Aplikacja jest programem desktopowym, więc po uruchomieniu otworzy się okno systemowe. Nie będzie dostępna pod adresem <code>localhost</code>, ponieważ nie jest aplikacja webowa.</p>
 <h2 id="generowanie-dokumentacji-docfx">Generowanie dokumentacji DocFX</h2>
 <ol>
 <li>Zainstaluj lub zaktualizuj DocFX:</li>
@@ -236,7 +236,7 @@ cd &lt;folder-repozytorium&gt;\FileScannerAppWpf
 <pre><code class="lang-powershell">docfx metadata docfx.json
 </code></pre>
 <ol start="3">
-<li>Zbuduj strone dokumentacji:</li>
+<li>Zbuduj stronę dokumentacji:</li>
 </ol>
 <pre><code class="lang-powershell">docfx build docfx.json
 </code></pre>
@@ -245,10 +245,10 @@ cd &lt;folder-repozytorium&gt;\FileScannerAppWpf
 </ol>
 <pre><code class="lang-powershell">docfx serve _site --port 8080
 </code></pre>
-<p>Dokumentacja bedzie dostepna pod adresem:</p>
+<p>Dokumentacja będzie dostępna pod adresem:</p>
 <pre><code class="lang-text">http://localhost:8080
 </code></pre>
-<p>Sekcja API bedzie dostepna pod adresem:</p>
+<p>Sekcja API będzie dostępna pod adresem:</p>
 <pre><code class="lang-text">http://localhost:8080/api/
 </code></pre>
 

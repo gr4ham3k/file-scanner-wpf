@@ -513,6 +513,76 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "images/user-guide-context-menu.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/user-guide-context-menu.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/user-guide-filtering.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/user-guide-filtering.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/user-guide-history.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/user-guide-history.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/user-guide-main-window.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/user-guide-main-window.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/user-guide-organize.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/user-guide-organize.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/user-guide-scan-options.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/user-guide-scan-options.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/user-guide-scan-results.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/user-guide-scan-results.png"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {

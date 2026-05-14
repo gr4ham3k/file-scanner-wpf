@@ -1,42 +1,41 @@
 # Uruchomienie projektu dla uzytkownika
 
-> Sekcja do uzupelnienia po przygotowaniu wersji instalacyjnej aplikacji.
+Ta sekcja opisuje sposób uruchomienia aplikacji przez użytkownika końcowego, który nie pracuje bezpośrednio z kodem źródłowym.
 
-## Sposob pobrania aplikacji
+## Pobranie aplikacji
 
-TODO: Opisz, skad uzytkownik koncowy ma pobrac gotowa aplikacje.
+Gotowa wersja aplikacji jest dostępna w sekcji `Releases` repozytorium projektu:
 
-Przykladowe informacje do uzupelnienia:
+- [File Scanner WPF - V1.0.0](https://github.com/gr4ham3k/file-scanner-wpf/releases/tag/V1.0.0)
 
-- link do zakladki Releases w repozytorium,
-- nazwa pliku instalatora, na przyklad `FileScannerAppWpfSetup.exe`,
-- informacja, czy aplikacja jest dostepna jako instalator, archiwum ZIP czy pojedynczy plik `.exe`.
+Aplikacja jest udostepniona jako archiwum `.zip`. Po pobraniu należy rozpakować paczkę i uruchomić plik `.exe` znajdujący się w rozpakowanym folderze.
 
 ## Instalacja
 
-TODO: Opisz proces instalacji krok po kroku.
+Przykładowy proces instalacji dla użytkownika:
 
-Przykladowy schemat:
+1. Wejdź na stronę wydania: [V1.0.0](https://github.com/gr4ham3k/file-scanner-wpf/releases/tag/V1.0.0).
+2. Pobierz plik `.zip` z sekcji `Assets`.
+3. Rozpakuj archiwum.
+4. Uruchom plik `.exe` z rozpakowanego folderu.
 
-1. Pobierz plik instalatora.
-2. Uruchom instalator.
-3. Przejdz przez kroki kreatora instalacji.
-4. Uruchom aplikacje ze skrotu na pulpicie albo z menu Start.
+## Wymagania systemowe
 
-## Wymagania sprzetowe
-
-TODO: Uzupelnij wymagania po przetestowaniu aplikacji na komputerze uzytkownika.
-
-Propozycja do sprawdzenia:
-
-| Element | Minimalne wymaganie |
+| Element | Wymaganie |
 | --- | --- |
 | System operacyjny | Windows 10 lub Windows 11 |
-| Procesor | Dwurdzeniowy procesor 64-bit |
-| Pamiec RAM | 4 GB |
-| Miejsce na dysku | 200 MB na aplikacje oraz dodatkowe miejsce na pliki uzytkownika |
-| Internet | Wymagany do skanowania plikow przez VirusTotal |
+| Architektura | 64-bit |
+| Pamięć RAM | Minimum 4 GB |
+| Miejsce na dysku | Minimum 200 MB na aplikacje oraz dodatkowe miejsce na pliki użytkownika |
+| Internet | Wymagany do skanowania plików przez VirusTotal |
+| WebView2 Runtime | Wymagany do podglądu plików PDF i DOCX |
 
-## Uwagi dla uzytkownika
+## Konfiguracja po stronie uzytkownika
 
-TODO: Dodaj informacje o pierwszym uruchomieniu, wymaganym kluczu API albo ograniczeniach wersji demonstracyjnej, jesli beda potrzebne.
+Aplikacja korzysta z API VirusTotal. Jeżeli wersja udostępniona użytkownikowi nie zawiera własnego sposobu konfiguracji klucza, należy ustawić zmienną srodowiskową:
+
+```text
+VIRUSTOTAL_API_KEY
+```
+
+Bez klucza API funkcje niezależne od VirusTotal nadal mogą działać, ale skanowanie plikow nie będzie mogło pobrać raportów z usługi zewnętrznej.
