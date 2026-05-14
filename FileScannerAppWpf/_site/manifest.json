@@ -36,7 +36,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "FileScannerApp.Database",
-      "Summary": "<p sourcefile=\"api/FileScannerApp.Database.yml\" sourcestartlinenumber=\"1\">Zarzadza trwalym zapisem danych aplikacji w lokalnej bazie SQLite.</p>\n"
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Database.yml\" sourcestartlinenumber=\"1\">Zarządza trwałym zapisem danych aplikacji w lokalnej bazie SQLite.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -78,7 +78,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "FileScannerApp.Models.OperationType",
-      "Summary": "<p sourcefile=\"api/FileScannerApp.Models.OperationType.yml\" sourcestartlinenumber=\"1\">Okresla rodzaj operacji wykonanej na pliku i zapisanej w historii aplikacji.</p>\n"
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Models.OperationType.yml\" sourcestartlinenumber=\"1\">Określa rodzaj operacji wykonanej na pliku i zapisanej w historii aplikacji.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -134,7 +134,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "FileScannerApp.Models.ScanProgress",
-      "Summary": "<p sourcefile=\"api/FileScannerApp.Models.ScanProgress.yml\" sourcestartlinenumber=\"1\">Przechowuje biezacy stan dlugotrwalego skanowania plikow.</p>\n"
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Models.ScanProgress.yml\" sourcestartlinenumber=\"1\">Przechowuje bieżący stan długotrwałego skanowania plików.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -176,7 +176,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "FileScannerApp.Organizer",
-      "Summary": "<p sourcefile=\"api/FileScannerApp.Organizer.yml\" sourcestartlinenumber=\"1\">Organizuje pliki w folderze docelowym wedlug regul wybranych przez uzytkownika.</p>\n"
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Organizer.yml\" sourcestartlinenumber=\"1\">Organizuje pliki w folderze docelowym według reguł wybranych przez użytkownika.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -190,7 +190,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "FileScannerApp.RenameService",
-      "Summary": "<p sourcefile=\"api/FileScannerApp.RenameService.yml\" sourcestartlinenumber=\"1\">Generuje nowe nazwy plikow na podstawie wzorca podanego przez uzytkownika.</p>\n"
+      "Summary": "<p sourcefile=\"api/FileScannerApp.RenameService.yml\" sourcestartlinenumber=\"1\">Generuje nowe nazwy plików na podstawie wzorca podanego przez użytkownika.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -204,7 +204,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "FileScannerApp.Services.FileOperationsService",
-      "Summary": "<p sourcefile=\"api/FileScannerApp.Services.FileOperationsService.yml\" sourcestartlinenumber=\"1\">Wykonuje podstawowe operacje na plikach wybrane przez uzytkownika.</p>\n"
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Services.FileOperationsService.yml\" sourcestartlinenumber=\"1\">Wykonuje podstawowe operacje na plikach wybrane przez użytkownika.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -218,7 +218,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "FileScannerApp.Services.ScanService",
-      "Summary": "<p sourcefile=\"api/FileScannerApp.Services.ScanService.yml\" sourcestartlinenumber=\"1\">Obsluguje proces skanowania plikow pod katem zagrozen przy uzyciu zewnetrznego API VirusTotal.</p>\n"
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Services.ScanService.yml\" sourcestartlinenumber=\"1\">Obsługuje proces skanowania plikow pod kątem zagrożen przy użyciu zewnętrznego API VirusTotal.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -302,7 +302,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "FileScannerApp.Wpf.Helpers.PreviewFactory",
-      "Summary": "<p sourcefile=\"api/FileScannerApp.Wpf.Helpers.PreviewFactory.yml\" sourcestartlinenumber=\"1\">Tworzy element interfejsu sluzacy do podgladu zawartosci wybranego pliku.</p>\n"
+      "Summary": "<p sourcefile=\"api/FileScannerApp.Wpf.Helpers.PreviewFactory.yml\" sourcestartlinenumber=\"1\">Tworzy element interfejsu służacy do podglądu zawartosci wybranego pliku.</p>\n"
     },
     {
       "type": "ManagedReference",

@@ -6,12 +6,12 @@ using System.IO;
 namespace FileScannerApp
 {
     /// <summary>
-    /// Organizuje pliki w folderze docelowym wedlug regul wybranych przez uzytkownika.
+    /// Organizuje pliki w folderze docelowym według reguł wybranych przez użytkownika.
     /// </summary>
     /// <remarks>
-    /// Klasa pozwala kopiowac lub przenosic pliki, filtrowac je po rozszerzeniach oraz opcjonalnie
-    /// tworzyc podfoldery odpowiadajace kategoriom plikow. Uwzglednia tez konflikty nazw,
-    /// dzieki czemu istniejace pliki nie sa przypadkowo nadpisywane bez decyzji uzytkownika.
+    /// Klasa pozwala kopiować lub przenosić pliki, filtrować je po rozszerzeniach oraz opcjonalnie
+    /// tworzyć podfoldery odpowiadające kategoriom plików. Uwzględnia też konflikty nazw,
+    /// dzięki czemu istniejące pliki nie są przypadkowo nadpisywane bez decyzji użytkownika.
     /// </remarks>
     /// <seealso cref="FileData"/>
     /// <seealso cref="RenamePreview"/>
@@ -21,21 +21,21 @@ namespace FileScannerApp
         /// Przenosi albo kopiuje pliki do folderu docelowego zgodnie z wybranymi filtrami i opcjami.
         /// </summary>
         /// <remarks>
-        /// Metoda laczy kilka decyzji uzytkownika: wybrane typy plikow, tryb kopiowania lub przenoszenia,
-        /// tworzenie podfolderow oraz podglad nowych nazw. Gdy plik docelowy juz istnieje, konflikt jest
-        /// rozwiazywany przez nadpisanie albo dopisanie licznika do nazwy.
+        /// Metoda łączy kilka decyzji użytkownika: wybrane typy plików, tryb kopiowania lub przenoszenia,
+        /// tworzenie podfolderów oraz podgląd nowych nazw. Gdy plik docelowy już istnieje, konflikt jest
+        /// rozwiązywany przez nadpisanie albo dopisanie licznika do nazwy.
         /// </remarks>
-        /// <param name="files">Pliki dostepne do organizowania.</param>
-        /// <param name="sourceFolder">Folder zrodlowy, ktory musi istniec przed rozpoczeciem operacji.</param>
-        /// <param name="destinationFolder">Folder docelowy; zostanie utworzony, jesli nie istnieje.</param>
+        /// <param name="files">Pliki dostępne do organizowania.</param>
+        /// <param name="sourceFolder">Folder źródłowy, który musi istnieć przed rozpoczęciem operacji.</param>
+        /// <param name="destinationFolder">Folder docelowy; zostanie utworzony, jeśli nie istnieje.</param>
         /// <param name="fileTypes">Lista rozszerzen dopuszczonych do organizowania; pusta lista oznacza brak filtrowania.</param>
-        /// <param name="operation">Tryb operacji: "move" oznacza przeniesienie, pozostale wartosci powoduja kopiowanie.</param>
-        /// <param name="createSubfolders">Okresla, czy pliki maja zostac rozdzielone do podfolderow wedlug typu.</param>
-        /// <param name="overwriteExisting">Okresla, czy istniejace pliki w folderze docelowym moga zostac nadpisane.</param>
-        /// <param name="db">Baza danych uzywana do zapisu historii operacji; moze byc null.</param>
-        /// <param name="previews">Podglad nowych nazw przygotowany przed wykonaniem operacji.</param>
-        /// <returns>Sciezka folderu docelowego, do ktorego organizowano pliki.</returns>
-        /// <exception cref="DirectoryNotFoundException">Wyrzucany, gdy folder zrodlowy nie istnieje.</exception>
+        /// <param name="operation">Tryb operacji: "move" oznacza przeniesienie, pozostałe wartości powodują kopiowanie.</param>
+        /// <param name="createSubfolders">Określa, czy pliki mają zostać rozdzielone do podfolderow według typu.</param>
+        /// <param name="overwriteExisting">Określa, czy istniejące pliki w folderze docelowym mogą zostać nadpisane.</param>
+        /// <param name="db">Baza danych używana do zapisu historii operacji; moze byc null.</param>
+        /// <param name="previews">Podgląd nowych nazw przygotowany przed wykonaniem operacji.</param>
+        /// <returns>Ścieżka folderu docelowego, do którego organizowano pliki.</returns>
+        /// <exception cref="DirectoryNotFoundException">Wyrzucany, gdy folder źródłowy nie istnieje.</exception>
         public static string OrganizeFiles(
             List<FileData> files,
             string sourceFolder,
@@ -130,18 +130,18 @@ namespace FileScannerApp
         }
 
         /// <summary>
-        /// Wyznacza bezpieczna sciezke docelowa, gdy w folderze istnieje juz plik o tej samej nazwie.
+        /// Wyznacza bezpieczną ścieżkę docelową, gdy w folderze istnieje już plik o tej samej nazwie.
         /// </summary>
         /// <remarks>
-        /// Jesli nadpisywanie jest wylaczone, metoda dodaje licznik w nawiasie do nazwy pliku
-        /// i szuka pierwszej wolnej sciezki.
+        /// Jeśli nadpisywanie jest wyłączone, metoda dodaje licznik w nawiasie do nazwy pliku
+        /// i szuka pierwszej wolnej ścieżki.
         /// </remarks>
         /// <param name="fileName">Nazwa pliku bez rozszerzenia.</param>
-        /// <param name="fileExt">Rozszerzenie pliku razem z kropka.</param>
-        /// <param name="targetPath">Pierwotnie planowana sciezka docelowa.</param>
-        /// <param name="overwriteExisting">Informacja, czy istniejacy plik moze zostac nadpisany.</param>
-        /// <param name="targetFolder">Folder, w ktorym szukana jest wolna nazwa.</param>
-        /// <returns>Sciezka bez konfliktu albo pierwotna sciezka, gdy nadpisywanie jest dozwolone.</returns>
+        /// <param name="fileExt">Rozszerzenie pliku razem z kropką.</param>
+        /// <param name="targetPath">Pierwotnie planowana ścieżka docelowa.</param>
+        /// <param name="overwriteExisting">Informacja, czy istniejący plik może zostać nadpisany.</param>
+        /// <param name="targetFolder">Folder, w którym szukana jest wolna nazwa.</param>
+        /// <returns>Ścieżka bez konfliktu albo pierwotna ścieżka, gdy nadpisywanie jest dozwolone.</returns>
         private static string ResolveConflict(string fileName, string fileExt, string targetPath,
             bool overwriteExisting, string targetFolder)
         {
@@ -165,13 +165,13 @@ namespace FileScannerApp
         }
 
         /// <summary>
-        /// Dopasowuje rozszerzenie pliku do kategorii uzywanej przy tworzeniu podfolderow.
+        /// Dopasowuje rozszerzenie pliku do kategorii używanej przy tworzeniu podfolderow.
         /// </summary>
         /// <remarks>
-        /// Kategorie sa pobierane z katalogu typow plikow. Nieznane rozszerzenia trafiaja do folderu "Others",
-        /// aby organizowanie nadal dzialalo dla formatow spoza listy.
+        /// Kategorie są pobierane z katalogu typów plików. Nieznane rozszerzenia trafiają do folderu "Others",
+        /// aby organizowanie nadal dzialało dla formatow spoza listy.
         /// </remarks>
-        /// <param name="ext">Rozszerzenie pliku, na przyklad ".pdf".</param>
+        /// <param name="ext">Rozszerzenie pliku, na przykład ".pdf".</param>
         /// <returns>Nazwa kategorii folderu dla danego rozszerzenia.</returns>
         private static string GetTypeFolder(string ext)
         {

@@ -7,32 +7,32 @@ using System.Threading.Tasks;
 namespace FileScannerApp.Models
 {
     /// <summary>
-    /// Przechowuje biezacy stan dlugotrwalego skanowania plikow.
+    /// Przechowuje bieżący stan długotrwałego skanowania plików.
     /// </summary>
     /// <remarks>
-    /// Obiekt jest przekazywany do interfejsu uzytkownika w trakcie skanowania, aby mozna bylo pokazac
-    /// aktualnie analizowany plik, liczbe przetworzonych elementow oraz liczbe wykrytych zagrozen.
+    /// Obiekt jest przekazywany do interfejsu użytkownika w trakcie skanowania, aby można było pokazać
+    /// aktualnie analizowany plik, liczbę przetworzonych elementów oraz liczbę wykrytych zagrożeń.
     /// </remarks>
     /// <seealso cref="FileScannerApp.Services.ScanService"/>
     public class ScanProgress
     {
         /// <summary>
-        /// Numer aktualnie przetworzonego pliku w ramach calego skanu.
+        /// Numer aktualnie przetworzonego pliku w ramach całego skanu.
         /// </summary>
         public int Current { get; set; }
 
         /// <summary>
-        /// Laczna liczba plikow przewidzianych do sprawdzenia.
+        /// Łączna liczba plików przewidzianych do sprawdzenia.
         /// </summary>
         public int Total { get; set; }
 
         /// <summary>
-        /// Nazwa pliku, ktory zostal ostatnio przekazany do raportowania postepu.
+        /// Nazwa pliku, który został ostatnio przekazany do raportowania postępu.
         /// </summary>
         public string CurrentFile { get; set; }
 
         /// <summary>
-        /// Liczba zagrozen wykrytych od poczatku aktualnego skanowania.
+        /// Liczba zagrożeń wykrytych od początku aktualnego skanowania.
         /// </summary>
         public int ThreatsFound { get; set; }
     }

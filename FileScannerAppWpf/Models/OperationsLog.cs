@@ -6,9 +6,9 @@ namespace FileScannerApp.Models
     /// Reprezentuje pojedynczy wpis historii operacji wykonanej na pliku.
     /// </summary>
     /// <remarks>
-    /// Model przechowuje informacje potrzebne do wyswietlenia historii dzialan uzytkownika
-    /// oraz do cofniecia operacji, jesli jest to mozliwe. Szczegolnie wazne sa sciezki przed i po operacji,
-    /// poniewaz pozwalaja odtworzyc poprzednie polozenie pliku.
+    /// Model przechowuje informacj potrzebne do wyświetlenia historii działań użytkownika
+    /// oraz do cofnięcia operacji, jeśli jest to możliwe. Szczególnie ważne są ścieżki przed i po operacji,
+    /// ponieważ pozwalają odtworzyć poprzednie położenie pliku.
     /// </remarks>
     /// <seealso cref="OperationType"/>
     public class OperationLog
@@ -19,7 +19,7 @@ namespace FileScannerApp.Models
         public int Id { get; set; }
 
         /// <summary>
-        /// Rodzaj operacji, ktory decyduje o sposobie prezentacji i mozliwosci cofniecia.
+        /// Rodzaj operacji, który decyduje o sposobie prezentacji i możliwości cofnięcia.
         /// </summary>
         public OperationType OperationType { get; set; }
 
@@ -29,12 +29,12 @@ namespace FileScannerApp.Models
         public string FileName { get; set; }
 
         /// <summary>
-        /// Sciezka pliku przed wykonaniem operacji.
+        /// Ścieżka pliku przed wykonaniem operacji.
         /// </summary>
         public string OldPath { get; set; }
 
         /// <summary>
-        /// Sciezka pliku po wykonaniu operacji.
+        /// Ścieżka pliku po wykonaniu operacji.
         /// </summary>
         public string NewPath { get; set; }
 
@@ -44,7 +44,7 @@ namespace FileScannerApp.Models
         public DateTime OperationDate { get; set; }
 
         /// <summary>
-        /// Informacja, czy aplikacja moze bezpiecznie zaproponowac cofniecie tej operacji.
+        /// Informacja, czy aplikacja może bezpiecznie zaproponowac cofnięcie tej operacji.
         /// </summary>
         public bool CanUndo { get; set; }
     }

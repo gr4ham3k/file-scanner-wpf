@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class FileOperationsService | mysite ">
       
-      <meta name="description" content="Wykonuje podstawowe operacje na plikach wybrane przez uzytkownika.">
+      <meta name="description" content="Wykonuje podstawowe operacje na plikach wybrane przez użytkownika.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,7 +97,7 @@ Class FileOperationsService  <a class="header-action link-secondary" title="View
   <dl><dt>Assembly</dt><dd>FileScannerAppWpf.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Wykonuje podstawowe operacje na plikach wybrane przez uzytkownika.</p>
+  <div class="markdown summary"><p>Wykonuje podstawowe operacje na plikach wybrane przez użytkownika.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -148,9 +148,9 @@ Class FileOperationsService  <a class="header-action link-secondary" title="View
 
 
   <h2 id="FileScannerApp_Services_FileOperationsService_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Usluga obsluguje przenoszenie, zmiane nazw, usuwanie do wewnetrznego kosza aplikacji
-oraz przywracanie plikow. Operacje, ktore mozna pozniej przeanalizowac lub cofnac,
-sa zapisywane w historii.</p>
+  <div class="markdown level0 remarks"><p>Usługa obsługuje przenoszenie, zmianę nazw, usuwanie do wewnętrznego kosza aplikacji
+oraz przywracanie plikow. Operacje, które można później przeanalizowac lub cofnąć,
+są zapisywane w historii.</p>
 </div>
 
 
@@ -165,7 +165,7 @@ sa zapisywane w historii.</p>
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/FileOperationsService.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Tworzy usluge operacji plikowych powiazana z historia operacji w bazie danych.</p>
+  <div class="markdown level1 summary"><p>Tworzy usługę operacji plikowych powiązaną z historią operacji w bazie danych.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -176,7 +176,7 @@ sa zapisywane w historii.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>db</code> <a class="xref" href="FileScannerApp.Database.html">Database</a></dt>
-    <dd><p>Baza danych uzywana do zapisywania operacji wykonanych na plikach.</p>
+    <dd><p>Baza danych używana do zapisywania operacji wykonanych na plikach.</p>
 </dd>
   </dl>
 
@@ -202,7 +202,7 @@ sa zapisywane w historii.</p>
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/FileOperationsService.cs/#L207"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Trwale usuwa pliki znajdujace sie w wewnetrznym koszu aplikacji.</p>
+  <div class="markdown level1 summary"><p>Trwale usuwa pliki znajdujące się w wewnętrznym koszu aplikacji.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -219,8 +219,8 @@ sa zapisywane w historii.</p>
 
 
   <h4 class="section" id="FileScannerApp_Services_FileOperationsService_CleanupBin_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Po usunieciu pliku odpowiadajacy wpis historii jest oznaczany jako trwale usuniety,
-aby aplikacja nie probowala pozniej przywrocic pliku, ktorego juz nie ma.</p>
+  <div class="markdown level1 remarks"><p>Po usunięciu pliku odpowiadający wpis historii jest oznaczany jako trwale usunięty,
+aby aplikacja nie próbowała później przywrócić pliku, którego już nie ma.</p>
 </div>
 
 
@@ -233,7 +233,7 @@ aby aplikacja nie probowala pozniej przywrocic pliku, ktorego juz nie ma.</p>
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/FileOperationsService.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Przenosi wskazane pliki do wewnetrznego kosza aplikacji zamiast usuwac je trwale.</p>
+  <div class="markdown level1 summary"><p>Przenosi wskazane pliki do wewnętrznego kosza aplikacji zamiast usuwać je trwale.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -244,14 +244,14 @@ aby aplikacja nie probowala pozniej przywrocic pliku, ktorego juz nie ma.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>paths</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd><p>Sciezki plikow przeznaczonych do usuniecia z widoku uzytkownika.</p>
+    <dd><p>Ścieżki plików przeznaczonych do usunięcia z widoku użytkownika.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.moved">moved</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.failed">failed</a>)</dt>
-    <dd><p>Liczba plikow przeniesionych do kosza oraz liczba operacji nieudanych.</p>
+    <dd><p>Liczba plików przeniesionych do kosza oraz liczba operacji nieudanych.</p>
 </dd>
   </dl>
 
@@ -262,8 +262,8 @@ aby aplikacja nie probowala pozniej przywrocic pliku, ktorego juz nie ma.</p>
 
 
   <h4 class="section" id="FileScannerApp_Services_FileOperationsService_DeleteFiles_System_Collections_Generic_List_System_String___remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Kazdy plik otrzymuje unikalna nazwe w katalogu kosza, co chroni przed konfliktami nazw.
-Udane przeniesienie jest zapisywane jako operacja mozliwa do cofniecia.</p>
+  <div class="markdown level1 remarks"><p>Każdy plik otrzymuje unikalną nazwę w katalogu kosza, co chroni przed konfliktami nazw.
+Udane przeniesienie jest zapisywane jako operacja możliwa do cofnięcia.</p>
 </div>
 
 
@@ -276,7 +276,7 @@ Udane przeniesienie jest zapisywane jako operacja mozliwa do cofniecia.</p>
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/FileOperationsService.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Przenosi pliki do wybranego folderu docelowego i zwraca zaktualizowane sciezki.</p>
+  <div class="markdown level1 summary"><p>Przenosi pliki do wybranego folderu docelowego i zwraca zaktualizowane ścieżki.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -287,17 +287,17 @@ Udane przeniesienie jest zapisywane jako operacja mozliwa do cofniecia.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>paths</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd><p>Lista sciezek plikow do przeniesienia.</p>
+    <dd><p>Lista ścieżek plików do przeniesienia.</p>
 </dd>
     <dt><code>targetFolder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Folder, do ktorego maja trafic pliki.</p>
+    <dd><p>Folder, do którego mają trafić pliki.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32,system.collections.generic.list-system.valuetuple-system.string,system.string---.moved">moved</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32,system.collections.generic.list-system.valuetuple-system.string,system.string---.skipped">skipped</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.oldpath">oldPath</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.newpath">newPath</a>)&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32,system.collections.generic.list-system.valuetuple-system.string,system.string---.updatedpaths">updatedPaths</a>)</dt>
-    <dd><p>Liczba przeniesionych plikow, liczba pominietych plikow oraz lista zmian sciezek.</p>
+    <dd><p>Liczba przeniesionych plików, liczba pominiętych plików oraz lista zmian ścieżek.</p>
 </dd>
   </dl>
 
@@ -308,8 +308,8 @@ Udane przeniesienie jest zapisywane jako operacja mozliwa do cofniecia.</p>
 
 
   <h4 class="section" id="FileScannerApp_Services_FileOperationsService_MoveFiles_System_Collections_Generic_List_System_String__System_String__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Metoda pomija pliki, ktore nie istnieja, oraz pliki powodujace konflikt nazwy w folderze docelowym.
-Udane przeniesienia sa zapisywane w historii jako operacje mozliwe do cofniecia.</p>
+  <div class="markdown level1 remarks"><p>Metoda pomija pliki, ktore nie istnieją, oraz pliki powodujące konflikt nazwy w folderze docelowym.
+Udane przeniesienia są zapisywane w historii jako operacje możliwe do cofnięcia.</p>
 </div>
 
 
@@ -322,7 +322,7 @@ Udane przeniesienia sa zapisywane w historii jako operacje mozliwe do cofniecia.
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/FileOperationsService.cs/#L162"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Zmienia nazwe pojedynczego pliku i zapisuje operacje w historii.</p>
+  <div class="markdown level1 summary"><p>Zmienia nazwę pojedyńczego pliku i zapisuje operacje w historii.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -333,17 +333,17 @@ Udane przeniesienia sa zapisywane w historii jako operacje mozliwe do cofniecia.
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>oldPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Aktualna sciezka pliku.</p>
+    <dd><p>Aktualna ścieżka pliku.</p>
 </dd>
     <dt><code>newName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Nowa nazwa pliku podana przez uzytkownika.</p>
+    <dd><p>Nowa nazwa pliku podana przez użytkownika.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.string,system.string-.success">success</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.string,system.string-.newpath">newPath</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.string,system.string-.error">error</a>)</dt>
-    <dd><p>Informacja o powodzeniu, nowa sciezka albo komunikat bledu.</p>
+    <dd><p>Informacja o powodzeniu, nowa ścieżka albo komunikat bledu.</p>
 </dd>
   </dl>
 
@@ -354,8 +354,8 @@ Udane przeniesienia sa zapisywane w historii jako operacje mozliwe do cofniecia.
 
 
   <h4 class="section" id="FileScannerApp_Services_FileOperationsService_RenameFile_System_String_System_String__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Jesli nowa nazwa nie zawiera oryginalnego rozszerzenia, metoda dopisuje je automatycznie.
-Zamiast rzucac wyjatki przy typowych problemach uzytkownika, zwraca opis bledu w wyniku metody.</p>
+  <div class="markdown level1 remarks"><p>Jeśli nowa nazwa nie zawiera oryginalnego rozszerzenia, metoda dopisuje je automatycznie.
+Zamiast rzucać wyjątki przy typowych problemach użytkownika, zwraca opis błędu w wyniku metody.</p>
 </div>
 
 
@@ -391,8 +391,8 @@ Zamiast rzucac wyjatki przy typowych problemach uzytkownika, zwraca opis bledu w
 
 
   <h4 class="section" id="FileScannerApp_Services_FileOperationsService_RestoreFile_FileScannerApp_Models_OperationLog__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Metoda korzysta ze sciezki docelowej zapisanej przy usunieciu lub przeniesieniu pliku.
-Jesli plik nie istnieje albo nie da sie ustalic folderu docelowego, metoda konczy prace bez bledu.</p>
+  <div class="markdown level1 remarks"><p>Metoda korzysta ze ścieżki docelowej zapisanej przy usunięciu lub przeniesieniu pliku.
+Jesli plik nie istnieje albo nie da sie ustalić folderu docelowego, metoda kończy pracę bez błędu.</p>
 </div>
 
 

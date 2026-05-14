@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class RenameService | mysite ">
       
-      <meta name="description" content="Generuje nowe nazwy plikow na podstawie wzorca podanego przez uzytkownika.">
+      <meta name="description" content="Generuje nowe nazwy plik&#243;w na podstawie wzorca podanego przez użytkownika.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,7 +97,7 @@ Class RenameService  <a class="header-action link-secondary" title="View source"
   <dl><dt>Assembly</dt><dd>FileScannerAppWpf.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Generuje nowe nazwy plikow na podstawie wzorca podanego przez uzytkownika.</p>
+  <div class="markdown summary"><p>Generuje nowe nazwy plików na podstawie wzorca podanego przez użytkownika.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -148,9 +148,9 @@ Class RenameService  <a class="header-action link-secondary" title="View source"
 
 
   <h2 id="FileScannerApp_RenameService_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Usluga obsluguje dynamiczne znaczniki, takie jak nazwa pliku, data utworzenia, data modyfikacji,
-numer porzadkowy, nazwa folderu oraz rozszerzenie. Dzieki temu umozliwia seryjna zmiane nazw
-bez recznego edytowania kazdego pliku osobno.</p>
+  <div class="markdown level0 remarks"><p>Usługa obsługuje dynamiczne znaczniki, takie jak nazwa pliku, data utworzenia, data modyfikacji,
+numer porządkowy, nazwa folderu oraz rozszerzenie. Dzięki temu umożliwia seryjną zmianę nazw
+bez ręcznego edytowania każdego pliku osobno.</p>
 </div>
 
 
@@ -165,7 +165,7 @@ bez recznego edytowania kazdego pliku osobno.</p>
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/RenameService.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Buduje nowa nazwe pliku na podstawie wzorca i danych oryginalnego pliku.</p>
+  <div class="markdown level1 summary"><p>Buduje nową nazwę pliku na podstawie wzorca i danych oryginalnego pliku.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -176,13 +176,13 @@ bez recznego edytowania kazdego pliku osobno.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>pattern</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Wzorzec nowej nazwy; pusty wzorzec pozostawia nazwe bez zmian.</p>
+    <dd><p>Wzorzec nowej nazwy; pusty wzorzec pozostawia nazwę bez zmian.</p>
 </dd>
     <dt><code>originalPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Pelna sciezka oryginalnego pliku.</p>
+    <dd><p>Pełna ścieżka oryginalnego pliku.</p>
 </dd>
     <dt><code>counter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Numer porzadkowy uzywany w znacznikach licznika.</p>
+    <dd><p>Numer porządkowy używany w znacznikach licznika.</p>
 </dd>
     <dt><code>option</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>Opcja formatowania tekstu: &quot;upper&quot;, &quot;lower&quot;, &quot;capitalize&quot; albo brak zmiany.</p>
@@ -203,9 +203,9 @@ bez recznego edytowania kazdego pliku osobno.</p>
 
 
   <h4 class="section" id="FileScannerApp_RenameService_GenerateNewName_System_String_System_String_System_Int32_System_String__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Wzorzec moze zawierac znaczniki: {name}, {created}, {modified}, {counter},
-{counter:000}, {folder} oraz {ext}. Oryginalne rozszerzenie jest dopisywane na koncu,
-aby zmiana nazwy nie zmieniala typu pliku.</p>
+  <div class="markdown level1 remarks"><p>Wzorzec moze zawierać znaczniki: {name}, {created}, {modified}, {counter},
+{counter:000}, {folder} oraz {ext}. Oryginalne rozszerzenie jest dopisywane na końcu,
+aby zmiana nazwy nie zmieniała typu pliku.</p>
 </div>
 
 
@@ -218,7 +218,7 @@ aby zmiana nazwy nie zmieniala typu pliku.</p>
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/RenameService.cs/#L84"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Przygotowuje liste podgladu nazw dla plikow znajdujacych sie w folderze.</p>
+  <div class="markdown level1 summary"><p>Przygotowuje listę podglądu nazw dla plików znajdujących się w folderze.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -229,14 +229,14 @@ aby zmiana nazwy nie zmieniala typu pliku.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Folder, z ktorego maja zostac pobrane pliki do podgladu.</p>
+    <dd><p>Folder, z którego mają zostać pobrane pliki do podglądu.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="FileScannerApp.Models.RenamePreview.html">RenamePreview</a>&gt;</dt>
-    <dd><p>Lista obiektow zawierajacych obecna nazwe pliku oraz miejsce na nazwe po zmianie.</p>
+    <dd><p>Lista obiektow zawierających obecną nazwę pliku oraz miejsce na nazwę po zmianie.</p>
 </dd>
   </dl>
 
@@ -247,8 +247,8 @@ aby zmiana nazwy nie zmieniala typu pliku.</p>
 
 
   <h4 class="section" id="FileScannerApp_RenameService_LoadPreview_System_String__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Metoda nie zmienia nazw plikow na dysku. Tworzy jedynie dane pomocnicze, ktore moga zostac
-pokazane uzytkownikowi przed wykonaniem faktycznej operacji zmiany nazw lub organizowania.</p>
+  <div class="markdown level1 remarks"><p>Metoda nie zmienia nazw plików na dysku. Tworzy jedynie dane pomocnicze, ktore mogą zostać
+pokazane użytkownikowi przed wykonaniem faktycznej operacji zmiany nazw lub organizowania.</p>
 </div>
 
 

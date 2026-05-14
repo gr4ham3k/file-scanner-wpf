@@ -7,12 +7,12 @@ using System.IO;
 namespace FileScannerApp.Services
 {
     /// <summary>
-    /// Wykonuje podstawowe operacje na plikach wybrane przez uzytkownika.
+    /// Wykonuje podstawowe operacje na plikach wybrane przez użytkownika.
     /// </summary>
     /// <remarks>
-    /// Usluga obsluguje przenoszenie, zmiane nazw, usuwanie do wewnetrznego kosza aplikacji
-    /// oraz przywracanie plikow. Operacje, ktore mozna pozniej przeanalizowac lub cofnac,
-    /// sa zapisywane w historii.
+    /// Usługa obsługuje przenoszenie, zmianę nazw, usuwanie do wewnętrznego kosza aplikacji
+    /// oraz przywracanie plikow. Operacje, które można później przeanalizowac lub cofnąć,
+    /// są zapisywane w historii.
     /// </remarks>
     /// <seealso cref="OperationLog"/>
     /// <seealso cref="OperationType"/>
@@ -22,23 +22,23 @@ namespace FileScannerApp.Services
         private readonly Database db;
 
         /// <summary>
-        /// Tworzy usluge operacji plikowych powiazana z historia operacji w bazie danych.
+        /// Tworzy usługę operacji plikowych powiązaną z historią operacji w bazie danych.
         /// </summary>
-        /// <param name="db">Baza danych uzywana do zapisywania operacji wykonanych na plikach.</param>
+        /// <param name="db">Baza danych używana do zapisywania operacji wykonanych na plikach.</param>
         public FileOperationsService(Database db)
         {
             this.db = db;
         }
 
         /// <summary>
-        /// Przenosi wskazane pliki do wewnetrznego kosza aplikacji zamiast usuwac je trwale.
+        /// Przenosi wskazane pliki do wewnętrznego kosza aplikacji zamiast usuwać je trwale.
         /// </summary>
         /// <remarks>
-        /// Kazdy plik otrzymuje unikalna nazwe w katalogu kosza, co chroni przed konfliktami nazw.
-        /// Udane przeniesienie jest zapisywane jako operacja mozliwa do cofniecia.
+        /// Każdy plik otrzymuje unikalną nazwę w katalogu kosza, co chroni przed konfliktami nazw.
+        /// Udane przeniesienie jest zapisywane jako operacja możliwa do cofnięcia.
         /// </remarks>
-        /// <param name="paths">Sciezki plikow przeznaczonych do usuniecia z widoku uzytkownika.</param>
-        /// <returns>Liczba plikow przeniesionych do kosza oraz liczba operacji nieudanych.</returns>
+        /// <param name="paths">Ścieżki plików przeznaczonych do usunięcia z widoku użytkownika.</param>
+        /// <returns>Liczba plików przeniesionych do kosza oraz liczba operacji nieudanych.</returns>
         public (int moved, int failed) DeleteFiles(List<string> paths)
         {
             int movedCount = 0;
@@ -87,15 +87,15 @@ namespace FileScannerApp.Services
         }
 
         /// <summary>
-        /// Przenosi pliki do wybranego folderu docelowego i zwraca zaktualizowane sciezki.
+        /// Przenosi pliki do wybranego folderu docelowego i zwraca zaktualizowane ścieżki.
         /// </summary>
         /// <remarks>
-        /// Metoda pomija pliki, ktore nie istnieja, oraz pliki powodujace konflikt nazwy w folderze docelowym.
-        /// Udane przeniesienia sa zapisywane w historii jako operacje mozliwe do cofniecia.
+        /// Metoda pomija pliki, ktore nie istnieją, oraz pliki powodujące konflikt nazwy w folderze docelowym.
+        /// Udane przeniesienia są zapisywane w historii jako operacje możliwe do cofnięcia.
         /// </remarks>
-        /// <param name="paths">Lista sciezek plikow do przeniesienia.</param>
-        /// <param name="targetFolder">Folder, do ktorego maja trafic pliki.</param>
-        /// <returns>Liczba przeniesionych plikow, liczba pominietych plikow oraz lista zmian sciezek.</returns>
+        /// <param name="paths">Lista ścieżek plików do przeniesienia.</param>
+        /// <param name="targetFolder">Folder, do którego mają trafić pliki.</param>
+        /// <returns>Liczba przeniesionych plików, liczba pominiętych plików oraz lista zmian ścieżek.</returns>
         public (int moved, int skipped, List<(string oldPath, string newPath)> updatedPaths)
         MoveFiles(List<string> paths, string targetFolder)
         {
@@ -150,15 +150,15 @@ namespace FileScannerApp.Services
         }
 
         /// <summary>
-        /// Zmienia nazwe pojedynczego pliku i zapisuje operacje w historii.
+        /// Zmienia nazwę pojedyńczego pliku i zapisuje operacje w historii.
         /// </summary>
         /// <remarks>
-        /// Jesli nowa nazwa nie zawiera oryginalnego rozszerzenia, metoda dopisuje je automatycznie.
-        /// Zamiast rzucac wyjatki przy typowych problemach uzytkownika, zwraca opis bledu w wyniku metody.
+        /// Jeśli nowa nazwa nie zawiera oryginalnego rozszerzenia, metoda dopisuje je automatycznie.
+        /// Zamiast rzucać wyjątki przy typowych problemach użytkownika, zwraca opis błędu w wyniku metody.
         /// </remarks>
-        /// <param name="oldPath">Aktualna sciezka pliku.</param>
-        /// <param name="newName">Nowa nazwa pliku podana przez uzytkownika.</param>
-        /// <returns>Informacja o powodzeniu, nowa sciezka albo komunikat bledu.</returns>
+        /// <param name="oldPath">Aktualna ścieżka pliku.</param>
+        /// <param name="newName">Nowa nazwa pliku podana przez użytkownika.</param>
+        /// <returns>Informacja o powodzeniu, nowa ścieżka albo komunikat bledu.</returns>
         public (bool success, string newPath, string error) RenameFile(string oldPath, string newName)
         {
             try
@@ -198,11 +198,11 @@ namespace FileScannerApp.Services
         }
 
         /// <summary>
-        /// Trwale usuwa pliki znajdujace sie w wewnetrznym koszu aplikacji.
+        /// Trwale usuwa pliki znajdujące się w wewnętrznym koszu aplikacji.
         /// </summary>
         /// <remarks>
-        /// Po usunieciu pliku odpowiadajacy wpis historii jest oznaczany jako trwale usuniety,
-        /// aby aplikacja nie probowala pozniej przywrocic pliku, ktorego juz nie ma.
+        /// Po usunięciu pliku odpowiadający wpis historii jest oznaczany jako trwale usunięty,
+        /// aby aplikacja nie próbowała później przywrócić pliku, którego już nie ma.
         /// </remarks>
         public void CleanupBin()
         {
@@ -223,8 +223,8 @@ namespace FileScannerApp.Services
         /// Przywraca plik na podstawie wpisu historii operacji.
         /// </summary>
         /// <remarks>
-        /// Metoda korzysta ze sciezki docelowej zapisanej przy usunieciu lub przeniesieniu pliku.
-        /// Jesli plik nie istnieje albo nie da sie ustalic folderu docelowego, metoda konczy prace bez bledu.
+        /// Metoda korzysta ze ścieżki docelowej zapisanej przy usunięciu lub przeniesieniu pliku.
+        /// Jesli plik nie istnieje albo nie da sie ustalić folderu docelowego, metoda kończy pracę bez błędu.
         /// </remarks>
         /// <param name="log">Wpis historii zawierajacy poprzednia i aktualna sciezke pliku.</param>
         public void RestoreFile(OperationLog log)

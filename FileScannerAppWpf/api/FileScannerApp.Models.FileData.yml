@@ -31,11 +31,11 @@ items:
   namespace: FileScannerApp.Models
   summary: Reprezentuje podstawowe metadane pliku wykorzystywane przez aplikacje.
   remarks: >-
-    Model oddziela dane pobrane z systemu plikow od logiki interfejsu i uslug.
+    Model oddziela dane pobrane z systemu plików od logiki interfejsu i usług.
 
-    Dzieki temu skanowanie, organizowanie oraz wyswietlanie listy plikow korzystaja
+    Dzięki temu skanowanie, organizowanie oraz wyświetlanie listy plików korzystają
 
-    z jednej wspolnej struktury danych.
+    z jednej wspólnej struktury danych.
   example: []
   syntax:
     content: public class FileData
@@ -72,7 +72,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Nazwa pliku pokazywana uzytkownikowi w listach i wynikach operacji.
+  summary: Nazwa pliku pokazywana użytkownikowi w listach i wynikach operacji.
   example: []
   syntax:
     content: public string Name { get; set; }
@@ -103,7 +103,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Rozszerzenie uzywane do filtrowania, organizowania i wyboru sposobu podgladu.
+  summary: Rozszerzenie używane do filtrowania, organizowania i wyboru sposobu podglądu.
   example: []
   syntax:
     content: public string Extension { get; set; }
@@ -134,7 +134,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Pelna sciezka potrzebna do wykonania operacji na rzeczywistym pliku.
+  summary: Pełna ścieżka potrzebna do wykonania operacji na rzeczywistym pliku.
   example: []
   syntax:
     content: public string Path { get; set; }
@@ -165,7 +165,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Rozmiar pliku w bajtach, przydatny przy prezentacji szczegolow pliku.
+  summary: Rozmiar pliku w bajtach, przydatny przy prezentacji szczegółow pliku.
   example: []
   syntax:
     content: public long Size { get; set; }
@@ -196,7 +196,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Data utworzenia wykorzystywana miedzy innymi przy generowaniu nowych nazw.
+  summary: Data utworzenia wykorzystywana między innymi przy generowaniu nowych nazw.
   example: []
   syntax:
     content: public DateTime CreatedDate { get; set; }
@@ -227,7 +227,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Data ostatniej modyfikacji wykorzystywana w widoku plikow i wzorcach nazw.
+  summary: Data ostatniej modyfikacji wykorzystywana w widoku plików i wzorcach nazw.
   example: []
   syntax:
     content: public DateTime ModifiedDate { get; set; }

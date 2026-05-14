@@ -25,13 +25,13 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp
-  summary: Generuje nowe nazwy plikow na podstawie wzorca podanego przez uzytkownika.
+  summary: Generuje nowe nazwy plików na podstawie wzorca podanego przez użytkownika.
   remarks: >-
-    Usluga obsluguje dynamiczne znaczniki, takie jak nazwa pliku, data utworzenia, data modyfikacji,
+    Usługa obsługuje dynamiczne znaczniki, takie jak nazwa pliku, data utworzenia, data modyfikacji,
 
-    numer porzadkowy, nazwa folderu oraz rozszerzenie. Dzieki temu umozliwia seryjna zmiane nazw
+    numer porządkowy, nazwa folderu oraz rozszerzenie. Dzięki temu umożliwia seryjną zmianę nazw
 
-    bez recznego edytowania kazdego pliku osobno.
+    bez ręcznego edytowania każdego pliku osobno.
   example: []
   syntax:
     content: public static class RenameService
@@ -73,26 +73,26 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp
-  summary: Buduje nowa nazwe pliku na podstawie wzorca i danych oryginalnego pliku.
+  summary: Buduje nową nazwę pliku na podstawie wzorca i danych oryginalnego pliku.
   remarks: >-
-    Wzorzec moze zawierac znaczniki: {name}, {created}, {modified}, {counter},
+    Wzorzec moze zawierać znaczniki: {name}, {created}, {modified}, {counter},
 
-    {counter:000}, {folder} oraz {ext}. Oryginalne rozszerzenie jest dopisywane na koncu,
+    {counter:000}, {folder} oraz {ext}. Oryginalne rozszerzenie jest dopisywane na końcu,
 
-    aby zmiana nazwy nie zmieniala typu pliku.
+    aby zmiana nazwy nie zmieniała typu pliku.
   example: []
   syntax:
     content: public static string GenerateNewName(string pattern, string originalPath, int counter, string option)
     parameters:
     - id: pattern
       type: System.String
-      description: Wzorzec nowej nazwy; pusty wzorzec pozostawia nazwe bez zmian.
+      description: Wzorzec nowej nazwy; pusty wzorzec pozostawia nazwę bez zmian.
     - id: originalPath
       type: System.String
-      description: Pelna sciezka oryginalnego pliku.
+      description: Pełna ścieżka oryginalnego pliku.
     - id: counter
       type: System.Int32
-      description: Numer porzadkowy uzywany w znacznikach licznika.
+      description: Numer porządkowy używany w znacznikach licznika.
     - id: option
       type: System.String
       description: 'Opcja formatowania tekstu: "upper", "lower", "capitalize" albo brak zmiany.'
@@ -126,21 +126,21 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp
-  summary: Przygotowuje liste podgladu nazw dla plikow znajdujacych sie w folderze.
+  summary: Przygotowuje listę podglądu nazw dla plików znajdujących się w folderze.
   remarks: >-
-    Metoda nie zmienia nazw plikow na dysku. Tworzy jedynie dane pomocnicze, ktore moga zostac
+    Metoda nie zmienia nazw plików na dysku. Tworzy jedynie dane pomocnicze, ktore mogą zostać
 
-    pokazane uzytkownikowi przed wykonaniem faktycznej operacji zmiany nazw lub organizowania.
+    pokazane użytkownikowi przed wykonaniem faktycznej operacji zmiany nazw lub organizowania.
   example: []
   syntax:
     content: public static List<RenamePreview> LoadPreview(string path)
     parameters:
     - id: path
       type: System.String
-      description: Folder, z ktorego maja zostac pobrane pliki do podgladu.
+      description: Folder, z którego mają zostać pobrane pliki do podglądu.
     return:
       type: System.Collections.Generic.List{FileScannerApp.Models.RenamePreview}
-      description: Lista obiektow zawierajacych obecna nazwe pliku oraz miejsce na nazwe po zmianie.
+      description: Lista obiektow zawierających obecną nazwę pliku oraz miejsce na nazwę po zmianie.
     content.vb: Public Shared Function LoadPreview(path As String) As List(Of RenamePreview)
   overload: FileScannerApp.RenameService.LoadPreview*
   nameWithType.vb: RenameService.LoadPreview(String)

@@ -33,13 +33,13 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp
-  summary: Zarzadza trwalym zapisem danych aplikacji w lokalnej bazie SQLite.
+  summary: Zarządza trwałym zapisem danych aplikacji w lokalnej bazie SQLite.
   remarks: >-
-    Klasa odpowiada za przechowywanie historii skanow, wynikow analizy plikow oraz dziennika operacji
+    Klasa odpowiada za przechowywanie historii skanów oraz dziennika operacji
 
-    wykonywanych na plikach. Stanowi warstwe dostepu do danych dla uslug skanowania, cofania operacji
+    wykonywanych na plikach. Stanowi warstwę dostępu do danych dla usług skanowania, cofania operacji
 
-    i historii dzialan uzytkownika.
+    i historii działan uzytkownika.
   example: []
   syntax:
     content: public class Database
@@ -83,18 +83,18 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp
-  summary: Ustawia sciezke do pliku bazy danych uzywanej przez aplikacje.
+  summary: Ustawia ścieżke do pliku bazy danych używanej przez aplikacje.
   remarks: >-
-    Nazwa pliku jest laczona z katalogiem Data w folderze uruchomieniowym aplikacji.
+    Nazwa pliku jest łączona z katalogiem Data w folderze uruchomieniowym aplikacji.
 
-    Dzieki temu kod korzysta z tej samej lokalizacji niezaleznie od miejsca instalacji programu.
+    Dzięki temu kod korzysta z tej samej lokalizacji niezależnie od miejsca instalacji programu.
   example: []
   syntax:
     content: public Database(string dbPath = "database.db")
     parameters:
     - id: dbPath
       type: System.String
-      description: Nazwa pliku bazy danych; domyslnie "database.db".
+      description: Nazwa pliku bazy danych; domyślnie "database.db".
     content.vb: Public Sub New(dbPath As String = "database.db")
   overload: FileScannerApp.Database.#ctor*
   nameWithType.vb: Database.New(String)
@@ -122,21 +122,21 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp
-  summary: Tworzy rekord nowego skanu i oznacza go jako trwajacy.
+  summary: Tworzy rekord nowego skanu i oznacza go jako trwający.
   remarks: >-
-    Rekord skanu jest zapisywany przed rozpoczeciem analizy pojedynczych plikow,
+    Rekord skanu jest zapisywany przed rozpoczęciem analizy pojedyńczych plików,
 
-    aby wyniki mogly zostac powiazane z jedna sesja skanowania.
+    aby wyniki mogły zostać powiązane z jedną sesją skanowania.
   example: []
   syntax:
     content: public int CreateScan(string folderPath, int filesCount)
     parameters:
     - id: folderPath
       type: System.String
-      description: Folder, ktory uzytkownik wybral do skanowania.
+      description: Folder, który użytkownik wybrał do skanowania.
     - id: filesCount
       type: System.Int32
-      description: Liczba plikow planowanych do sprawdzenia.
+      description: Liczba plików planowanych do sprawdzenia.
     return:
       type: System.Int32
       description: Identyfikator utworzonego rekordu skanu.
@@ -167,20 +167,20 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp
-  summary: Zapisuje wynik skanowania pojedynczego pliku.
+  summary: Zapisuje wynik skanowania pojedyńczego pliku.
   remarks: >-
-    W bazie przechowywany jest zarowno uproszczony status, jak i surowa odpowiedz API.
+    W bazie przechowywany jest zarówno uproszczony status, jak i surowa odpowiedź API.
 
-    Surowy JSON pozwala pozniej odczytac dodatkowe informacje, na przyklad liczbe silnikow
+    Surowy JSON pozwala później odczytac dodatkowe informacje, na przyklad liczbe silników
 
-    oznaczajacych plik jako zlosliwy.
+    oznaczających plik jako złosliwy.
   example: []
   syntax:
     content: public void SaveScanResult(int scanId, string fileName, string status, string apiResponse)
     parameters:
     - id: scanId
       type: System.Int32
-      description: Identyfikator skanu, do ktorego nalezy wynik.
+      description: Identyfikator skanu, do którego należy wynik.
     - id: fileName
       type: System.String
       description: Nazwa analizowanego pliku.
@@ -189,7 +189,7 @@ items:
       description: Status ustalony przez aplikacje, na przyklad Completed, Malicious albo Error.
     - id: apiResponse
       type: System.String
-      description: Odpowiedz API VirusTotal albo opis bledu zapisany dla danego pliku.
+      description: Odpowiedź API VirusTotal albo opis błędu zapisany dla danego pliku.
     content.vb: Public Sub SaveScanResult(scanId As Integer, fileName As String, status As String, apiResponse As String)
   overload: FileScannerApp.Database.SaveScanResult*
   nameWithType.vb: Database.SaveScanResult(Integer, String, String, String)
@@ -217,11 +217,11 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp
-  summary: Aktualizuje podsumowanie skanu po zakonczeniu analizowania plikow.
+  summary: Aktualizuje podsumowanie skanu po zakończeniu analizowania plikow.
   remarks: >-
-    Metoda zapisuje laczna liczbe wykrytych zagrozen i koncowy status skanu,
+    Metoda zapisuje łączną liczbę wykrytych zagrożeń i końcowy status skanu,
 
-    dzieki czemu historia moze pokazac wynik bez ponownego przeliczania wszystkich plikow.
+    dzięki czemu historia moze pokazac wynik bez ponownego przeliczania wszystkich plików.
   example: []
   syntax:
     content: public void UpdateScanResults(int scanId, int threatsFound, string status)
@@ -231,10 +231,10 @@ items:
       description: Identyfikator skanu do zaktualizowania.
     - id: threatsFound
       type: System.Int32
-      description: Liczba plikow oznaczonych jako zagrozenie.
+      description: Liczba plikow oznaczonych jako zagrożenie.
     - id: status
       type: System.String
-      description: Koncowy status skanu.
+      description: Końcowy status skanu.
     content.vb: Public Sub UpdateScanResults(scanId As Integer, threatsFound As Integer, status As String)
   overload: FileScannerApp.Database.UpdateScanResults*
   nameWithType.vb: Database.UpdateScanResults(Integer, Integer, String)
@@ -262,11 +262,11 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp
-  summary: Pobiera pliki nalezace do konkretnego skanu wraz z uproszczona informacja o zagrozeniu.
+  summary: Pobiera pliki należące do konkretnego skanu wraz z uproszczoną informacją o zagrożeniu.
   remarks: >-
-    Metoda interpretuje zapisany JSON z VirusTotal i sprowadza wynik do wartosci czytelnej dla widoku.
+    Metoda interpretuje zapisany JSON z VirusTotal i sprowadza wynik do wartoćci czytelnej dla widoku.
 
-    Jesli odpowiedz API jest pusta albo nie da sie jej odczytac, plik jest traktowany jako niezlosliwy
+    Jeśli odpowiedź API jest pusta albo nie da sie jej odczytać, plik jest traktowany jako niezłośliwy
 
     na potrzeby prezentacji.
   example: []
@@ -275,10 +275,10 @@ items:
     parameters:
     - id: scanId
       type: System.Int32
-      description: Identyfikator skanu, ktorego wyniki maja zostac pobrane.
+      description: Identyfikator skanu, którego wyniki mają zostać pobrane.
     return:
       type: System.Collections.Generic.List{System.Object}
-      description: Lista obiektow zawierajacych nazwe pliku, status i informacje Malicious.
+      description: Lista obiektów zawierajacych nazwę pliku, status i informacje Malicious.
     content.vb: Public Function GetFilesForScan(scanId As Integer) As List(Of Object)
   overload: FileScannerApp.Database.GetFilesForScan*
   nameWithType.vb: Database.GetFilesForScan(Integer)
@@ -306,17 +306,17 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp
-  summary: Pobiera historie skanow razem z powiazanymi plikami.
+  summary: Pobiera historię skanów razem z powiązanymi plikami.
   remarks: >-
-    Wynik laczy dane tabeli skanow i wynikow plikow, aby okno historii moglo pokazac pelny obraz
+    Wynik łączy dane tabeli skanów i wyników plików, aby okno historii moglo pokazać pełny obraz
 
-    poprzednich analiz. Brak wyniku pliku nie usuwa skanu z listy, poniewaz uzywane jest zlaczenie LEFT JOIN.
+    poprzednich analiz. Brak wyniku pliku nie usuwa skanu z listy, ponieważ używane jest złączenie LEFT JOIN.
   example: []
   syntax:
     content: public List<dynamic> GetAllScansWithFiles()
     return:
       type: System.Collections.Generic.List{System.Object}
-      description: Lista dynamicznych rekordow przeznaczonych do wyswietlenia w historii skanowania.
+      description: Lista dynamicznych rekordów przeznaczonych do wyświetlenia w historii skanowania.
     content.vb: Public Function GetAllScansWithFiles() As List(Of Object)
   overload: FileScannerApp.Database.GetAllScansWithFiles*
 - uid: FileScannerApp.Database.AddOperationLog(FileScannerApp.Models.OperationLog)
@@ -343,16 +343,16 @@ items:
   namespace: FileScannerApp
   summary: Dodaje wpis do historii operacji wykonanych na plikach.
   remarks: >-
-    Historia przechowuje sciezki sprzed i po operacji, poniewaz sa one potrzebne do cofania zmian
+    Historia przechowuje ścieżki sprzed i po operacji, ponieważ sa one potrzebne do cofania zmian
 
-    oraz do pokazania uzytkownikowi, co dokladnie stalo sie z plikiem.
+    oraz do pokazania użytkownikowi, co dokładnie stało się z plikiem.
   example: []
   syntax:
     content: public void AddOperationLog(OperationLog log)
     parameters:
     - id: log
       type: FileScannerApp.Models.OperationLog
-      description: Opis operacji, ktora ma zostac zapisana.
+      description: Opis operacji, która ma zostać zapisana.
     content.vb: Public Sub AddOperationLog(log As OperationLog)
   overload: FileScannerApp.Database.AddOperationLog*
 - uid: FileScannerApp.Database.GetOperationsLog
@@ -377,17 +377,17 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp
-  summary: Pobiera historie operacji plikowych od najnowszych wpisow.
+  summary: Pobiera historię operacji plikowych od najnowszych wpisów.
   remarks: >-
     Dane z bazy sa mapowane z powrotem na model <xref href="FileScannerApp.Models.OperationLog" data-throw-if-not-resolved="false"></xref>, w tym na typ wyliczeniowy
 
-    operacji. Kolejnosc sortowania ulatwia pokazanie ostatnich dzialan na gorze listy.
+    operacji. Kolejnosc sortowania ułatwia pokazanie ostatnich działań na górze listy.
   example: []
   syntax:
     content: public List<OperationLog> GetOperationsLog()
     return:
       type: System.Collections.Generic.List{FileScannerApp.Models.OperationLog}
-      description: Lista wpisow historii operacji.
+      description: Lista wpisów historii operacji.
     content.vb: Public Function GetOperationsLog() As List(Of OperationLog)
   overload: FileScannerApp.Database.GetOperationsLog*
 - uid: FileScannerApp.Database.DeleteOperationLog(System.Int32)
@@ -412,18 +412,18 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp
-  summary: Usuwa pojedynczy wpis historii operacji.
+  summary: Usuwa pojedyńczy wpis historii operacji.
   remarks: >-
-    Metoda usuwa tylko rekord historii. Nie wykonuje zadnej operacji na pliku,
+    Metoda usuwa tylko rekord historii. Nie wykonuje żadnej operacji na pliku,
 
-    dlatego nie nalezy jej traktowac jako cofniecia lub usuniecia pliku z dysku.
+    dlatego nie należy jej traktować jako cofnięcia lub usunięcia pliku z dysku.
   example: []
   syntax:
     content: public void DeleteOperationLog(int id)
     parameters:
     - id: id
       type: System.Int32
-      description: Identyfikator wpisu historii do usuniecia.
+      description: Identyfikator wpisu historii do usunięcia.
     content.vb: Public Sub DeleteOperationLog(id As Integer)
   overload: FileScannerApp.Database.DeleteOperationLog*
   nameWithType.vb: Database.DeleteOperationLog(Integer)
@@ -451,18 +451,18 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp
-  summary: Oznacza plik z kosza aplikacji jako trwale usuniety.
+  summary: Oznacza plik z kosza aplikacji jako trwale usunięty.
   remarks: >-
-    Po wyczyszczeniu kosza aplikacja nie powinna juz oferowac cofniecia operacji.
+    Po wyczyszczeniu kosza aplikacja nie powinna już oferowac cofnięcia operacji.
 
-    Metoda aktualizuje wpis historii, ustawiajac typ operacji na trwale usuniecie i blokujac cofanie.
+    Metoda aktualizuje wpis historii, ustawiajac typ operacji na trwałe usunięcie i blokując cofanie.
   example: []
   syntax:
     content: public void MarkAsDeletedPermanently(string path)
     parameters:
     - id: path
       type: System.String
-      description: Sciezka pliku w wewnetrznym koszu aplikacji.
+      description: Ścieżka pliku w wewnętrznym koszu aplikacji.
     content.vb: Public Sub MarkAsDeletedPermanently(path As String)
   overload: FileScannerApp.Database.MarkAsDeletedPermanently*
   nameWithType.vb: Database.MarkAsDeletedPermanently(String)

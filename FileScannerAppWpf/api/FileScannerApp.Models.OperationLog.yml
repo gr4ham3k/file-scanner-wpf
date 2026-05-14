@@ -32,11 +32,11 @@ items:
   namespace: FileScannerApp.Models
   summary: Reprezentuje pojedynczy wpis historii operacji wykonanej na pliku.
   remarks: >-
-    Model przechowuje informacje potrzebne do wyswietlenia historii dzialan uzytkownika
+    Model przechowuje informacj potrzebne do wyświetlenia historii działań użytkownika
 
-    oraz do cofniecia operacji, jesli jest to mozliwe. Szczegolnie wazne sa sciezki przed i po operacji,
+    oraz do cofnięcia operacji, jeśli jest to możliwe. Szczególnie ważne są ścieżki przed i po operacji,
 
-    poniewaz pozwalaja odtworzyc poprzednie polozenie pliku.
+    ponieważ pozwalają odtworzyć poprzednie położenie pliku.
   example: []
   syntax:
     content: public class OperationLog
@@ -107,7 +107,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Rodzaj operacji, ktory decyduje o sposobie prezentacji i mozliwosci cofniecia.
+  summary: Rodzaj operacji, który decyduje o sposobie prezentacji i możliwości cofnięcia.
   example: []
   syntax:
     content: public OperationType OperationType { get; set; }
@@ -169,7 +169,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Sciezka pliku przed wykonaniem operacji.
+  summary: Ścieżka pliku przed wykonaniem operacji.
   example: []
   syntax:
     content: public string OldPath { get; set; }
@@ -200,7 +200,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Sciezka pliku po wykonaniu operacji.
+  summary: Ścieżka pliku po wykonaniu operacji.
   example: []
   syntax:
     content: public string NewPath { get; set; }
@@ -262,7 +262,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Informacja, czy aplikacja moze bezpiecznie zaproponowac cofniecie tej operacji.
+  summary: Informacja, czy aplikacja może bezpiecznie zaproponowac cofnięcie tej operacji.
   example: []
   syntax:
     content: public bool CanUndo { get; set; }

@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class Database | mysite ">
       
-      <meta name="description" content="Zarzadza trwalym zapisem danych aplikacji w lokalnej bazie SQLite.">
+      <meta name="description" content="Zarządza trwałym zapisem danych aplikacji w lokalnej bazie SQLite.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,7 +97,7 @@ Class Database  <a class="header-action link-secondary" title="View source" href
   <dl><dt>Assembly</dt><dd>FileScannerAppWpf.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Zarzadza trwalym zapisem danych aplikacji w lokalnej bazie SQLite.</p>
+  <div class="markdown summary"><p>Zarządza trwałym zapisem danych aplikacji w lokalnej bazie SQLite.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -148,9 +148,9 @@ Class Database  <a class="header-action link-secondary" title="View source" href
 
 
   <h2 id="FileScannerApp_Database_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Klasa odpowiada za przechowywanie historii skanow, wynikow analizy plikow oraz dziennika operacji
-wykonywanych na plikach. Stanowi warstwe dostepu do danych dla uslug skanowania, cofania operacji
-i historii dzialan uzytkownika.</p>
+  <div class="markdown level0 remarks"><p>Klasa odpowiada za przechowywanie historii skanów oraz dziennika operacji
+wykonywanych na plikach. Stanowi warstwę dostępu do danych dla usług skanowania, cofania operacji
+i historii działan uzytkownika.</p>
 </div>
 
 
@@ -165,7 +165,7 @@ i historii dzialan uzytkownika.</p>
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Database/Database.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Ustawia sciezke do pliku bazy danych uzywanej przez aplikacje.</p>
+  <div class="markdown level1 summary"><p>Ustawia ścieżke do pliku bazy danych używanej przez aplikacje.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -176,7 +176,7 @@ i historii dzialan uzytkownika.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>dbPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Nazwa pliku bazy danych; domyslnie &quot;database.db&quot;.</p>
+    <dd><p>Nazwa pliku bazy danych; domyślnie &quot;database.db&quot;.</p>
 </dd>
   </dl>
 
@@ -188,8 +188,8 @@ i historii dzialan uzytkownika.</p>
 
 
   <h4 class="section" id="FileScannerApp_Database__ctor_System_String__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Nazwa pliku jest laczona z katalogiem Data w folderze uruchomieniowym aplikacji.
-Dzieki temu kod korzysta z tej samej lokalizacji niezaleznie od miejsca instalacji programu.</p>
+  <div class="markdown level1 remarks"><p>Nazwa pliku jest łączona z katalogiem Data w folderze uruchomieniowym aplikacji.
+Dzięki temu kod korzysta z tej samej lokalizacji niezależnie od miejsca instalacji programu.</p>
 </div>
 
 
@@ -217,7 +217,7 @@ Dzieki temu kod korzysta z tej samej lokalizacji niezaleznie od miejsca instalac
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>log</code> <a class="xref" href="FileScannerApp.Models.OperationLog.html">OperationLog</a></dt>
-    <dd><p>Opis operacji, ktora ma zostac zapisana.</p>
+    <dd><p>Opis operacji, która ma zostać zapisana.</p>
 </dd>
   </dl>
 
@@ -229,8 +229,8 @@ Dzieki temu kod korzysta z tej samej lokalizacji niezaleznie od miejsca instalac
 
 
   <h4 class="section" id="FileScannerApp_Database_AddOperationLog_FileScannerApp_Models_OperationLog__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Historia przechowuje sciezki sprzed i po operacji, poniewaz sa one potrzebne do cofania zmian
-oraz do pokazania uzytkownikowi, co dokladnie stalo sie z plikiem.</p>
+  <div class="markdown level1 remarks"><p>Historia przechowuje ścieżki sprzed i po operacji, ponieważ sa one potrzebne do cofania zmian
+oraz do pokazania użytkownikowi, co dokładnie stało się z plikiem.</p>
 </div>
 
 
@@ -243,7 +243,7 @@ oraz do pokazania uzytkownikowi, co dokladnie stalo sie z plikiem.</p>
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Database/Database.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Tworzy rekord nowego skanu i oznacza go jako trwajacy.</p>
+  <div class="markdown level1 summary"><p>Tworzy rekord nowego skanu i oznacza go jako trwający.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -254,10 +254,10 @@ oraz do pokazania uzytkownikowi, co dokladnie stalo sie z plikiem.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>folderPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Folder, ktory uzytkownik wybral do skanowania.</p>
+    <dd><p>Folder, który użytkownik wybrał do skanowania.</p>
 </dd>
     <dt><code>filesCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Liczba plikow planowanych do sprawdzenia.</p>
+    <dd><p>Liczba plików planowanych do sprawdzenia.</p>
 </dd>
   </dl>
 
@@ -275,8 +275,8 @@ oraz do pokazania uzytkownikowi, co dokladnie stalo sie z plikiem.</p>
 
 
   <h4 class="section" id="FileScannerApp_Database_CreateScan_System_String_System_Int32__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Rekord skanu jest zapisywany przed rozpoczeciem analizy pojedynczych plikow,
-aby wyniki mogly zostac powiazane z jedna sesja skanowania.</p>
+  <div class="markdown level1 remarks"><p>Rekord skanu jest zapisywany przed rozpoczęciem analizy pojedyńczych plików,
+aby wyniki mogły zostać powiązane z jedną sesją skanowania.</p>
 </div>
 
 
@@ -289,7 +289,7 @@ aby wyniki mogly zostac powiazane z jedna sesja skanowania.</p>
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Database/Database.cs/#L383"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Usuwa pojedynczy wpis historii operacji.</p>
+  <div class="markdown level1 summary"><p>Usuwa pojedyńczy wpis historii operacji.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -300,7 +300,7 @@ aby wyniki mogly zostac powiazane z jedna sesja skanowania.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Identyfikator wpisu historii do usuniecia.</p>
+    <dd><p>Identyfikator wpisu historii do usunięcia.</p>
 </dd>
   </dl>
 
@@ -312,8 +312,8 @@ aby wyniki mogly zostac powiazane z jedna sesja skanowania.</p>
 
 
   <h4 class="section" id="FileScannerApp_Database_DeleteOperationLog_System_Int32__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Metoda usuwa tylko rekord historii. Nie wykonuje zadnej operacji na pliku,
-dlatego nie nalezy jej traktowac jako cofniecia lub usuniecia pliku z dysku.</p>
+  <div class="markdown level1 remarks"><p>Metoda usuwa tylko rekord historii. Nie wykonuje żadnej operacji na pliku,
+dlatego nie należy jej traktować jako cofnięcia lub usunięcia pliku z dysku.</p>
 </div>
 
 
@@ -326,7 +326,7 @@ dlatego nie nalezy jej traktowac jako cofniecia lub usuniecia pliku z dysku.</p>
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Database/Database.cs/#L224"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Pobiera historie skanow razem z powiazanymi plikami.</p>
+  <div class="markdown level1 summary"><p>Pobiera historię skanów razem z powiązanymi plikami.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -338,7 +338,7 @@ dlatego nie nalezy jej traktowac jako cofniecia lub usuniecia pliku z dysku.</p>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<span class="xref">dynamic</span>&gt;</dt>
-    <dd><p>Lista dynamicznych rekordow przeznaczonych do wyswietlenia w historii skanowania.</p>
+    <dd><p>Lista dynamicznych rekordów przeznaczonych do wyświetlenia w historii skanowania.</p>
 </dd>
   </dl>
 
@@ -349,8 +349,8 @@ dlatego nie nalezy jej traktowac jako cofniecia lub usuniecia pliku z dysku.</p>
 
 
   <h4 class="section" id="FileScannerApp_Database_GetAllScansWithFiles_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Wynik laczy dane tabeli skanow i wynikow plikow, aby okno historii moglo pokazac pelny obraz
-poprzednich analiz. Brak wyniku pliku nie usuwa skanu z listy, poniewaz uzywane jest zlaczenie LEFT JOIN.</p>
+  <div class="markdown level1 remarks"><p>Wynik łączy dane tabeli skanów i wyników plików, aby okno historii moglo pokazać pełny obraz
+poprzednich analiz. Brak wyniku pliku nie usuwa skanu z listy, ponieważ używane jest złączenie LEFT JOIN.</p>
 </div>
 
 
@@ -363,7 +363,7 @@ poprzednich analiz. Brak wyniku pliku nie usuwa skanu z listy, poniewaz uzywane 
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Database/Database.cs/#L161"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Pobiera pliki nalezace do konkretnego skanu wraz z uproszczona informacja o zagrozeniu.</p>
+  <div class="markdown level1 summary"><p>Pobiera pliki należące do konkretnego skanu wraz z uproszczoną informacją o zagrożeniu.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -374,14 +374,14 @@ poprzednich analiz. Brak wyniku pliku nie usuwa skanu z listy, poniewaz uzywane 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>scanId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Identyfikator skanu, ktorego wyniki maja zostac pobrane.</p>
+    <dd><p>Identyfikator skanu, którego wyniki mają zostać pobrane.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<span class="xref">dynamic</span>&gt;</dt>
-    <dd><p>Lista obiektow zawierajacych nazwe pliku, status i informacje Malicious.</p>
+    <dd><p>Lista obiektów zawierajacych nazwę pliku, status i informacje Malicious.</p>
 </dd>
   </dl>
 
@@ -392,8 +392,8 @@ poprzednich analiz. Brak wyniku pliku nie usuwa skanu z listy, poniewaz uzywane 
 
 
   <h4 class="section" id="FileScannerApp_Database_GetFilesForScan_System_Int32__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Metoda interpretuje zapisany JSON z VirusTotal i sprowadza wynik do wartosci czytelnej dla widoku.
-Jesli odpowiedz API jest pusta albo nie da sie jej odczytac, plik jest traktowany jako niezlosliwy
+  <div class="markdown level1 remarks"><p>Metoda interpretuje zapisany JSON z VirusTotal i sprowadza wynik do wartoćci czytelnej dla widoku.
+Jeśli odpowiedź API jest pusta albo nie da sie jej odczytać, plik jest traktowany jako niezłośliwy
 na potrzeby prezentacji.</p>
 </div>
 
@@ -407,7 +407,7 @@ na potrzeby prezentacji.</p>
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Database/Database.cs/#L335"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Pobiera historie operacji plikowych od najnowszych wpisow.</p>
+  <div class="markdown level1 summary"><p>Pobiera historię operacji plikowych od najnowszych wpisów.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -419,7 +419,7 @@ na potrzeby prezentacji.</p>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="FileScannerApp.Models.OperationLog.html">OperationLog</a>&gt;</dt>
-    <dd><p>Lista wpisow historii operacji.</p>
+    <dd><p>Lista wpisów historii operacji.</p>
 </dd>
   </dl>
 
@@ -431,7 +431,7 @@ na potrzeby prezentacji.</p>
 
   <h4 class="section" id="FileScannerApp_Database_GetOperationsLog_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>Dane z bazy sa mapowane z powrotem na model <a class="xref" href="FileScannerApp.Models.OperationLog.html">OperationLog</a>, w tym na typ wyliczeniowy
-operacji. Kolejnosc sortowania ulatwia pokazanie ostatnich dzialan na gorze listy.</p>
+operacji. Kolejnosc sortowania ułatwia pokazanie ostatnich działań na górze listy.</p>
 </div>
 
 
@@ -444,7 +444,7 @@ operacji. Kolejnosc sortowania ulatwia pokazanie ostatnich dzialan na gorze list
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Database/Database.cs/#L407"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Oznacza plik z kosza aplikacji jako trwale usuniety.</p>
+  <div class="markdown level1 summary"><p>Oznacza plik z kosza aplikacji jako trwale usunięty.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -455,7 +455,7 @@ operacji. Kolejnosc sortowania ulatwia pokazanie ostatnich dzialan na gorze list
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Sciezka pliku w wewnetrznym koszu aplikacji.</p>
+    <dd><p>Ścieżka pliku w wewnętrznym koszu aplikacji.</p>
 </dd>
   </dl>
 
@@ -467,8 +467,8 @@ operacji. Kolejnosc sortowania ulatwia pokazanie ostatnich dzialan na gorze list
 
 
   <h4 class="section" id="FileScannerApp_Database_MarkAsDeletedPermanently_System_String__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Po wyczyszczeniu kosza aplikacja nie powinna juz oferowac cofniecia operacji.
-Metoda aktualizuje wpis historii, ustawiajac typ operacji na trwale usuniecie i blokujac cofanie.</p>
+  <div class="markdown level1 remarks"><p>Po wyczyszczeniu kosza aplikacja nie powinna już oferowac cofnięcia operacji.
+Metoda aktualizuje wpis historii, ustawiajac typ operacji na trwałe usunięcie i blokując cofanie.</p>
 </div>
 
 
@@ -481,7 +481,7 @@ Metoda aktualizuje wpis historii, ustawiajac typ operacji na trwale usuniecie i 
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Database/Database.cs/#L101"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Zapisuje wynik skanowania pojedynczego pliku.</p>
+  <div class="markdown level1 summary"><p>Zapisuje wynik skanowania pojedyńczego pliku.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -492,7 +492,7 @@ Metoda aktualizuje wpis historii, ustawiajac typ operacji na trwale usuniecie i 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>scanId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Identyfikator skanu, do ktorego nalezy wynik.</p>
+    <dd><p>Identyfikator skanu, do którego należy wynik.</p>
 </dd>
     <dt><code>fileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>Nazwa analizowanego pliku.</p>
@@ -501,7 +501,7 @@ Metoda aktualizuje wpis historii, ustawiajac typ operacji na trwale usuniecie i 
     <dd><p>Status ustalony przez aplikacje, na przyklad Completed, Malicious albo Error.</p>
 </dd>
     <dt><code>apiResponse</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Odpowiedz API VirusTotal albo opis bledu zapisany dla danego pliku.</p>
+    <dd><p>Odpowiedź API VirusTotal albo opis błędu zapisany dla danego pliku.</p>
 </dd>
   </dl>
 
@@ -513,9 +513,9 @@ Metoda aktualizuje wpis historii, ustawiajac typ operacji na trwale usuniecie i 
 
 
   <h4 class="section" id="FileScannerApp_Database_SaveScanResult_System_Int32_System_String_System_String_System_String__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>W bazie przechowywany jest zarowno uproszczony status, jak i surowa odpowiedz API.
-Surowy JSON pozwala pozniej odczytac dodatkowe informacje, na przyklad liczbe silnikow
-oznaczajacych plik jako zlosliwy.</p>
+  <div class="markdown level1 remarks"><p>W bazie przechowywany jest zarówno uproszczony status, jak i surowa odpowiedź API.
+Surowy JSON pozwala później odczytac dodatkowe informacje, na przyklad liczbe silników
+oznaczających plik jako złosliwy.</p>
 </div>
 
 
@@ -528,7 +528,7 @@ oznaczajacych plik jako zlosliwy.</p>
   <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Database/Database.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Aktualizuje podsumowanie skanu po zakonczeniu analizowania plikow.</p>
+  <div class="markdown level1 summary"><p>Aktualizuje podsumowanie skanu po zakończeniu analizowania plikow.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -542,10 +542,10 @@ oznaczajacych plik jako zlosliwy.</p>
     <dd><p>Identyfikator skanu do zaktualizowania.</p>
 </dd>
     <dt><code>threatsFound</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Liczba plikow oznaczonych jako zagrozenie.</p>
+    <dd><p>Liczba plikow oznaczonych jako zagrożenie.</p>
 </dd>
     <dt><code>status</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Koncowy status skanu.</p>
+    <dd><p>Końcowy status skanu.</p>
 </dd>
   </dl>
 
@@ -557,8 +557,8 @@ oznaczajacych plik jako zlosliwy.</p>
 
 
   <h4 class="section" id="FileScannerApp_Database_UpdateScanResults_System_Int32_System_Int32_System_String__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Metoda zapisuje laczna liczbe wykrytych zagrozen i koncowy status skanu,
-dzieki czemu historia moze pokazac wynik bez ponownego przeliczania wszystkich plikow.</p>
+  <div class="markdown level1 remarks"><p>Metoda zapisuje łączną liczbę wykrytych zagrożeń i końcowy status skanu,
+dzięki czemu historia moze pokazac wynik bez ponownego przeliczania wszystkich plików.</p>
 </div>
 
 

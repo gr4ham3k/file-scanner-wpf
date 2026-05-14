@@ -8,12 +8,12 @@ using System.Text.Json;
 namespace FileScannerApp
 {
     /// <summary>
-    /// Zarzadza trwalym zapisem danych aplikacji w lokalnej bazie SQLite.
+    /// Zarządza trwałym zapisem danych aplikacji w lokalnej bazie SQLite.
     /// </summary>
     /// <remarks>
-    /// Klasa odpowiada za przechowywanie historii skanow, wynikow analizy plikow oraz dziennika operacji
-    /// wykonywanych na plikach. Stanowi warstwe dostepu do danych dla uslug skanowania, cofania operacji
-    /// i historii dzialan uzytkownika.
+    /// Klasa odpowiada za przechowywanie historii skanów oraz dziennika operacji
+    /// wykonywanych na plikach. Stanowi warstwę dostępu do danych dla usług skanowania, cofania operacji
+    /// i historii działan uzytkownika.
     /// </remarks>
     /// <seealso cref="Scan"/>
     /// <seealso cref="ScanResult"/>
@@ -23,13 +23,13 @@ namespace FileScannerApp
         private string dbPath;
 
         /// <summary>
-        /// Ustawia sciezke do pliku bazy danych uzywanej przez aplikacje.
+        /// Ustawia ścieżke do pliku bazy danych używanej przez aplikacje.
         /// </summary>
         /// <remarks>
-        /// Nazwa pliku jest laczona z katalogiem Data w folderze uruchomieniowym aplikacji.
-        /// Dzieki temu kod korzysta z tej samej lokalizacji niezaleznie od miejsca instalacji programu.
+        /// Nazwa pliku jest łączona z katalogiem Data w folderze uruchomieniowym aplikacji.
+        /// Dzięki temu kod korzysta z tej samej lokalizacji niezależnie od miejsca instalacji programu.
         /// </remarks>
-        /// <param name="dbPath">Nazwa pliku bazy danych; domyslnie "database.db".</param>
+        /// <param name="dbPath">Nazwa pliku bazy danych; domyślnie "database.db".</param>
         public Database(string dbPath = "database.db")
         {
             this.dbPath = Path.Combine(
@@ -40,11 +40,11 @@ namespace FileScannerApp
         }
 
         /// <summary>
-        /// Otwiera polaczenie z baza, aby upewnic sie, ze plik bazy jest dostepny.
+        /// Otwiera połączenie z baza, aby upewnić się, że plik bazy jest dostępny.
         /// </summary>
         /// <remarks>
-        /// Metoda pelni role pomocnicza. Nie tworzy schematu tabel, dlatego zaklada,
-        /// ze plik bazy i struktura danych sa juz przygotowane przez projekt.
+        /// Metoda pełni rolę pomocnicza. Nie tworzy schematu tabel, dlatego zakłada,
+        /// ze plik bazy i struktura danych są już przygotowane przez projekt.
         /// </remarks>
         private void InitializeDatabase()
         {
@@ -56,14 +56,14 @@ namespace FileScannerApp
         }
 
         /// <summary>
-        /// Tworzy rekord nowego skanu i oznacza go jako trwajacy.
+        /// Tworzy rekord nowego skanu i oznacza go jako trwający.
         /// </summary>
         /// <remarks>
-        /// Rekord skanu jest zapisywany przed rozpoczeciem analizy pojedynczych plikow,
-        /// aby wyniki mogly zostac powiazane z jedna sesja skanowania.
+        /// Rekord skanu jest zapisywany przed rozpoczęciem analizy pojedyńczych plików,
+        /// aby wyniki mogły zostać powiązane z jedną sesją skanowania.
         /// </remarks>
-        /// <param name="folderPath">Folder, ktory uzytkownik wybral do skanowania.</param>
-        /// <param name="filesCount">Liczba plikow planowanych do sprawdzenia.</param>
+        /// <param name="folderPath">Folder, który użytkownik wybrał do skanowania.</param>
+        /// <param name="filesCount">Liczba plików planowanych do sprawdzenia.</param>
         /// <returns>Identyfikator utworzonego rekordu skanu.</returns>
         public int CreateScan(string folderPath, int filesCount)
         {
@@ -87,17 +87,17 @@ namespace FileScannerApp
         }
 
         /// <summary>
-        /// Zapisuje wynik skanowania pojedynczego pliku.
+        /// Zapisuje wynik skanowania pojedyńczego pliku.
         /// </summary>
         /// <remarks>
-        /// W bazie przechowywany jest zarowno uproszczony status, jak i surowa odpowiedz API.
-        /// Surowy JSON pozwala pozniej odczytac dodatkowe informacje, na przyklad liczbe silnikow
-        /// oznaczajacych plik jako zlosliwy.
+        /// W bazie przechowywany jest zarówno uproszczony status, jak i surowa odpowiedź API.
+        /// Surowy JSON pozwala później odczytac dodatkowe informacje, na przyklad liczbe silników
+        /// oznaczających plik jako złosliwy.
         /// </remarks>
-        /// <param name="scanId">Identyfikator skanu, do ktorego nalezy wynik.</param>
+        /// <param name="scanId">Identyfikator skanu, do którego należy wynik.</param>
         /// <param name="fileName">Nazwa analizowanego pliku.</param>
         /// <param name="status">Status ustalony przez aplikacje, na przyklad Completed, Malicious albo Error.</param>
-        /// <param name="apiResponse">Odpowiedz API VirusTotal albo opis bledu zapisany dla danego pliku.</param>
+        /// <param name="apiResponse">Odpowiedź API VirusTotal albo opis błędu zapisany dla danego pliku.</param>
         public void SaveScanResult(int scanId, string fileName, string status, string apiResponse)
         {
             using (var connection = new SQLiteConnection($"Data Source={this.dbPath}"))
@@ -119,15 +119,15 @@ namespace FileScannerApp
         }
 
         /// <summary>
-        /// Aktualizuje podsumowanie skanu po zakonczeniu analizowania plikow.
+        /// Aktualizuje podsumowanie skanu po zakończeniu analizowania plikow.
         /// </summary>
         /// <remarks>
-        /// Metoda zapisuje laczna liczbe wykrytych zagrozen i koncowy status skanu,
-        /// dzieki czemu historia moze pokazac wynik bez ponownego przeliczania wszystkich plikow.
+        /// Metoda zapisuje łączną liczbę wykrytych zagrożeń i końcowy status skanu,
+        /// dzięki czemu historia moze pokazac wynik bez ponownego przeliczania wszystkich plików.
         /// </remarks>
         /// <param name="scanId">Identyfikator skanu do zaktualizowania.</param>
-        /// <param name="threatsFound">Liczba plikow oznaczonych jako zagrozenie.</param>
-        /// <param name="status">Koncowy status skanu.</param>
+        /// <param name="threatsFound">Liczba plikow oznaczonych jako zagrożenie.</param>
+        /// <param name="status">Końcowy status skanu.</param>
         public void UpdateScanResults(int scanId, int threatsFound, string status)
         {
             using (var connection = new SQLiteConnection($"Data Source={this.dbPath}"))
@@ -149,15 +149,15 @@ namespace FileScannerApp
         }
 
         /// <summary>
-        /// Pobiera pliki nalezace do konkretnego skanu wraz z uproszczona informacja o zagrozeniu.
+        /// Pobiera pliki należące do konkretnego skanu wraz z uproszczoną informacją o zagrożeniu.
         /// </summary>
         /// <remarks>
-        /// Metoda interpretuje zapisany JSON z VirusTotal i sprowadza wynik do wartosci czytelnej dla widoku.
-        /// Jesli odpowiedz API jest pusta albo nie da sie jej odczytac, plik jest traktowany jako niezlosliwy
+        /// Metoda interpretuje zapisany JSON z VirusTotal i sprowadza wynik do wartoćci czytelnej dla widoku.
+        /// Jeśli odpowiedź API jest pusta albo nie da sie jej odczytać, plik jest traktowany jako niezłośliwy
         /// na potrzeby prezentacji.
         /// </remarks>
-        /// <param name="scanId">Identyfikator skanu, ktorego wyniki maja zostac pobrane.</param>
-        /// <returns>Lista obiektow zawierajacych nazwe pliku, status i informacje Malicious.</returns>
+        /// <param name="scanId">Identyfikator skanu, którego wyniki mają zostać pobrane.</param>
+        /// <returns>Lista obiektów zawierajacych nazwę pliku, status i informacje Malicious.</returns>
         public List<dynamic> GetFilesForScan(int scanId)
         {
             var files = new List<dynamic>();
@@ -214,13 +214,13 @@ namespace FileScannerApp
         }
 
         /// <summary>
-        /// Pobiera historie skanow razem z powiazanymi plikami.
+        /// Pobiera historię skanów razem z powiązanymi plikami.
         /// </summary>
         /// <remarks>
-        /// Wynik laczy dane tabeli skanow i wynikow plikow, aby okno historii moglo pokazac pelny obraz
-        /// poprzednich analiz. Brak wyniku pliku nie usuwa skanu z listy, poniewaz uzywane jest zlaczenie LEFT JOIN.
+        /// Wynik łączy dane tabeli skanów i wyników plików, aby okno historii moglo pokazać pełny obraz
+        /// poprzednich analiz. Brak wyniku pliku nie usuwa skanu z listy, ponieważ używane jest złączenie LEFT JOIN.
         /// </remarks>
-        /// <returns>Lista dynamicznych rekordow przeznaczonych do wyswietlenia w historii skanowania.</returns>
+        /// <returns>Lista dynamicznych rekordów przeznaczonych do wyświetlenia w historii skanowania.</returns>
         public List<dynamic> GetAllScansWithFiles()
         {
             var scans = new List<dynamic>();
@@ -285,10 +285,10 @@ namespace FileScannerApp
         /// Dodaje wpis do historii operacji wykonanych na plikach.
         /// </summary>
         /// <remarks>
-        /// Historia przechowuje sciezki sprzed i po operacji, poniewaz sa one potrzebne do cofania zmian
-        /// oraz do pokazania uzytkownikowi, co dokladnie stalo sie z plikiem.
+        /// Historia przechowuje ścieżki sprzed i po operacji, ponieważ sa one potrzebne do cofania zmian
+        /// oraz do pokazania użytkownikowi, co dokładnie stało się z plikiem.
         /// </remarks>
-        /// <param name="log">Opis operacji, ktora ma zostac zapisana.</param>
+        /// <param name="log">Opis operacji, która ma zostać zapisana.</param>
         public void AddOperationLog(OperationLog log)
         {
             using (var connection = new SQLiteConnection($"Data Source={this.dbPath}"))
@@ -325,13 +325,13 @@ namespace FileScannerApp
 
 
         /// <summary>
-        /// Pobiera historie operacji plikowych od najnowszych wpisow.
+        /// Pobiera historię operacji plikowych od najnowszych wpisów.
         /// </summary>
         /// <remarks>
         /// Dane z bazy sa mapowane z powrotem na model <see cref="OperationLog"/>, w tym na typ wyliczeniowy
-        /// operacji. Kolejnosc sortowania ulatwia pokazanie ostatnich dzialan na gorze listy.
+        /// operacji. Kolejnosc sortowania ułatwia pokazanie ostatnich działań na górze listy.
         /// </remarks>
-        /// <returns>Lista wpisow historii operacji.</returns>
+        /// <returns>Lista wpisów historii operacji.</returns>
         public List<OperationLog> GetOperationsLog()
         {
             var logs = new List<OperationLog>();
@@ -373,13 +373,13 @@ namespace FileScannerApp
         }
 
         /// <summary>
-        /// Usuwa pojedynczy wpis historii operacji.
+        /// Usuwa pojedyńczy wpis historii operacji.
         /// </summary>
         /// <remarks>
-        /// Metoda usuwa tylko rekord historii. Nie wykonuje zadnej operacji na pliku,
-        /// dlatego nie nalezy jej traktowac jako cofniecia lub usuniecia pliku z dysku.
+        /// Metoda usuwa tylko rekord historii. Nie wykonuje żadnej operacji na pliku,
+        /// dlatego nie należy jej traktować jako cofnięcia lub usunięcia pliku z dysku.
         /// </remarks>
-        /// <param name="id">Identyfikator wpisu historii do usuniecia.</param>
+        /// <param name="id">Identyfikator wpisu historii do usunięcia.</param>
         public void DeleteOperationLog(int id)
         {
             using (var connection = new SQLiteConnection($"Data Source={this.dbPath}"))
@@ -397,13 +397,13 @@ namespace FileScannerApp
         }
 
         /// <summary>
-        /// Oznacza plik z kosza aplikacji jako trwale usuniety.
+        /// Oznacza plik z kosza aplikacji jako trwale usunięty.
         /// </summary>
         /// <remarks>
-        /// Po wyczyszczeniu kosza aplikacja nie powinna juz oferowac cofniecia operacji.
-        /// Metoda aktualizuje wpis historii, ustawiajac typ operacji na trwale usuniecie i blokujac cofanie.
+        /// Po wyczyszczeniu kosza aplikacja nie powinna już oferowac cofnięcia operacji.
+        /// Metoda aktualizuje wpis historii, ustawiajac typ operacji na trwałe usunięcie i blokując cofanie.
         /// </remarks>
-        /// <param name="path">Sciezka pliku w wewnetrznym koszu aplikacji.</param>
+        /// <param name="path">Ścieżka pliku w wewnętrznym koszu aplikacji.</param>
         public void MarkAsDeletedPermanently(string path)
         {
             using (var connection = new SQLiteConnection($"Data Source={this.dbPath}"))

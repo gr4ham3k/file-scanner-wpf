@@ -24,13 +24,13 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp
-  summary: Organizuje pliki w folderze docelowym wedlug regul wybranych przez uzytkownika.
+  summary: Organizuje pliki w folderze docelowym według reguł wybranych przez użytkownika.
   remarks: >-
-    Klasa pozwala kopiowac lub przenosic pliki, filtrowac je po rozszerzeniach oraz opcjonalnie
+    Klasa pozwala kopiować lub przenosić pliki, filtrować je po rozszerzeniach oraz opcjonalnie
 
-    tworzyc podfoldery odpowiadajace kategoriom plikow. Uwzglednia tez konflikty nazw,
+    tworzyć podfoldery odpowiadające kategoriom plików. Uwzględnia też konflikty nazw,
 
-    dzieki czemu istniejace pliki nie sa przypadkowo nadpisywane bez decyzji uzytkownika.
+    dzięki czemu istniejące pliki nie są przypadkowo nadpisywane bez decyzji użytkownika.
   example: []
   syntax:
     content: public static class Organizer
@@ -74,51 +74,51 @@ items:
   namespace: FileScannerApp
   summary: Przenosi albo kopiuje pliki do folderu docelowego zgodnie z wybranymi filtrami i opcjami.
   remarks: >-
-    Metoda laczy kilka decyzji uzytkownika: wybrane typy plikow, tryb kopiowania lub przenoszenia,
+    Metoda łączy kilka decyzji użytkownika: wybrane typy plików, tryb kopiowania lub przenoszenia,
 
-    tworzenie podfolderow oraz podglad nowych nazw. Gdy plik docelowy juz istnieje, konflikt jest
+    tworzenie podfolderów oraz podgląd nowych nazw. Gdy plik docelowy już istnieje, konflikt jest
 
-    rozwiazywany przez nadpisanie albo dopisanie licznika do nazwy.
+    rozwiązywany przez nadpisanie albo dopisanie licznika do nazwy.
   example: []
   syntax:
     content: public static string OrganizeFiles(List<FileData> files, string sourceFolder, string destinationFolder, List<string> fileTypes, string operation, bool createSubfolders, bool overwriteExisting, Database db, List<RenamePreview> previews)
     parameters:
     - id: files
       type: System.Collections.Generic.List{FileScannerApp.Models.FileData}
-      description: Pliki dostepne do organizowania.
+      description: Pliki dostępne do organizowania.
     - id: sourceFolder
       type: System.String
-      description: Folder zrodlowy, ktory musi istniec przed rozpoczeciem operacji.
+      description: Folder źródłowy, który musi istnieć przed rozpoczęciem operacji.
     - id: destinationFolder
       type: System.String
-      description: Folder docelowy; zostanie utworzony, jesli nie istnieje.
+      description: Folder docelowy; zostanie utworzony, jeśli nie istnieje.
     - id: fileTypes
       type: System.Collections.Generic.List{System.String}
       description: Lista rozszerzen dopuszczonych do organizowania; pusta lista oznacza brak filtrowania.
     - id: operation
       type: System.String
-      description: 'Tryb operacji: "move" oznacza przeniesienie, pozostale wartosci powoduja kopiowanie.'
+      description: 'Tryb operacji: "move" oznacza przeniesienie, pozostałe wartości powodują kopiowanie.'
     - id: createSubfolders
       type: System.Boolean
-      description: Okresla, czy pliki maja zostac rozdzielone do podfolderow wedlug typu.
+      description: Określa, czy pliki mają zostać rozdzielone do podfolderow według typu.
     - id: overwriteExisting
       type: System.Boolean
-      description: Okresla, czy istniejace pliki w folderze docelowym moga zostac nadpisane.
+      description: Określa, czy istniejące pliki w folderze docelowym mogą zostać nadpisane.
     - id: db
       type: FileScannerApp.Database
-      description: Baza danych uzywana do zapisu historii operacji; moze byc null.
+      description: Baza danych używana do zapisu historii operacji; moze byc null.
     - id: previews
       type: System.Collections.Generic.List{FileScannerApp.Models.RenamePreview}
-      description: Podglad nowych nazw przygotowany przed wykonaniem operacji.
+      description: Podgląd nowych nazw przygotowany przed wykonaniem operacji.
     return:
       type: System.String
-      description: Sciezka folderu docelowego, do ktorego organizowano pliki.
+      description: Ścieżka folderu docelowego, do którego organizowano pliki.
     content.vb: Public Shared Function OrganizeFiles(files As List(Of FileData), sourceFolder As String, destinationFolder As String, fileTypes As List(Of String), operation As String, createSubfolders As Boolean, overwriteExisting As Boolean, db As Database, previews As List(Of RenamePreview)) As String
   overload: FileScannerApp.Organizer.OrganizeFiles*
   exceptions:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: Wyrzucany, gdy folder zrodlowy nie istnieje.
+    description: Wyrzucany, gdy folder źródłowy nie istnieje.
   nameWithType.vb: Organizer.OrganizeFiles(List(Of FileData), String, String, List(Of String), String, Boolean, Boolean, Database, List(Of RenamePreview))
   fullName.vb: FileScannerApp.Organizer.OrganizeFiles(System.Collections.Generic.List(Of FileScannerApp.Models.FileData), String, String, System.Collections.Generic.List(Of String), String, Boolean, Boolean, FileScannerApp.Database, System.Collections.Generic.List(Of FileScannerApp.Models.RenamePreview))
   name.vb: OrganizeFiles(List(Of FileData), String, String, List(Of String), String, Boolean, Boolean, Database, List(Of RenamePreview))

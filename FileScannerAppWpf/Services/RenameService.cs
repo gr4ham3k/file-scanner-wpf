@@ -7,28 +7,28 @@ using System.Linq;
 namespace FileScannerApp
 {
     /// <summary>
-    /// Generuje nowe nazwy plikow na podstawie wzorca podanego przez uzytkownika.
+    /// Generuje nowe nazwy plików na podstawie wzorca podanego przez użytkownika.
     /// </summary>
     /// <remarks>
-    /// Usluga obsluguje dynamiczne znaczniki, takie jak nazwa pliku, data utworzenia, data modyfikacji,
-    /// numer porzadkowy, nazwa folderu oraz rozszerzenie. Dzieki temu umozliwia seryjna zmiane nazw
-    /// bez recznego edytowania kazdego pliku osobno.
+    /// Usługa obsługuje dynamiczne znaczniki, takie jak nazwa pliku, data utworzenia, data modyfikacji,
+    /// numer porządkowy, nazwa folderu oraz rozszerzenie. Dzięki temu umożliwia seryjną zmianę nazw
+    /// bez ręcznego edytowania każdego pliku osobno.
     /// </remarks>
     /// <seealso cref="RenamePreview"/>
     /// <seealso cref="FileScannerService"/>
     public static class RenameService
     {
         /// <summary>
-        /// Buduje nowa nazwe pliku na podstawie wzorca i danych oryginalnego pliku.
+        /// Buduje nową nazwę pliku na podstawie wzorca i danych oryginalnego pliku.
         /// </summary>
         /// <remarks>
-        /// Wzorzec moze zawierac znaczniki: {name}, {created}, {modified}, {counter},
-        /// {counter:000}, {folder} oraz {ext}. Oryginalne rozszerzenie jest dopisywane na koncu,
-        /// aby zmiana nazwy nie zmieniala typu pliku.
+        /// Wzorzec moze zawierać znaczniki: {name}, {created}, {modified}, {counter},
+        /// {counter:000}, {folder} oraz {ext}. Oryginalne rozszerzenie jest dopisywane na końcu,
+        /// aby zmiana nazwy nie zmieniała typu pliku.
         /// </remarks>
-        /// <param name="pattern">Wzorzec nowej nazwy; pusty wzorzec pozostawia nazwe bez zmian.</param>
-        /// <param name="originalPath">Pelna sciezka oryginalnego pliku.</param>
-        /// <param name="counter">Numer porzadkowy uzywany w znacznikach licznika.</param>
+        /// <param name="pattern">Wzorzec nowej nazwy; pusty wzorzec pozostawia nazwę bez zmian.</param>
+        /// <param name="originalPath">Pełna ścieżka oryginalnego pliku.</param>
+        /// <param name="counter">Numer porządkowy używany w znacznikach licznika.</param>
         /// <param name="option">Opcja formatowania tekstu: "upper", "lower", "capitalize" albo brak zmiany.</param>
         /// <returns>Nowa nazwa pliku wraz z oryginalnym rozszerzeniem.</returns>
         public static string GenerateNewName(string pattern, string originalPath, int counter, string option)
@@ -73,14 +73,14 @@ namespace FileScannerApp
         }
 
         /// <summary>
-        /// Przygotowuje liste podgladu nazw dla plikow znajdujacych sie w folderze.
+        /// Przygotowuje listę podglądu nazw dla plików znajdujących się w folderze.
         /// </summary>
         /// <remarks>
-        /// Metoda nie zmienia nazw plikow na dysku. Tworzy jedynie dane pomocnicze, ktore moga zostac
-        /// pokazane uzytkownikowi przed wykonaniem faktycznej operacji zmiany nazw lub organizowania.
+        /// Metoda nie zmienia nazw plików na dysku. Tworzy jedynie dane pomocnicze, ktore mogą zostać
+        /// pokazane użytkownikowi przed wykonaniem faktycznej operacji zmiany nazw lub organizowania.
         /// </remarks>
-        /// <param name="path">Folder, z ktorego maja zostac pobrane pliki do podgladu.</param>
-        /// <returns>Lista obiektow zawierajacych obecna nazwe pliku oraz miejsce na nazwe po zmianie.</returns>
+        /// <param name="path">Folder, z którego mają zostać pobrane pliki do podglądu.</param>
+        /// <returns>Lista obiektow zawierających obecną nazwę pliku oraz miejsce na nazwę po zmianie.</returns>
         public static List<RenamePreview> LoadPreview(string path)
         {
             var files = FileScannerService.Scan(path);

@@ -3,23 +3,23 @@
 namespace FileScannerApp.Models
 {
     /// <summary>
-    /// Okresla rodzaj operacji wykonanej na pliku i zapisanej w historii aplikacji.
+    /// Określa rodzaj operacji wykonanej na pliku i zapisanej w historii aplikacji.
     /// </summary>
     /// <remarks>
-    /// Typ operacji wplywa na sposob prezentacji wpisu w historii oraz na to, czy dana operacja
-    /// moze zostac cofnieta. Przeniesienie lub zmiana nazwy zwykle moga byc odwracane,
-    /// natomiast trwale usuniecie blokuje taka mozliwosc.
+    /// Typ operacji wpływa na sposob prezentacji wpisu w historii oraz na to, czy dana operacja
+    /// może zostać cofnięta. Przeniesienie lub zmiana nazwy zwykle mogą być odwracane,
+    /// natomiast trwałe usunięcie blokuje taką możliwość.
     /// </remarks>
     /// <seealso cref="OperationLog"/>
     public enum OperationType
     {
         /// <summary>
-        /// Zmiana nazwy pliku bez zmiany jego zawartosci.
+        /// Zmiana nazwy pliku bez zmiany jego zawartości.
         /// </summary>
         Rename,
 
         /// <summary>
-        /// Przeniesienie pliku do wewnetrznego kosza aplikacji.
+        /// Przeniesienie pliku do wewnętrznego kosza aplikacji.
         /// </summary>
         Delete,
 
@@ -34,7 +34,7 @@ namespace FileScannerApp.Models
         Copy,
 
         /// <summary>
-        /// Trwale usuniecie pliku z kosza aplikacji bez mozliwosci cofniecia.
+        /// Trwałe usunięcie pliku z kosza aplikacji bez możliwości cofnięcia.
         /// </summary>
         DeletedPermanently
     }

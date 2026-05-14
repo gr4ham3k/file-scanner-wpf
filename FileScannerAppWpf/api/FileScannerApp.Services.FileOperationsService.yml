@@ -29,13 +29,13 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Services
-  summary: Wykonuje podstawowe operacje na plikach wybrane przez uzytkownika.
+  summary: Wykonuje podstawowe operacje na plikach wybrane przez użytkownika.
   remarks: >-
-    Usluga obsluguje przenoszenie, zmiane nazw, usuwanie do wewnetrznego kosza aplikacji
+    Usługa obsługuje przenoszenie, zmianę nazw, usuwanie do wewnętrznego kosza aplikacji
 
-    oraz przywracanie plikow. Operacje, ktore mozna pozniej przeanalizowac lub cofnac,
+    oraz przywracanie plikow. Operacje, które można później przeanalizowac lub cofnąć,
 
-    sa zapisywane w historii.
+    są zapisywane w historii.
   example: []
   syntax:
     content: public class FileOperationsService
@@ -79,14 +79,14 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Services
-  summary: Tworzy usluge operacji plikowych powiazana z historia operacji w bazie danych.
+  summary: Tworzy usługę operacji plikowych powiązaną z historią operacji w bazie danych.
   example: []
   syntax:
     content: public FileOperationsService(Database db)
     parameters:
     - id: db
       type: FileScannerApp.Database
-      description: Baza danych uzywana do zapisywania operacji wykonanych na plikach.
+      description: Baza danych używana do zapisywania operacji wykonanych na plikach.
     content.vb: Public Sub New(db As Database)
   overload: FileScannerApp.Services.FileOperationsService.#ctor*
   nameWithType.vb: FileOperationsService.New(Database)
@@ -114,21 +114,21 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Services
-  summary: Przenosi wskazane pliki do wewnetrznego kosza aplikacji zamiast usuwac je trwale.
+  summary: Przenosi wskazane pliki do wewnętrznego kosza aplikacji zamiast usuwać je trwale.
   remarks: >-
-    Kazdy plik otrzymuje unikalna nazwe w katalogu kosza, co chroni przed konfliktami nazw.
+    Każdy plik otrzymuje unikalną nazwę w katalogu kosza, co chroni przed konfliktami nazw.
 
-    Udane przeniesienie jest zapisywane jako operacja mozliwa do cofniecia.
+    Udane przeniesienie jest zapisywane jako operacja możliwa do cofnięcia.
   example: []
   syntax:
     content: public (int moved, int failed) DeleteFiles(List<string> paths)
     parameters:
     - id: paths
       type: System.Collections.Generic.List{System.String}
-      description: Sciezki plikow przeznaczonych do usuniecia z widoku uzytkownika.
+      description: Ścieżki plików przeznaczonych do usunięcia z widoku użytkownika.
     return:
       type: System.ValueTuple{System.Int32,System.Int32}
-      description: Liczba plikow przeniesionych do kosza oraz liczba operacji nieudanych.
+      description: Liczba plików przeniesionych do kosza oraz liczba operacji nieudanych.
     content.vb: Public Function DeleteFiles(paths As List(Of String)) As (moved As Integer, failed As Integer)
   overload: FileScannerApp.Services.FileOperationsService.DeleteFiles*
   nameWithType.vb: FileOperationsService.DeleteFiles(List(Of String))
@@ -156,24 +156,24 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Services
-  summary: Przenosi pliki do wybranego folderu docelowego i zwraca zaktualizowane sciezki.
+  summary: Przenosi pliki do wybranego folderu docelowego i zwraca zaktualizowane ścieżki.
   remarks: >-
-    Metoda pomija pliki, ktore nie istnieja, oraz pliki powodujace konflikt nazwy w folderze docelowym.
+    Metoda pomija pliki, ktore nie istnieją, oraz pliki powodujące konflikt nazwy w folderze docelowym.
 
-    Udane przeniesienia sa zapisywane w historii jako operacje mozliwe do cofniecia.
+    Udane przeniesienia są zapisywane w historii jako operacje możliwe do cofnięcia.
   example: []
   syntax:
     content: public (int moved, int skipped, List<(string oldPath, string newPath)> updatedPaths) MoveFiles(List<string> paths, string targetFolder)
     parameters:
     - id: paths
       type: System.Collections.Generic.List{System.String}
-      description: Lista sciezek plikow do przeniesienia.
+      description: Lista ścieżek plików do przeniesienia.
     - id: targetFolder
       type: System.String
-      description: Folder, do ktorego maja trafic pliki.
+      description: Folder, do którego mają trafić pliki.
     return:
       type: System.ValueTuple{System.Int32,System.Int32,System.Collections.Generic.List{System.ValueTuple{System.String,System.String}}}
-      description: Liczba przeniesionych plikow, liczba pominietych plikow oraz lista zmian sciezek.
+      description: Liczba przeniesionych plików, liczba pominiętych plików oraz lista zmian ścieżek.
     content.vb: Public Function MoveFiles(paths As List(Of String), targetFolder As String) As (moved As Integer, skipped As Integer, updatedPaths As List(Of (oldPath As String, newPath As String)))
   overload: FileScannerApp.Services.FileOperationsService.MoveFiles*
   nameWithType.vb: FileOperationsService.MoveFiles(List(Of String), String)
@@ -201,24 +201,24 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Services
-  summary: Zmienia nazwe pojedynczego pliku i zapisuje operacje w historii.
+  summary: Zmienia nazwę pojedyńczego pliku i zapisuje operacje w historii.
   remarks: >-
-    Jesli nowa nazwa nie zawiera oryginalnego rozszerzenia, metoda dopisuje je automatycznie.
+    Jeśli nowa nazwa nie zawiera oryginalnego rozszerzenia, metoda dopisuje je automatycznie.
 
-    Zamiast rzucac wyjatki przy typowych problemach uzytkownika, zwraca opis bledu w wyniku metody.
+    Zamiast rzucać wyjątki przy typowych problemach użytkownika, zwraca opis błędu w wyniku metody.
   example: []
   syntax:
     content: public (bool success, string newPath, string error) RenameFile(string oldPath, string newName)
     parameters:
     - id: oldPath
       type: System.String
-      description: Aktualna sciezka pliku.
+      description: Aktualna ścieżka pliku.
     - id: newName
       type: System.String
-      description: Nowa nazwa pliku podana przez uzytkownika.
+      description: Nowa nazwa pliku podana przez użytkownika.
     return:
       type: System.ValueTuple{System.Boolean,System.String,System.String}
-      description: Informacja o powodzeniu, nowa sciezka albo komunikat bledu.
+      description: Informacja o powodzeniu, nowa ścieżka albo komunikat bledu.
     content.vb: Public Function RenameFile(oldPath As String, newName As String) As (success As Boolean, newPath As String, [error] As String)
   overload: FileScannerApp.Services.FileOperationsService.RenameFile*
   nameWithType.vb: FileOperationsService.RenameFile(String, String)
@@ -246,11 +246,11 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Services
-  summary: Trwale usuwa pliki znajdujace sie w wewnetrznym koszu aplikacji.
+  summary: Trwale usuwa pliki znajdujące się w wewnętrznym koszu aplikacji.
   remarks: >-
-    Po usunieciu pliku odpowiadajacy wpis historii jest oznaczany jako trwale usuniety,
+    Po usunięciu pliku odpowiadający wpis historii jest oznaczany jako trwale usunięty,
 
-    aby aplikacja nie probowala pozniej przywrocic pliku, ktorego juz nie ma.
+    aby aplikacja nie próbowała później przywrócić pliku, którego już nie ma.
   example: []
   syntax:
     content: public void CleanupBin()
@@ -280,9 +280,9 @@ items:
   namespace: FileScannerApp.Services
   summary: Przywraca plik na podstawie wpisu historii operacji.
   remarks: >-
-    Metoda korzysta ze sciezki docelowej zapisanej przy usunieciu lub przeniesieniu pliku.
+    Metoda korzysta ze ścieżki docelowej zapisanej przy usunięciu lub przeniesieniu pliku.
 
-    Jesli plik nie istnieje albo nie da sie ustalic folderu docelowego, metoda konczy prace bez bledu.
+    Jesli plik nie istnieje albo nie da sie ustalić folderu docelowego, metoda kończy pracę bez błędu.
   example: []
   syntax:
     content: public void RestoreFile(OperationLog log)

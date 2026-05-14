@@ -4,18 +4,18 @@ _layout: landing
 
 # FileScannerAppWpf
 
-FileScannerAppWpf to desktopowa aplikacja dla systemu Windows, ktora pomaga przegladac, porzadkowac i skanowac pliki z wybranego folderu. Program jest przeznaczony dla uzytkownikow, ktorzy chca szybciej zarzadzac lokalnymi plikami, zmieniac ich nazwy seryjnie, przenosic je wedlug typow oraz sprawdzac potencjalne zagrozenia z wykorzystaniem VirusTotal.
+FileScannerAppWpf to desktopowa aplikacja dla systemu Windows, która pomaga przeglądać, porządkować i skanować pliki z wybranego folderu. Program jest przeznaczony dla użytkowników, którzy chcą szybciej zarządzać lokalnymi plikami, zmieniać ich nazwy seryjnie, przenosić je według typów oraz sprawdzać potencjalne zagrożenia z wykorzystaniem VirusTotal.
 
-Aplikacja rozwiazuje problem recznego porzadkowania duzej liczby plikow oraz laczy kilka przydatnych operacji w jednym narzedziu: podglad plikow, organizowanie, zmiane nazw, historie operacji i skanowanie antywirusowe po hashu SHA-256. W odroznieniu od prostego eksploratora plikow projekt zapisuje historie dzialan, pozwala przywracac czesc operacji i udostepnia widok wynikow skanowania.
+Aplikacja rozwiązuje problem ręcznego porządkowania dużej liczby plików oraz łączy kilka przydatnych operacji w jednym narzędziu: podgląd plików, organizowanie, zmiane nazw, historie operacji i skanowanie antywirusowe po hashu SHA-256. W odróżnieniu od prostego eksploratora plików projekt zapisuje historie działań, pozwala przywracać część operacji i udostępnia widok wyników skanowania.
 
 ## Najwazniejsze funkcje
 
-- skanowanie plikow z uzyciem API VirusTotal,
-- podglad wybranych typow plikow,
-- przenoszenie, kopiowanie, usuwanie i przywracanie plikow,
-- seryjna zmiana nazw wedlug wzorca,
-- organizowanie plikow wedlug rozszerzen i kategorii,
-- historia skanow oraz operacji wykonanych na plikach.
+- skanowanie plików z użyciem API VirusTotal,
+- podgląd wybranych typów plikow,
+- przenoszenie, kopiowanie, usuwanie i przywracanie plików,
+- seryjna zmiana nazw według wzorca,
+- organizowanie plikow według rozszerzeń i kategorii,
+- historia skanów oraz operacji wykonanych na plikach.
 
 ## Dokumentacja
 

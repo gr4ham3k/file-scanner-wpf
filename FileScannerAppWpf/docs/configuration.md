@@ -1,28 +1,28 @@
 # Konfiguracja projektu
 
-Ta sekcja opisuje ustawienia wymagane przed pierwszym uruchomieniem aplikacji w srodowisku deweloperskim.
+Ta sekcja opisuje ustawienia wymagane przed pierwszym uruchomieniem aplikacji w środowisku deweloperskim.
 
 ## Zmienne srodowiskowe
 
-Aplikacja korzysta z klucza API VirusTotal. Klucz powinien byc zapisany jako zmienna srodowiskowa:
+Aplikacja korzysta z klucza API VirusTotal. Klucz powinien byc zapisany jako zmienna środowiskowa:
 
 ```text
 VIRUSTOTAL_API_KEY
 ```
 
-Przyklad ustawienia zmiennej w PowerShell dla aktualnej sesji terminala:
+Przykład ustawienia zmiennej w PowerShell dla aktualnej sesji terminala:
 
 ```powershell
 $env:VIRUSTOTAL_API_KEY="twoj-klucz-api"
 ```
 
-Przyklad ustawienia zmiennej na stale dla konta uzytkownika:
+Przykład ustawienia zmiennej na stałe dla konta użytkownika:
 
 ```powershell
 [Environment]::SetEnvironmentVariable("VIRUSTOTAL_API_KEY", "twoj-klucz-api", "User")
 ```
 
-Po ustawieniu zmiennej na stale nalezy uruchomic terminal lub Visual Studio ponownie, aby nowa wartosc byla widoczna dla aplikacji.
+Po ustawieniu zmiennej na stałe należy uruchomic terminal lub Visual Studio ponownie, aby nowa wartość była widoczna dla aplikacji.
 
 ## Baza danych
 
@@ -32,7 +32,7 @@ Projekt korzysta z lokalnej bazy SQLite zapisanej w pliku:
 Data/database.db
 ```
 
-Plik bazy jest dolaczony do projektu i kopiowany do katalogu wyjsciowego podczas budowania aplikacji dzieki konfiguracji w pliku `.csproj`:
+Plik bazy jest dołączony do projektu i kopiowany do katalogu wyjściowego podczas budowania aplikacji dzięki konfiguracji w pliku `.csproj`:
 
 ```xml
 <Content Include="Data\database.db">
@@ -44,17 +44,17 @@ Aplikacja nie wymaga osobnego serwera bazy danych, takiego jak PostgreSQL, MySQL
 
 ## Connection string
 
-Sciezka do bazy jest budowana w klasie `Database` na podstawie katalogu uruchomieniowego aplikacji:
+Ścieżka do bazy jest budowana w klasie `Database` na podstawie katalogu uruchomieniowego aplikacji:
 
 ```text
 <folder-aplikacji>/Data/database.db
 ```
 
-Nie trzeba ustawiac connection stringa w pliku konfiguracyjnym. Jesli baza ma zostac przeniesiona w inne miejsce, nalezy zmienic sposob tworzenia sciezki w klasie `Database`.
+Nie trzeba ustawiać connection stringa w pliku konfiguracyjnym. Jeśli baza ma zostać przeniesiona w inne miejsce, należy zmienić sposób tworzenia ścieżki w klasie `Database`.
 
 ## Migracje
 
-Projekt nie korzysta z migracji Entity Framework. Struktura bazy znajduje sie w gotowym pliku SQLite.
+Projekt nie korzysta z migracji Entity Framework. Struktura bazy znajduje się w gotowym pliku SQLite.
 
 Nie ma komendy typu:
 
@@ -64,13 +64,13 @@ dotnet ef database update
 
 ## Dane poczatkowe
 
-Projekt nie ma mechanizmu seedowania danych testowych ani kont uzytkownikow. Aplikacja nie posiada systemu logowania, wiec nie istnieje domyslne konto administratora.
+Projekt nie ma mechanizmu seedowania danych testowych ani kont użytkowników. Aplikacja nie posiada systemu logowania, więc nie istnieje domyślne konto administratora.
 
 ## Najczestsze problemy konfiguracyjne
 
-| Problem | Mozliwa przyczyna | Rozwiazanie |
+| Problem | Możliwa przyczyna | Rozwiązanie |
 | --- | --- | --- |
-| Skanowanie nie dziala | Brak zmiennej `VIRUSTOTAL_API_KEY` | Ustaw klucz API jako zmienna srodowiskowa |
-| Podglad PDF/DOCX nie dziala | Brak WebView2 Runtime | Zainstaluj Microsoft Edge WebView2 Runtime |
-| Baza nie zapisuje danych | Brak pliku `Data/database.db` w katalogu wyjsciowym | Sprawdz, czy plik jest dolaczony jako `Content` i kopiowany przy buildzie |
+| Skanowanie nie działa | Brak zmiennej `VIRUSTOTAL_API_KEY` | Ustaw klucz API jako zmienna środowiskowa |
+| Podgląd PDF/DOCX nie działa | Brak WebView2 Runtime | Zainstaluj Microsoft Edge WebView2 Runtime |
+| Baza nie zapisuje danych | Brak pliku `Data/database.db` w katalogu wyjściowym | Sprawdź, czy plik jest dołączony jako `Content` i kopiowany przy buildzie |
 | DocFX nie pokazuje API | Nie wygenerowano metadanych | Uruchom `docfx metadata docfx.json`, a potem `docfx build docfx.json` |

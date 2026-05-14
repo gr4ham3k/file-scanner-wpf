@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class Organizer | mysite ">
       
-      <meta name="description" content="Organizuje pliki w folderze docelowym wedlug regul wybranych przez uzytkownika.">
+      <meta name="description" content="Organizuje pliki w folderze docelowym według reguł wybranych przez użytkownika.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,7 +97,7 @@ Class Organizer  <a class="header-action link-secondary" title="View source" hre
   <dl><dt>Assembly</dt><dd>FileScannerAppWpf.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Organizuje pliki w folderze docelowym wedlug regul wybranych przez uzytkownika.</p>
+  <div class="markdown summary"><p>Organizuje pliki w folderze docelowym według reguł wybranych przez użytkownika.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -148,9 +148,9 @@ Class Organizer  <a class="header-action link-secondary" title="View source" hre
 
 
   <h2 id="FileScannerApp_Organizer_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Klasa pozwala kopiowac lub przenosic pliki, filtrowac je po rozszerzeniach oraz opcjonalnie
-tworzyc podfoldery odpowiadajace kategoriom plikow. Uwzglednia tez konflikty nazw,
-dzieki czemu istniejace pliki nie sa przypadkowo nadpisywane bez decyzji uzytkownika.</p>
+  <div class="markdown level0 remarks"><p>Klasa pozwala kopiować lub przenosić pliki, filtrować je po rozszerzeniach oraz opcjonalnie
+tworzyć podfoldery odpowiadające kategoriom plików. Uwzględnia też konflikty nazw,
+dzięki czemu istniejące pliki nie są przypadkowo nadpisywane bez decyzji użytkownika.</p>
 </div>
 
 
@@ -176,38 +176,38 @@ dzieki czemu istniejace pliki nie sa przypadkowo nadpisywane bez decyzji uzytkow
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>files</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="FileScannerApp.Models.FileData.html">FileData</a>&gt;</dt>
-    <dd><p>Pliki dostepne do organizowania.</p>
+    <dd><p>Pliki dostępne do organizowania.</p>
 </dd>
     <dt><code>sourceFolder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Folder zrodlowy, ktory musi istniec przed rozpoczeciem operacji.</p>
+    <dd><p>Folder źródłowy, który musi istnieć przed rozpoczęciem operacji.</p>
 </dd>
     <dt><code>destinationFolder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Folder docelowy; zostanie utworzony, jesli nie istnieje.</p>
+    <dd><p>Folder docelowy; zostanie utworzony, jeśli nie istnieje.</p>
 </dd>
     <dt><code>fileTypes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
     <dd><p>Lista rozszerzen dopuszczonych do organizowania; pusta lista oznacza brak filtrowania.</p>
 </dd>
     <dt><code>operation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Tryb operacji: &quot;move&quot; oznacza przeniesienie, pozostale wartosci powoduja kopiowanie.</p>
+    <dd><p>Tryb operacji: &quot;move&quot; oznacza przeniesienie, pozostałe wartości powodują kopiowanie.</p>
 </dd>
     <dt><code>createSubfolders</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Okresla, czy pliki maja zostac rozdzielone do podfolderow wedlug typu.</p>
+    <dd><p>Określa, czy pliki mają zostać rozdzielone do podfolderow według typu.</p>
 </dd>
     <dt><code>overwriteExisting</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Okresla, czy istniejace pliki w folderze docelowym moga zostac nadpisane.</p>
+    <dd><p>Określa, czy istniejące pliki w folderze docelowym mogą zostać nadpisane.</p>
 </dd>
     <dt><code>db</code> <a class="xref" href="FileScannerApp.Database.html">Database</a></dt>
-    <dd><p>Baza danych uzywana do zapisu historii operacji; moze byc null.</p>
+    <dd><p>Baza danych używana do zapisu historii operacji; moze byc null.</p>
 </dd>
     <dt><code>previews</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="FileScannerApp.Models.RenamePreview.html">RenamePreview</a>&gt;</dt>
-    <dd><p>Podglad nowych nazw przygotowany przed wykonaniem operacji.</p>
+    <dd><p>Podgląd nowych nazw przygotowany przed wykonaniem operacji.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Sciezka folderu docelowego, do ktorego organizowano pliki.</p>
+    <dd><p>Ścieżka folderu docelowego, do którego organizowano pliki.</p>
 </dd>
   </dl>
 
@@ -218,15 +218,15 @@ dzieki czemu istniejace pliki nie sa przypadkowo nadpisywane bez decyzji uzytkow
 
 
   <h4 class="section" id="FileScannerApp_Organizer_OrganizeFiles_System_Collections_Generic_List_FileScannerApp_Models_FileData__System_String_System_String_System_Collections_Generic_List_System_String__System_String_System_Boolean_System_Boolean_FileScannerApp_Database_System_Collections_Generic_List_FileScannerApp_Models_RenamePreview___remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Metoda laczy kilka decyzji uzytkownika: wybrane typy plikow, tryb kopiowania lub przenoszenia,
-tworzenie podfolderow oraz podglad nowych nazw. Gdy plik docelowy juz istnieje, konflikt jest
-rozwiazywany przez nadpisanie albo dopisanie licznika do nazwy.</p>
+  <div class="markdown level1 remarks"><p>Metoda łączy kilka decyzji użytkownika: wybrane typy plików, tryb kopiowania lub przenoszenia,
+tworzenie podfolderów oraz podgląd nowych nazw. Gdy plik docelowy już istnieje, konflikt jest
+rozwiązywany przez nadpisanie albo dopisanie licznika do nazwy.</p>
 </div>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.directorynotfoundexception">DirectoryNotFoundException</a></dt>
-    <dd><p>Wyrzucany, gdy folder zrodlowy nie istnieje.</p>
+    <dd><p>Wyrzucany, gdy folder źródłowy nie istnieje.</p>
 </dd>
   </dl>
 

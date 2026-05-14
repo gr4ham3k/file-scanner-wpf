@@ -28,13 +28,13 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Okresla rodzaj operacji wykonanej na pliku i zapisanej w historii aplikacji.
+  summary: Określa rodzaj operacji wykonanej na pliku i zapisanej w historii aplikacji.
   remarks: >-
-    Typ operacji wplywa na sposob prezentacji wpisu w historii oraz na to, czy dana operacja
+    Typ operacji wpływa na sposob prezentacji wpisu w historii oraz na to, czy dana operacja
 
-    moze zostac cofnieta. Przeniesienie lub zmiana nazwy zwykle moga byc odwracane,
+    może zostać cofnięta. Przeniesienie lub zmiana nazwy zwykle mogą być odwracane,
 
-    natomiast trwale usuniecie blokuje taka mozliwosc.
+    natomiast trwałe usunięcie blokuje taką możliwość.
   example: []
   syntax:
     content: public enum OperationType
@@ -64,7 +64,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Zmiana nazwy pliku bez zmiany jego zawartosci.
+  summary: Zmiana nazwy pliku bez zmiany jego zawartości.
   example: []
   syntax:
     content: Rename = 0
@@ -92,7 +92,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Przeniesienie pliku do wewnetrznego kosza aplikacji.
+  summary: Przeniesienie pliku do wewnętrznego kosza aplikacji.
   example: []
   syntax:
     content: Delete = 1
@@ -176,7 +176,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Trwale usuniecie pliku z kosza aplikacji bez mozliwosci cofniecia.
+  summary: Trwałe usunięcie pliku z kosza aplikacji bez możliwości cofnięcia.
   example: []
   syntax:
     content: DeletedPermanently = 4

@@ -25,17 +25,15 @@ items:
       repo: https://github.com/gr4ham3k/file-scanner-wpf.git
     id: ScanService
     path: Services/ScannerService.cs
-    startLine: 24
+    startLine: 23
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Services
-  summary: Obsluguje proces skanowania plikow pod katem zagrozen przy uzyciu zewnetrznego API VirusTotal.
+  summary: Obsługuje proces skanowania plikow pod kątem zagrożen przy użyciu zewnętrznego API VirusTotal.
   remarks: >-
-    Klasa laczy logike obliczania skrotu SHA-256, komunikacji z API, zapisu wynikow do bazy danych
+    Klasa łączy logikę obliczania skrótu SHA-256, komunikacji z API, zapisu wyników do bazy danych
 
-    oraz raportowania postepu skanowania. Jest centralnym elementem funkcji bezpieczenstwa aplikacji.
-
-    Ze wzgledu na ograniczenia API skanowanie wykonywane jest sekwencyjnie z opoznieniem miedzy plikami.
+    oraz raportowania postępu skanowania.
   example: []
   syntax:
     content: public class ScanService
@@ -73,25 +71,22 @@ items:
       repo: https://github.com/gr4ham3k/file-scanner-wpf.git
     id: .ctor
     path: Services/ScannerService.cs
-    startLine: 39
+    startLine: 37
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Services
-  summary: Tworzy usluge skanowania z konfiguracja API oraz dostepem do bazy danych.
-  remarks: >-
-    Klucz API jest pobierany z konfiguracji aplikacji, dlatego obiekt tej klasy powinien byc tworzony
-
-    dopiero wtedy, gdy konfiguracja zostala juz wczytana.
+  summary: Tworzy usługę skanowania z konfiguracją API oraz dostępem do bazy danych.
+  remarks: Klucz API jest pobierany z konfiguracji aplikacji.
   example: []
   syntax:
     content: public ScanService(AppConfig appConfig, Database db)
     parameters:
     - id: appConfig
       type: FileScannerApp.AppConfig
-      description: Konfiguracja zawierajaca klucz do uslugi VirusTotal.
+      description: Konfiguracja zawierająca klucz do usługi VirusTotal.
     - id: db
       type: FileScannerApp.Database
-      description: Obiekt odpowiedzialny za zapis historii skanow i wynikow.
+      description: Obiekt odpowiedzialny za zapis historii skanów i wyników.
     content.vb: Public Sub New(appConfig As AppConfig, db As Database)
   overload: FileScannerApp.Services.ScanService.#ctor*
   nameWithType.vb: ScanService.New(AppConfig, Database)
@@ -115,13 +110,13 @@ items:
       repo: https://github.com/gr4ham3k/file-scanner-wpf.git
     id: CreateScan
     path: Services/ScannerService.cs
-    startLine: 55
+    startLine: 53
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Services
   summary: Rozpoczyna nowy wpis skanowania w bazie danych.
   remarks: >-
-    Metoda zapisuje skan ze statusem poczatkowym, aby pozniejsze wyniki plikow mogly byc
+    Metoda zapisuje skan ze statusem początkowym, aby późniejsze wyniki plików mogły być
 
     przypisane do jednego procesu skanowania.
   example: []
@@ -130,13 +125,13 @@ items:
     parameters:
     - id: folder
       type: System.String
-      description: Sciezka folderu wybranego do skanowania.
+      description: Scieżka folderu wybranego do skanowania.
     - id: count
       type: System.Int32
-      description: Liczba plikow przewidzianych do sprawdzenia.
+      description: Liczba plików przewidzianych do sprawdzenia.
     return:
       type: System.Int32
-      description: Identyfikator utworzonego skanu, uzywany przy zapisie wynikow.
+      description: Identyfikator utworzonego skanu, używany przy zapisie wyników.
     content.vb: Public Function CreateScan(folder As String, count As Integer) As Integer
   overload: FileScannerApp.Services.ScanService.CreateScan*
   nameWithType.vb: ScanService.CreateScan(String, Integer)
@@ -160,33 +155,33 @@ items:
       repo: https://github.com/gr4ham3k/file-scanner-wpf.git
     id: ScanFilesAsync
     path: Services/ScannerService.cs
-    startLine: 72
+    startLine: 70
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Services
-  summary: Skanuje kolekcje plikow, zapisuje wyniki i przekazuje postep do interfejsu uzytkownika.
+  summary: Skanuje kolekcje plików, zapisuje wyniki i przekazuje postęp do interfejsu użytkownika.
   remarks: >-
-    Dla kazdego istniejacego pliku obliczany jest skrot SHA-256, a nastepnie pobierany jest raport
+    Dla każdego istniejącego pliku obliczany jest skrót SHA-256, a następnie pobierany jest raport
 
-    z VirusTotal. Bledy pojedynczych plikow sa zapisywane jako wynik skanowania, aby awaria jednego
+    z VirusTotal. Błędy pojedyńczych plików są zapisywane jako wynik skanowania, aby awaria jednego
 
-    pliku nie przerywala calego procesu. Po kazdym pliku wywolywany jest callback postepu.
+    pliku nie przerywala całego procesu. Po każdym pliku wywoływany jest callback postępu.
   example: []
   syntax:
     content: public Task<int> ScanFilesAsync(List<FileData> files, int scanId, Func<ScanProgress, Task> onProgress)
     parameters:
     - id: files
       type: System.Collections.Generic.List{FileScannerApp.Models.FileData}
-      description: Lista plikow wybranych do skanowania.
+      description: Lista plików wybranych do skanowania.
     - id: scanId
       type: System.Int32
-      description: Identyfikator skanu, do ktorego zostana przypisane wyniki.
+      description: Identyfikator skanu, do którego zostaną przypisane wyniki.
     - id: onProgress
       type: System.Func{FileScannerApp.Models.ScanProgress,System.Threading.Tasks.Task}
-      description: Funkcja wywolywana po przetworzeniu kolejnego pliku.
+      description: Funkcja wywoływana po przetworzeniu kolejnego pliku.
     return:
       type: System.Threading.Tasks.Task{System.Int32}
-      description: Liczba plikow oznaczonych jako potencjalnie zlosliwe.
+      description: Liczba plików oznaczonych jako potencjalnie złosliwe.
     content.vb: Public Function ScanFilesAsync(files As List(Of FileData), scanId As Integer, onProgress As Func(Of ScanProgress, Task)) As Task(Of Integer)
   overload: FileScannerApp.Services.ScanService.ScanFilesAsync*
   nameWithType.vb: ScanService.ScanFilesAsync(List(Of FileData), Integer, Func(Of ScanProgress, Task))
@@ -210,25 +205,25 @@ items:
       repo: https://github.com/gr4ham3k/file-scanner-wpf.git
     id: CalculateSHA256
     path: Services/ScannerService.cs
-    startLine: 141
+    startLine: 139
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Services
-  summary: Oblicza skrot SHA-256 pliku, ktory jest uzywany jako identyfikator w usludze VirusTotal.
+  summary: Oblicza skrót SHA-256 pliku, który jest używany jako identyfikator w usłudze VirusTotal.
   remarks: >-
-    API VirusTotal pozwala sprawdzic plik po jego skrocie, bez wysylania zawartosci pliku.
+    API VirusTotal pozwala sprawdzić plik po jego skrócie, bez wysyłania zawartosci pliku.
 
-    Metoda wymaga istniejacej sciezki, poniewaz otwiera plik bezposrednio z dysku.
+    Metoda wymaga istniejącej ścieżki, ponieważ otwiera plik bezpośrednio z dysku.
   example: []
   syntax:
     content: public string CalculateSHA256(string filePath)
     parameters:
     - id: filePath
       type: System.String
-      description: Pelna sciezka do pliku, dla ktorego ma zostac obliczony skrot.
+      description: Pełna ścieżka do pliku, dla ktorego ma zostać obliczony skrót.
     return:
       type: System.String
-      description: Skrot SHA-256 zapisany malymi literami bez separatorow.
+      description: Skrót SHA-256 zapisany małymi literami bez separatorow.
     content.vb: Public Function CalculateSHA256(filePath As String) As String
   overload: FileScannerApp.Services.ScanService.CalculateSHA256*
   nameWithType.vb: ScanService.CalculateSHA256(String)
@@ -252,25 +247,25 @@ items:
       repo: https://github.com/gr4ham3k/file-scanner-wpf.git
     id: GetFileReportAsync
     path: Services/ScannerService.cs
-    startLine: 163
+    startLine: 161
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Services
-  summary: Pobiera raport VirusTotal dla pliku zidentyfikowanego przez skrot.
+  summary: Pobiera raport VirusTotal dla pliku zidentyfikowanego przez skrót.
   remarks: >-
-    Gdy VirusTotal nie zna danego skrotu, metoda zwraca null. Inne bledy HTTP sa przekazywane dalej,
+    Gdy VirusTotal nie zna danego skrótu, metoda zwraca null. Inne błędy HTTP są przekazywane dalej,
 
-    poniewaz moga oznaczac problem z kluczem API, limitem zapytan albo dostepnoscia uslugi.
+    ponieważ mogą oznaczać problem z kluczem API, limitem zapytań albo dostępnoscią usługi.
   example: []
   syntax:
     content: public Task<string> GetFileReportAsync(string fileHash)
     parameters:
     - id: fileHash
       type: System.String
-      description: Skrot SHA-256 pliku sprawdzanego w VirusTotal.
+      description: Skrót SHA-256 pliku sprawdzanego w VirusTotal.
     return:
       type: System.Threading.Tasks.Task{System.String}
-      description: Odpowiedz API w formacie JSON albo null, gdy raport nie istnieje.
+      description: Odpowiedź API w formacie JSON albo null, gdy raport nie istnieje.
     content.vb: Public Function GetFileReportAsync(fileHash As String) As Task(Of String)
   overload: FileScannerApp.Services.ScanService.GetFileReportAsync*
   nameWithType.vb: ScanService.GetFileReportAsync(String)
@@ -294,21 +289,21 @@ items:
       repo: https://github.com/gr4ham3k/file-scanner-wpf.git
     id: HasInternet
     path: Services/ScannerService.cs
-    startLine: 194
+    startLine: 192
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Services
-  summary: Sprawdza, czy aplikacja ma podstawowy dostep do internetu.
+  summary: Sprawdza, czy aplikacja ma podstawowy dostęp do internetu.
   remarks: >-
-    Metoda wykonuje krotkie zapytanie testowe i zwraca false przy dowolnym bledzie, aby interfejs
+    Metoda wykonuje krótkie zapytanie testowe i zwraca false przy dowolnym błędzie, aby interfejs
 
-    mogl bezpiecznie poinformowac uzytkownika o braku polaczenia bez przerywania aplikacji wyjatkiem.
+    mógl bezpiecznie poinformowac użytkownika o braku połączenia bez przerywania aplikacji wyjątkiem.
   example: []
   syntax:
     content: public static Task<bool> HasInternet()
     return:
       type: System.Threading.Tasks.Task{System.Boolean}
-      description: True, gdy testowe zapytanie HTTP zakonczylo sie powodzeniem; w przeciwnym razie false.
+      description: True, gdy testowe zapytanie HTTP zakończyło sie powodzeniem; w przeciwnym razie false.
     content.vb: Public Shared Function HasInternet() As Task(Of Boolean)
   overload: FileScannerApp.Services.ScanService.HasInternet*
 references:

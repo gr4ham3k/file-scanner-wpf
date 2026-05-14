@@ -13,25 +13,25 @@ using Microsoft.Web.WebView2.Wpf;
 namespace FileScannerApp.Wpf.Helpers;
 
 /// <summary>
-/// Tworzy element interfejsu sluzacy do podgladu zawartosci wybranego pliku.
+/// Tworzy element interfejsu służacy do podglądu zawartosci wybranego pliku.
 /// </summary>
 /// <remarks>
-/// Fabryka dobiera sposob prezentacji pliku na podstawie jego rozszerzenia. Obsluguje miedzy innymi
-/// obrazy, pliki tekstowe, multimedia, PDF oraz DOCX. Dla nieobslugiwanych formatow zwraca komunikat
-/// zamiast powodowac blad interfejsu.
+/// Fabryka dobiera sposób prezentacji pliku na podstawie jego rozszerzenia. Obsluguje między innymi
+/// obrazy, pliki tekstowe, multimedia, PDF oraz DOCX. Dla nieobsługiwanych formatów zwraca komunikat
+/// zamiast powodować błąd interfejsu.
 /// </remarks>
 /// <seealso cref="ConvertDocxToHtml"/>
 public static class PreviewFactory
 {
     /// <summary>
-    /// Tworzy kontrolke WPF odpowiednia do podgladu wskazanego pliku.
+    /// Tworzy kontrolkę WPF odpowiednią do podglądu wskazanego pliku.
     /// </summary>
     /// <remarks>
-    /// Metoda ukrywa szczegoly tworzenia roznych kontrolek podgladu przed reszta aplikacji.
-    /// Dzieki temu okno glowne moze ustawic jeden element interfejsu niezaleznie od tego,
-    /// czy uzytkownik wybral obraz, tekst, multimedia, dokument PDF czy plik DOCX.
+    /// Metoda ukrywa szczegóły tworzenia różnych kontrolek podglądu przed resztą aplikacji.
+    /// Dzięki temu okno główne może ustawić jeden element interfejsu niezależnie od tego,
+    /// czy użytkownik wybrał obraz, tekst, multimedia, dokument PDF czy plik DOCX.
     /// </remarks>
-    /// <param name="filePath">Sciezka do pliku, ktory ma zostac wyswietlony w panelu podgladu.</param>
+    /// <param name="filePath">Ścieżka do pliku, który ma zostać wyćwietlony w panelu podglądu.</param>
     /// <returns>Gotowy element WPF do umieszczenia w kontrolce zawartosci.</returns>
     public static FrameworkElement Create(string? filePath)
     {
@@ -108,13 +108,13 @@ public static class PreviewFactory
     }
 
     /// <summary>
-    /// Czysci panel podgladu i zatrzymuje odtwarzanie multimediow, jesli byly aktywne.
+    /// Czyści panel podglądu i zatrzymuje odtwarzanie multimediów, jeśli byly aktywne.
     /// </summary>
     /// <remarks>
-    /// Samo usuniecie zawartosci nie zawsze wystarcza dla plikow audio lub wideo, dlatego metoda
-    /// jawnie zatrzymuje i zamyka kontrolke multimedialna przed wyczyszczeniem panelu.
+    /// Samo usunięcie zawartości nie zawsze wystarcza dla plików audio lub wideo, dlatego metoda
+    /// jawnie zatrzymuje i zamyka kontrolkę multimedialną przed wyczyszczeniem panelu.
     /// </remarks>
-    /// <param name="preview">Kontrolka zawierajaca aktualnie wyswietlany podglad.</param>
+    /// <param name="preview">Kontrolka zawierająca aktualnie wyświetlany podgląd.</param>
     public static void ClearPreview(ContentControl preview)
     {
         if (preview.Content is MediaElement media)
@@ -130,14 +130,14 @@ public static class PreviewFactory
     }
 
     /// <summary>
-    /// Tworzy prosty komunikat wyswietlany w miejscu podgladu pliku.
+    /// Tworzy prosty komunikat wyświetlany w miejscu podglądu pliku.
     /// </summary>
     /// <remarks>
-    /// Komunikat jest uzywany zamiast wyjatku, gdy nie wybrano pliku albo format nie jest obslugiwany.
-    /// Dzieki temu panel podgladu pozostaje stabilny nawet dla nieznanych typow plikow.
+    /// Komunikat jest używany zamiast wyjątku, gdy nie wybrano pliku albo format nie jest obsługiwany.
+    /// Dzięki temu panel podglądu pozostaje stabilny nawet dla nieznanych typów plików.
     /// </remarks>
-    /// <param name="message">Tekst komunikatu widoczny dla uzytkownika.</param>
-    /// <returns>Element WPF z wysrodkowanym komunikatem.</returns>
+    /// <param name="message">Tekst komunikatu widoczny dla użytkownika.</param>
+    /// <returns>Element WPF z wyśrodkowanym komunikatem.</returns>
     private static FrameworkElement CreateMessage(string message)
     {
         return new Grid

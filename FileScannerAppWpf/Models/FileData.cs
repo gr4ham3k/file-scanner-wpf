@@ -10,39 +10,39 @@ namespace FileScannerApp.Models
     /// Reprezentuje podstawowe metadane pliku wykorzystywane przez aplikacje.
     /// </summary>
     /// <remarks>
-    /// Model oddziela dane pobrane z systemu plikow od logiki interfejsu i uslug.
-    /// Dzieki temu skanowanie, organizowanie oraz wyswietlanie listy plikow korzystaja
-    /// z jednej wspolnej struktury danych.
+    /// Model oddziela dane pobrane z systemu plików od logiki interfejsu i usług.
+    /// Dzięki temu skanowanie, organizowanie oraz wyświetlanie listy plików korzystają
+    /// z jednej wspólnej struktury danych.
     /// </remarks>
     public class FileData
     {
         /// <summary>
-        /// Nazwa pliku pokazywana uzytkownikowi w listach i wynikach operacji.
+        /// Nazwa pliku pokazywana użytkownikowi w listach i wynikach operacji.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Rozszerzenie uzywane do filtrowania, organizowania i wyboru sposobu podgladu.
+        /// Rozszerzenie używane do filtrowania, organizowania i wyboru sposobu podglądu.
         /// </summary>
         public string Extension { get; set; }
 
         /// <summary>
-        /// Pelna sciezka potrzebna do wykonania operacji na rzeczywistym pliku.
+        /// Pełna ścieżka potrzebna do wykonania operacji na rzeczywistym pliku.
         /// </summary>
         public string Path { get; set; }
 
         /// <summary>
-        /// Rozmiar pliku w bajtach, przydatny przy prezentacji szczegolow pliku.
+        /// Rozmiar pliku w bajtach, przydatny przy prezentacji szczegółow pliku.
         /// </summary>
         public long Size { get; set; }
 
         /// <summary>
-        /// Data utworzenia wykorzystywana miedzy innymi przy generowaniu nowych nazw.
+        /// Data utworzenia wykorzystywana między innymi przy generowaniu nowych nazw.
         /// </summary>
         public DateTime CreatedDate { get; set; }
 
         /// <summary>
-        /// Data ostatniej modyfikacji wykorzystywana w widoku plikow i wzorcach nazw.
+        /// Data ostatniej modyfikacji wykorzystywana w widoku plików i wzorcach nazw.
         /// </summary>
         public DateTime ModifiedDate { get; set; }
     }

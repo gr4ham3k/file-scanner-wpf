@@ -27,11 +27,11 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Przechowuje biezacy stan dlugotrwalego skanowania plikow.
+  summary: Przechowuje bieżący stan długotrwałego skanowania plików.
   remarks: >-
-    Obiekt jest przekazywany do interfejsu uzytkownika w trakcie skanowania, aby mozna bylo pokazac
+    Obiekt jest przekazywany do interfejsu użytkownika w trakcie skanowania, aby można było pokazać
 
-    aktualnie analizowany plik, liczbe przetworzonych elementow oraz liczbe wykrytych zagrozen.
+    aktualnie analizowany plik, liczbę przetworzonych elementów oraz liczbę wykrytych zagrożeń.
   example: []
   syntax:
     content: public class ScanProgress
@@ -71,7 +71,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Numer aktualnie przetworzonego pliku w ramach calego skanu.
+  summary: Numer aktualnie przetworzonego pliku w ramach całego skanu.
   example: []
   syntax:
     content: public int Current { get; set; }
@@ -102,7 +102,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Laczna liczba plikow przewidzianych do sprawdzenia.
+  summary: Łączna liczba plików przewidzianych do sprawdzenia.
   example: []
   syntax:
     content: public int Total { get; set; }
@@ -133,7 +133,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Nazwa pliku, ktory zostal ostatnio przekazany do raportowania postepu.
+  summary: Nazwa pliku, który został ostatnio przekazany do raportowania postępu.
   example: []
   syntax:
     content: public string CurrentFile { get; set; }
@@ -164,7 +164,7 @@ items:
   assemblies:
   - FileScannerAppWpf
   namespace: FileScannerApp.Models
-  summary: Liczba zagrozen wykrytych od poczatku aktualnego skanowania.
+  summary: Liczba zagrożeń wykrytych od początku aktualnego skanowania.
   example: []
   syntax:
     content: public int ThreatsFound { get; set; }

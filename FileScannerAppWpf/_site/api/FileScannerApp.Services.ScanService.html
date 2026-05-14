@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class ScanService | mysite ">
       
-      <meta name="description" content="Obsluguje proces skanowania plikow pod katem zagrozen przy uzyciu zewnetrznego API VirusTotal.">
+      <meta name="description" content="Obsługuje proces skanowania plikow pod kątem zagrożen przy użyciu zewnętrznego API VirusTotal.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="FileScannerApp_Services_ScanService" data-uid="FileScannerApp.Services.ScanService" class="text-break">
-Class ScanService  <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L25"><i class="bi bi-code-slash"></i></a>
+Class ScanService  <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,7 @@ Class ScanService  <a class="header-action link-secondary" title="View source" h
   <dl><dt>Assembly</dt><dd>FileScannerAppWpf.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Obsluguje proces skanowania plikow pod katem zagrozen przy uzyciu zewnetrznego API VirusTotal.</p>
+  <div class="markdown summary"><p>Obsługuje proces skanowania plikow pod kątem zagrożen przy użyciu zewnętrznego API VirusTotal.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -148,9 +148,8 @@ Class ScanService  <a class="header-action link-secondary" title="View source" h
 
 
   <h2 id="FileScannerApp_Services_ScanService_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>Klasa laczy logike obliczania skrotu SHA-256, komunikacji z API, zapisu wynikow do bazy danych
-oraz raportowania postepu skanowania. Jest centralnym elementem funkcji bezpieczenstwa aplikacji.
-Ze wzgledu na ograniczenia API skanowanie wykonywane jest sekwencyjnie z opoznieniem miedzy plikami.</p>
+  <div class="markdown level0 remarks"><p>Klasa łączy logikę obliczania skrótu SHA-256, komunikacji z API, zapisu wyników do bazy danych
+oraz raportowania postępu skanowania.</p>
 </div>
 
 
@@ -162,10 +161,10 @@ Ze wzgledu na ograniczenia API skanowanie wykonywane jest sekwencyjnie z opoznie
 
   <h3 id="FileScannerApp_Services_ScanService__ctor_FileScannerApp_AppConfig_FileScannerApp_Database_" data-uid="FileScannerApp.Services.ScanService.#ctor(FileScannerApp.AppConfig,FileScannerApp.Database)">
   ScanService(AppConfig, Database)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Tworzy usluge skanowania z konfiguracja API oraz dostepem do bazy danych.</p>
+  <div class="markdown level1 summary"><p>Tworzy usługę skanowania z konfiguracją API oraz dostępem do bazy danych.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -176,10 +175,10 @@ Ze wzgledu na ograniczenia API skanowanie wykonywane jest sekwencyjnie z opoznie
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>appConfig</code> <a class="xref" href="FileScannerApp.AppConfig.html">AppConfig</a></dt>
-    <dd><p>Konfiguracja zawierajaca klucz do uslugi VirusTotal.</p>
+    <dd><p>Konfiguracja zawierająca klucz do usługi VirusTotal.</p>
 </dd>
     <dt><code>db</code> <a class="xref" href="FileScannerApp.Database.html">Database</a></dt>
-    <dd><p>Obiekt odpowiedzialny za zapis historii skanow i wynikow.</p>
+    <dd><p>Obiekt odpowiedzialny za zapis historii skanów i wyników.</p>
 </dd>
   </dl>
 
@@ -191,8 +190,7 @@ Ze wzgledu na ograniczenia API skanowanie wykonywane jest sekwencyjnie z opoznie
 
 
   <h4 class="section" id="FileScannerApp_Services_ScanService__ctor_FileScannerApp_AppConfig_FileScannerApp_Database__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Klucz API jest pobierany z konfiguracji aplikacji, dlatego obiekt tej klasy powinien byc tworzony
-dopiero wtedy, gdy konfiguracja zostala juz wczytana.</p>
+  <div class="markdown level1 remarks"><p>Klucz API jest pobierany z konfiguracji aplikacji.</p>
 </div>
 
 
@@ -206,10 +204,10 @@ dopiero wtedy, gdy konfiguracja zostala juz wczytana.</p>
 
   <h3 id="FileScannerApp_Services_ScanService_CalculateSHA256_System_String_" data-uid="FileScannerApp.Services.ScanService.CalculateSHA256(System.String)">
   CalculateSHA256(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L142"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L140"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Oblicza skrot SHA-256 pliku, ktory jest uzywany jako identyfikator w usludze VirusTotal.</p>
+  <div class="markdown level1 summary"><p>Oblicza skrót SHA-256 pliku, który jest używany jako identyfikator w usłudze VirusTotal.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -220,14 +218,14 @@ dopiero wtedy, gdy konfiguracja zostala juz wczytana.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>filePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Pelna sciezka do pliku, dla ktorego ma zostac obliczony skrot.</p>
+    <dd><p>Pełna ścieżka do pliku, dla ktorego ma zostać obliczony skrót.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Skrot SHA-256 zapisany malymi literami bez separatorow.</p>
+    <dd><p>Skrót SHA-256 zapisany małymi literami bez separatorow.</p>
 </dd>
   </dl>
 
@@ -238,8 +236,8 @@ dopiero wtedy, gdy konfiguracja zostala juz wczytana.</p>
 
 
   <h4 class="section" id="FileScannerApp_Services_ScanService_CalculateSHA256_System_String__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>API VirusTotal pozwala sprawdzic plik po jego skrocie, bez wysylania zawartosci pliku.
-Metoda wymaga istniejacej sciezki, poniewaz otwiera plik bezposrednio z dysku.</p>
+  <div class="markdown level1 remarks"><p>API VirusTotal pozwala sprawdzić plik po jego skrócie, bez wysyłania zawartosci pliku.
+Metoda wymaga istniejącej ścieżki, ponieważ otwiera plik bezpośrednio z dysku.</p>
 </div>
 
 
@@ -249,7 +247,7 @@ Metoda wymaga istniejacej sciezki, poniewaz otwiera plik bezposrednio z dysku.</
 
   <h3 id="FileScannerApp_Services_ScanService_CreateScan_System_String_System_Int32_" data-uid="FileScannerApp.Services.ScanService.CreateScan(System.String,System.Int32)">
   CreateScan(string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Rozpoczyna nowy wpis skanowania w bazie danych.</p>
@@ -263,17 +261,17 @@ Metoda wymaga istniejacej sciezki, poniewaz otwiera plik bezposrednio z dysku.</
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>folder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Sciezka folderu wybranego do skanowania.</p>
+    <dd><p>Scieżka folderu wybranego do skanowania.</p>
 </dd>
     <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Liczba plikow przewidzianych do sprawdzenia.</p>
+    <dd><p>Liczba plików przewidzianych do sprawdzenia.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Identyfikator utworzonego skanu, uzywany przy zapisie wynikow.</p>
+    <dd><p>Identyfikator utworzonego skanu, używany przy zapisie wyników.</p>
 </dd>
   </dl>
 
@@ -284,7 +282,7 @@ Metoda wymaga istniejacej sciezki, poniewaz otwiera plik bezposrednio z dysku.</
 
 
   <h4 class="section" id="FileScannerApp_Services_ScanService_CreateScan_System_String_System_Int32__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Metoda zapisuje skan ze statusem poczatkowym, aby pozniejsze wyniki plikow mogly byc
+  <div class="markdown level1 remarks"><p>Metoda zapisuje skan ze statusem początkowym, aby późniejsze wyniki plików mogły być
 przypisane do jednego procesu skanowania.</p>
 </div>
 
@@ -295,10 +293,10 @@ przypisane do jednego procesu skanowania.</p>
 
   <h3 id="FileScannerApp_Services_ScanService_GetFileReportAsync_System_String_" data-uid="FileScannerApp.Services.ScanService.GetFileReportAsync(System.String)">
   GetFileReportAsync(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L162"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Pobiera raport VirusTotal dla pliku zidentyfikowanego przez skrot.</p>
+  <div class="markdown level1 summary"><p>Pobiera raport VirusTotal dla pliku zidentyfikowanego przez skrót.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -309,14 +307,14 @@ przypisane do jednego procesu skanowania.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>fileHash</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Skrot SHA-256 pliku sprawdzanego w VirusTotal.</p>
+    <dd><p>Skrót SHA-256 pliku sprawdzanego w VirusTotal.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd><p>Odpowiedz API w formacie JSON albo null, gdy raport nie istnieje.</p>
+    <dd><p>Odpowiedź API w formacie JSON albo null, gdy raport nie istnieje.</p>
 </dd>
   </dl>
 
@@ -327,8 +325,8 @@ przypisane do jednego procesu skanowania.</p>
 
 
   <h4 class="section" id="FileScannerApp_Services_ScanService_GetFileReportAsync_System_String__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Gdy VirusTotal nie zna danego skrotu, metoda zwraca null. Inne bledy HTTP sa przekazywane dalej,
-poniewaz moga oznaczac problem z kluczem API, limitem zapytan albo dostepnoscia uslugi.</p>
+  <div class="markdown level1 remarks"><p>Gdy VirusTotal nie zna danego skrótu, metoda zwraca null. Inne błędy HTTP są przekazywane dalej,
+ponieważ mogą oznaczać problem z kluczem API, limitem zapytań albo dostępnoscią usługi.</p>
 </div>
 
 
@@ -338,10 +336,10 @@ poniewaz moga oznaczac problem z kluczem API, limitem zapytan albo dostepnoscia 
 
   <h3 id="FileScannerApp_Services_ScanService_HasInternet" data-uid="FileScannerApp.Services.ScanService.HasInternet">
   HasInternet()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L195"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L193"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Sprawdza, czy aplikacja ma podstawowy dostep do internetu.</p>
+  <div class="markdown level1 summary"><p>Sprawdza, czy aplikacja ma podstawowy dostęp do internetu.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -353,7 +351,7 @@ poniewaz moga oznaczac problem z kluczem API, limitem zapytan albo dostepnoscia 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
-    <dd><p>True, gdy testowe zapytanie HTTP zakonczylo sie powodzeniem; w przeciwnym razie false.</p>
+    <dd><p>True, gdy testowe zapytanie HTTP zakończyło sie powodzeniem; w przeciwnym razie false.</p>
 </dd>
   </dl>
 
@@ -364,8 +362,8 @@ poniewaz moga oznaczac problem z kluczem API, limitem zapytan albo dostepnoscia 
 
 
   <h4 class="section" id="FileScannerApp_Services_ScanService_HasInternet_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Metoda wykonuje krotkie zapytanie testowe i zwraca false przy dowolnym bledzie, aby interfejs
-mogl bezpiecznie poinformowac uzytkownika o braku polaczenia bez przerywania aplikacji wyjatkiem.</p>
+  <div class="markdown level1 remarks"><p>Metoda wykonuje krótkie zapytanie testowe i zwraca false przy dowolnym błędzie, aby interfejs
+mógl bezpiecznie poinformowac użytkownika o braku połączenia bez przerywania aplikacji wyjątkiem.</p>
 </div>
 
 
@@ -375,10 +373,10 @@ mogl bezpiecznie poinformowac uzytkownika o braku polaczenia bez przerywania apl
 
   <h3 id="FileScannerApp_Services_ScanService_ScanFilesAsync_System_Collections_Generic_List_FileScannerApp_Models_FileData__System_Int32_System_Func_FileScannerApp_Models_ScanProgress_System_Threading_Tasks_Task__" data-uid="FileScannerApp.Services.ScanService.ScanFilesAsync(System.Collections.Generic.List{FileScannerApp.Models.FileData},System.Int32,System.Func{FileScannerApp.Models.ScanProgress,System.Threading.Tasks.Task})">
   ScanFilesAsync(List&lt;FileData&gt;, int, Func&lt;ScanProgress, Task&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L71"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Skanuje kolekcje plikow, zapisuje wyniki i przekazuje postep do interfejsu uzytkownika.</p>
+  <div class="markdown level1 summary"><p>Skanuje kolekcje plików, zapisuje wyniki i przekazuje postęp do interfejsu użytkownika.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -389,20 +387,20 @@ mogl bezpiecznie poinformowac uzytkownika o braku polaczenia bez przerywania apl
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>files</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="FileScannerApp.Models.FileData.html">FileData</a>&gt;</dt>
-    <dd><p>Lista plikow wybranych do skanowania.</p>
+    <dd><p>Lista plików wybranych do skanowania.</p>
 </dd>
     <dt><code>scanId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Identyfikator skanu, do ktorego zostana przypisane wyniki.</p>
+    <dd><p>Identyfikator skanu, do którego zostaną przypisane wyniki.</p>
 </dd>
     <dt><code>onProgress</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="FileScannerApp.Models.ScanProgress.html">ScanProgress</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>&gt;</dt>
-    <dd><p>Funkcja wywolywana po przetworzeniu kolejnego pliku.</p>
+    <dd><p>Funkcja wywoływana po przetworzeniu kolejnego pliku.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
-    <dd><p>Liczba plikow oznaczonych jako potencjalnie zlosliwe.</p>
+    <dd><p>Liczba plików oznaczonych jako potencjalnie złosliwe.</p>
 </dd>
   </dl>
 
@@ -413,9 +411,9 @@ mogl bezpiecznie poinformowac uzytkownika o braku polaczenia bez przerywania apl
 
 
   <h4 class="section" id="FileScannerApp_Services_ScanService_ScanFilesAsync_System_Collections_Generic_List_FileScannerApp_Models_FileData__System_Int32_System_Func_FileScannerApp_Models_ScanProgress_System_Threading_Tasks_Task___remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Dla kazdego istniejacego pliku obliczany jest skrot SHA-256, a nastepnie pobierany jest raport
-z VirusTotal. Bledy pojedynczych plikow sa zapisywane jako wynik skanowania, aby awaria jednego
-pliku nie przerywala calego procesu. Po kazdym pliku wywolywany jest callback postepu.</p>
+  <div class="markdown level1 remarks"><p>Dla każdego istniejącego pliku obliczany jest skrót SHA-256, a następnie pobierany jest raport
+z VirusTotal. Błędy pojedyńczych plików są zapisywane jako wynik skanowania, aby awaria jednego
+pliku nie przerywala całego procesu. Po każdym pliku wywoływany jest callback postępu.</p>
 </div>
 
 
@@ -430,7 +428,7 @@ pliku nie przerywala calego procesu. Po kazdym pliku wywolywany jest callback po
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L25" class="edit-link">Edit this page</a>
+          <a href="https://github.com/gr4ham3k/file-scanner-wpf/blob/main/FileScannerAppWpf/Services/ScannerService.cs/#L24" class="edit-link">Edit this page</a>
         </div>
 
 
