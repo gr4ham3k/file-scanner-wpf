@@ -2,7 +2,7 @@
 
 Ta sekcja opisuje możliwe kierunki rozwoju aplikacji po przygotowaniu pierwszej wersji projektu. Lista nie oznacza błędów aktualnej wersji, tylko pokazuje funkcje, które mogłyby zwiekszyć wygodę, bezpieczeństwo i zakres zastosowań programu.
 
-## Czego zabraklo w pierwszej wersji
+## Czego zabrakło w pierwszej wersji
 
 W pierwszej wersji aplikacja skupia sie na podstawowym przepływie pracy: wybór folderu, lista plików, podgląd, skanowanie, organizowanie, zmiana nazw i historia operacji. Część funkcji mogłaby zostać rozwinięta w kolejnych etapach.
 
@@ -16,7 +16,7 @@ Najważniejsze braki:
 - brak mechanizmu zapamiętywania ostatnio używanych folderów,
 - brak pełnego panelu diagnostycznego dla problemow z API VirusTotal.
 
-## Funkcjonalnosci dla wersji 2.0
+## Funkcjonalności dla wersji 2.0
 
 Wersja 2.0 mogłaby rozszerzyć aplikację o funkcje związane z automatyzacją, raportowaniem i personalizacją.
 

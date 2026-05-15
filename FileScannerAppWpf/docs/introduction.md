@@ -4,7 +4,7 @@ FileScannerAppWpf to desktopowa aplikacja dla systemu Windows, która pomaga prz
 
 Aplikacja rozwiązuje problem ręcznego porządkowania dużej liczby plików oraz łączy kilka przydatnych operacji w jednym narzędziu: podgląd plików, organizowanie, zmiane nazw, historie operacji i skanowanie antywirusowe po hashu SHA-256. W odróżnieniu od prostego eksploratora plików projekt zapisuje historie działań, pozwala przywracać część operacji i udostępnia widok wyników skanowania.
 
-## Najwazniejsze funkcje
+## Najważniejsze funkcje
 
 - skanowanie plików z użyciem API VirusTotal,
 - podgląd wybranych typów plikow,

@@ -1,4 +1,4 @@
-# Uruchomienie projektu dla uzytkownika
+# Uruchomienie projektu dla użytkownika
 
 Ta sekcja opisuje sposób uruchomienia aplikacji przez użytkownika końcowego, który nie pracuje bezpośrednio z kodem źródłowym.
 
@@ -30,7 +30,7 @@ Przykładowy proces instalacji dla użytkownika:
 | Internet | Wymagany do skanowania plików przez VirusTotal |
 | WebView2 Runtime | Wymagany do podglądu plików PDF i DOCX |
 
-## Konfiguracja po stronie uzytkownika
+## Konfiguracja po stronie użytkownika
 
 Aplikacja korzysta z API VirusTotal. Jeżeli wersja udostępniona użytkownikowi nie zawiera własnego sposobu konfiguracji klucza, należy ustawić zmienną srodowiskową:
 

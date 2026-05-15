@@ -60,7 +60,7 @@ Rysunek 4. Wyniki skanowania plików przez VirusTotal.
 
 ## Organizowanie plików
 
-Funkcja `Organize` otwiera okno narzędzi wsadowych `Batch tools`. Jest to najważniejszy element aplikacji, ponieważ pozwala szybko uporządkować dużą liczbę plików bez ręcznego przenoszenia ich jeden po drugim.
+Funkcja `Organize` otwiera okno narzędzi `Batch tools`. Jest to najważniejszy element aplikacji, ponieważ pozwala szybko uporządkować dużą liczbę plików bez ręcznego przenoszenia ich jeden po drugim.
 
 Użytkownik może wybrać folder docelowy, tryb operacji oraz grupy plików, które mają zostać przetworzone.
 
@@ -94,7 +94,6 @@ Dostępne znaczniki:
 | `{created}` | Data utworzenia pliku |
 | `{modified}` | Data ostatniej modyfikacji |
 | `{counter}` | Numer porządkowy |
-| `{counter:000}` | Numer porządkowy zapisany trzema cyframi |
 | `{folder}` | Nazwa folderu źródłowego |
 | `{ext}` | Rozszerzenie bez kropki |
 
@@ -158,8 +157,6 @@ Aplikacja przechowuje dane lokalnie w bazie SQLite. Są to:
 ## Zachowanie na mniejszych oknach
 
 Aplikacja jest programem desktopowym WPF, dlatego nie posiada wersji mobilnej. Przy zmniejszeniu okna najważniejsze jest zachowanie czytelności listy plików, panelu podglądu oraz przycisków.
-
-Miejsce na zrzut ekranu:
 
 ![Zmniejszone okno aplikacji](../images/user-guide-main-window.png)
 

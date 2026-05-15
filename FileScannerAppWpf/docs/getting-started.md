@@ -2,7 +2,7 @@
 
 Ta sekcja opisuje uruchomienie projektu w trybie deweloperskim na czystym komputerze.
 
-## Uzyte technologie
+## Użyte technologie
 
 | Technologia | Wersja w projekcie | Zastosowanie | Oficjalna strona |
 | --- | --- | --- | --- |

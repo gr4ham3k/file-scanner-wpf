@@ -2,7 +2,7 @@
 
 Ta sekcja opisuje ustawienia wymagane przed pierwszym uruchomieniem aplikacji w środowisku deweloperskim.
 
-## Zmienne srodowiskowe
+## Zmienne środowiskowe
 
 Aplikacja korzysta z klucza API VirusTotal. Klucz powinien byc zapisany jako zmienna środowiskowa:
 
@@ -62,11 +62,11 @@ Nie ma komendy typu:
 dotnet ef database update
 ```
 
-## Dane poczatkowe
+## Dane początkowe
 
 Projekt nie ma mechanizmu seedowania danych testowych ani kont użytkowników. Aplikacja nie posiada systemu logowania, więc nie istnieje domyślne konto administratora.
 
-## Najczestsze problemy konfiguracyjne
+## Najczęstsze problemy konfiguracyjne
 
 | Problem | Możliwa przyczyna | Rozwiązanie |
 | --- | --- | --- |
